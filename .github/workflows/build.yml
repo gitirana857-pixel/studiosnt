@@ -56,10 +56,11 @@ jobs:
 
     - name: Check build result
       run: |
-        echo "=== Last 30 lines of build log ===" >> $GITHUB_STEP_SUMMARY
-        tail -30 WoWonder/build.log >> $GITHUB_STEP_SUMMARY
-        echo "=== Build output files ===" >> $GITHUB_STEP_SUMMARY
-        find WoWonder/bin -type f 2>/dev/null >> $GITHUB_STEP_SUMMARY || echo "No bin output"
+        echo '=== Build log (last 60 lines) ===' >> $GITHUB_STEP_SUMMARY
+        tail -60 WoWonder/build.log >> $GITHUB_STEP_SUMMARY
+        echo '' >> $GITHUB_STEP_SUMMARY
+        echo '=== All output files in WoWonder ===' >> $GITHUB_STEP_SUMMARY
+        find WoWonder -type f -newer WoWonder/WoWonder.csproj 2>/dev/null | grep -v '.git/' | grep -v '.log' | head -30 >> $GITHUB_STEP_SUMMARY
       continue-on-error: true
 
     - name: Find APK
