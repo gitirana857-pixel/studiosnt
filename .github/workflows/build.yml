@@ -28,58 +28,39 @@ jobs:
       with:
         dotnet-version: '8.0.x'
 
-    - name: Find .NET 8 SDK and install Android workload
+    - name: Check installed SDKs
       run: |
-        # setup-dotnet installs into $RUNNER_TOOL_CACHE or adds to PATH
-        # Find the real .NET 8 SDK path
-        DOTNET8_PATH=$(readlink -f $(which dotnet))
-        echo "dotnet from PATH: $DOTNET8_PATH"
-        echo "dotnet --version: $(dotnet --version)"
-        
-        # If it's SDK 10, find the 8.0 one
-        if dotnet --version | grep -q '^10'; then
-          echo "SDK 10 found in PATH, searching for .NET 8..."
-          # setup-dotnet usually installs to /usr/share/dotnet or under /home/runner/.dotnet
-          # Look for the 8.0 SDK
-          SDK_DIRS=$(find / -name "dotnet" -type f -executable 2>/dev/null | head -10)
-          echo "All dotnet binaries:"
-          for d in $SDK_DIRS; do
-            echo "  $d -> $($d --version 2>/dev/null)"
-          done
-        fi
-        DOTNET8_PATH=$(find / -name "dotnet" -type f -executable 2>/dev/null | while read f; do v=$($f --version 2>/dev/null); if echo "$v" | grep -q '^8\.'; then echo "$f"; fi; done | head -1)
-        echo "FOUND DOTNET 8: $DOTNET8_PATH"
-        echo "DOTNET8_BIN=$DOTNET8_PATH" >> $GITHUB_ENV
-        
-        if [ -n "$DOTNET8_PATH" ]; then
-          # Set DOTNET_ROOT to the .NET 8 SDK root
-          DOTNET8_DIR=$(dirname "$DOTNET8_PATH")
-          echo "DOTNET_ROOT=$DOTNET8_DIR" >> $GITHUB_ENV
-          # Add to PATH ahead of everything
-          echo "$DOTNET8_DIR" >> $GITHUB_PATH
-          export PATH="$DOTNET8_DIR:$PATH"
-          $DOTNET8_PATH --info | head -10
-          $DOTNET8_PATH workload install android
-        else
-          echo "ERROR: Could not find .NET 8 SDK!" >&2
-          exit 1
-        fi
+        echo "=== SDKs available ==="
+        dotnet --list-sdks
+        echo "=== dotnet --version ==="
+        dotnet --version
+        echo "=== DOTNET_ROOT ==="
+        echo "$DOTNET_ROOT"
+        echo "=== dotnet --info ==="
+        dotnet --info | head -10
 
-    - name: Publish APK
+    - name: Install Android workload
       run: |
-        dotnet --info | head -3
+        # global.json pins to SDK 8.0.x, so workload will install for .NET 8
+        dotnet workload install android --skip-manifest-update
+
+    - name: Build & Publish APK
+      run: |
         cd WoWonder
+        echo "=== dotnet --version used ==="
+        dotnet --version
+        dotnet restore WoWonder.csproj -p:CheckEolTargetFramework=false -p:NoWarn=NU1202
         dotnet publish WoWonder.csproj \
           -c Debug \
           -f net8.0-android \
           -r android-arm64 \
+          --self-contained \
           -p:AndroidPackageFormat=apk \
           -p:AndroidKeyStore=false \
           -p:DebugType=none \
           -p:DebugSymbols=false \
           -p:CheckEolTargetFramework=false \
           -p:NoWarn=NU1202 \
-          -p:AllowedReferenceRelatedFileExtensions=none \
           2>&1 | tee build.log
         exit_code=${PIPESTATUS[0]}
         echo "PUBLISH_EXIT_CODE=$exit_code"
