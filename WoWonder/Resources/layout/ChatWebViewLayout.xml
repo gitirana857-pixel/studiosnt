@@ -28,9 +28,17 @@
             android:textColor="?attr/colorOnBackground"
             android:id="@+id/toolbar_title" /> 
     </RelativeLayout>
+    <ProgressBar
+        android:id="@+id/webview_progress"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_below="@+id/toolbar"
+        android:progressTint="@color/primary"
+        android:visibility="gone" />
     <WebView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" 
-        android:layout_below="@+id/toolbar"
+        android:layout_below="@+id/webview_progress"
         android:id="@+id/ChatWebView" />
 </RelativeLayout>
