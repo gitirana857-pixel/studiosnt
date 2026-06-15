@@ -33,15 +33,25 @@ jobs:
     - name: Accept Android SDK licenses
       run: yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses
 
+    - name: Install .NET Android workload
+      run: |
+        dotnet workload install android
+        dotnet --list-sdks
+
+    - name: NuGet source
+      run: |
+        cd WoWonder
+        dotnet nuget list source
+
     - name: Restore NuGet packages
       run: |
         cd WoWonder
-        dotnet restore WoWonder.csproj
+        dotnet restore WoWonder.csproj --verbosity normal
 
     - name: Build Debug APK
       run: |
         cd WoWonder
-        dotnet build WoWonder.csproj -c Debug -f net8.0-android -p:AndroidPackageFormat=apk
+        dotnet build WoWonder.csproj -c Debug -f net8.0-android
 
     - name: Find APK
       id: find_apk
