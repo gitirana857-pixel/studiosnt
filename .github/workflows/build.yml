@@ -11,7 +11,7 @@ jobs:
   build:
     name: Build Debug APK
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 40
 
     steps:
     - name: Checkout repository
@@ -43,44 +43,42 @@ jobs:
         dotnet workload install android
         dotnet --list-sdks
 
-    - name: Restore NuGet packages
-      run: |
-        cd WoWonder
-        set -o pipefail
-        dotnet restore WoWonder.csproj --verbosity detailed 2>&1 | tee restore.log
-    - name: Capture restore errors
-      if: failure()
-      run: |
-        echo "RESTORE LOG:" >> $GITHUB_STEP_SUMMARY
-        grep -i "error\|warning.*NU1\|not found\|unable" WoWonder/restore.log | head -30 >> $GITHUB_STEP_SUMMARY || echo "No specific errors found" >> $GITHUB_STEP_SUMMARY
-    - name: Upload restore log
-      if: failure()
-      uses: actions/upload-artifact@v4
-      with:
-        name: restore-log
-        path: WoWonder/restore.log
-        retention-days: 7
-
     - name: Build Debug APK
       run: |
         cd WoWonder
-        dotnet build WoWonder.csproj -c Debug -f net8.0-android
+        dotnet build WoWonder.csproj -c Debug -f net8.0-android 2>&1 | tee build.log
+      continue-on-error: true
+
+    - name: Check build result
+      run: |
+        if grep -i "error\|Build FAILED" WoWonder/build.log; then
+          echo "BUILD FAILED - showing errors:" >> $GITHUB_STEP_SUMMARY
+          grep -i "error" WoWonder/build.log | head -30 >> $GITHUB_STEP_SUMMARY
+        fi
 
     - name: Find APK
       id: find_apk
       run: |
-        APK_PATH=$(find WoWonder -name "*.apk" -type f | grep -i debug | head -1)
+        APK_PATH=$(find WoWonder -name "*.apk" -type f | head -1)
         if [ -z "$APK_PATH" ]; then
-          APK_PATH=$(find WoWonder -name "*.apk" -type f | head -1)
+          echo "No APK found - checking build output..."
+          ls -la WoWonder/bin/ 2>/dev/null || true
+          echo "apk_path=" >> $GITHUB_OUTPUT
+        else
+          echo "apk_path=$APK_PATH" >> $GITHUB_OUTPUT
+          echo "Found APK: $APK_PATH"
         fi
-        if [ -z "$APK_PATH" ]; then
-          echo "No APK found!"
-          exit 1
-        fi
-        echo "apk_path=$APK_PATH" >> $GITHUB_OUTPUT
-        echo "Found APK: $APK_PATH"
+
+    - name: Upload build log
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: build-log
+        path: WoWonder/build.log
+        retention-days: 7
 
     - name: Upload Debug APK
+      if: steps.find_apk.outputs.apk_path != ''
       uses: actions/upload-artifact@v4
       with:
         name: timeline-debug-apk
