@@ -191,6 +191,11 @@ namespace WoWonder.Services
                 if (string.IsNullOrEmpty(InitializeWoWonder.WebsiteUrl))
                 {
                     InitializeWoWonder.Initialize(AppSettings.TripleDesAppServiceProvider, Context.PackageName, AppSettings.TurnTrustFailureOnWebException, MyReportModeApp.CreateInstance());
+
+                    // Override with correct server values
+                    InitializeWoWonder.WebsiteUrl = "https://www.studiosnt.sntwork.com";
+                    InitializeWoWonder.ServerKey = "HjrIe2ihvP7KXW0xpLOC3Rg8yZlY9dMo";
+
                     var sqLiteDatabase = new SqLiteDatabase();
                     sqLiteDatabase.CheckTablesStatus();
                 }

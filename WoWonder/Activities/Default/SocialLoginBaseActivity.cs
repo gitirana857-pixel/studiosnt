@@ -69,6 +69,10 @@ namespace WoWonder.Activities.Default
 
                 InitializeWoWonder.Initialize(AppSettings.TripleDesAppServiceProvider, PackageName, AppSettings.TurnTrustFailureOnWebException, MyReportModeApp.CreateInstance());
 
+                // Override with correct server values
+                InitializeWoWonder.WebsiteUrl = "https://www.studiosnt.sntwork.com";
+                InitializeWoWonder.ServerKey = "HjrIe2ihvP7KXW0xpLOC3Rg8yZlY9dMo";
+
                 //Set Full screen 
                 SetTheme(WoWonderTools.IsTabDark() ? Resource.Style.MyTheme_Dark : Resource.Style.MyTheme);
                 Window?.SetSoftInputMode(SoftInput.AdjustResize);
