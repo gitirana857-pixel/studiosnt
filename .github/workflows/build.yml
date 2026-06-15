@@ -46,7 +46,14 @@ jobs:
     - name: Restore NuGet packages
       run: |
         cd WoWonder
-        dotnet restore WoWonder.csproj
+        dotnet restore WoWonder.csproj 2>&1 | tee restore.log; exit ${PIPESTATUS[0]}
+    - name: Upload restore log
+      if: failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: restore-log
+        path: WoWonder/restore.log
+        retention-days: 7
 
     - name: Build Debug APK
       run: |
