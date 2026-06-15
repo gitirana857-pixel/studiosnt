@@ -75,9 +75,21 @@ namespace WoWonder
 
                 InitializeWoWonder.Initialize(AppSettings.TripleDesAppServiceProvider, PackageName, AppSettings.TurnTrustFailureOnWebException, MyReportModeApp.CreateInstance());
 
-                // Override with correct server values
-                InitializeWoWonder.WebsiteUrl = "https://www.studiosnt.sntwork.com";
-                InitializeWoWonder.ServerKey = "HjrIe2ihvP7KXW0xpLOC3Rg8yZlY9dMo";
+                // Override WebsiteUrl and ServerKey via reflection (properties are private set)
+                try
+                {
+                    var wowonderType = typeof(InitializeWoWonder);
+                    var urlField = wowonderType.GetField("<WebsiteUrl>k__BackingField", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.NonPublic);
+                    if (urlField != null)
+                        urlField.SetValue(null, "https://www.studiosnt.sntwork.com");
+                    var keyField = wowonderType.GetField("<ServerKey>k__BackingField", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.NonPublic);
+                    if (keyField != null)
+                        keyField.SetValue(null, "HjrIe2ihvP7KXW0xpLOC3Rg8yZlY9dMo");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Reflection override failed: " + ex.Message);
+                }
 
                 var sqLiteDatabase = new SqLiteDatabase();
                 sqLiteDatabase.CheckTablesStatus();
