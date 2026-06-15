@@ -17,31 +17,21 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Setup Java 11
+    - name: Setup Java 17
       uses: actions/setup-java@v4
       with:
-        distribution: 'temurin'
-        java-version: '11'
-        cache: 'gradle'
+        distribution: 'microsoft'
+        java-version: '17'
 
     - name: Setup Android SDK
       uses: android-actions/setup-android@v3
       with:
         api-level: 34
-        ndk-version: r26c
         build-tools-version: 34.0.0
         cmdline-tools-version: latest
 
     - name: Accept Android SDK licenses
       run: yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses
-
-    - name: Cache NuGet packages
-      uses: actions/cache@v4
-      with:
-        path: ~/.nuget/packages
-        key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
-        restore-keys: |
-          ${{ runner.os }}-nuget-
 
     - name: Restore NuGet packages
       run: |
@@ -51,7 +41,7 @@ jobs:
     - name: Build Debug APK
       run: |
         cd WoWonder
-        dotnet build WoWonder.csproj -c Release -f net8.0-android -p:AndroidPackageFormat=apk -p:AndroidSigningKeyStore=false -p:AndroidSigningKeyAlias=false -p:AndroidSigningKeyPass=false -p:AndroidSigningStorePass=false
+        dotnet build WoWonder.csproj -c Debug -f net8.0-android -p:AndroidPackageFormat=apk
 
     - name: Find APK
       id: find_apk
