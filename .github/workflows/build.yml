@@ -59,8 +59,11 @@ jobs:
         echo '=== Build log (last 60 lines) ===' >> $GITHUB_STEP_SUMMARY
         tail -60 WoWonder/build.log >> $GITHUB_STEP_SUMMARY
         echo '' >> $GITHUB_STEP_SUMMARY
-        echo '=== All output files in WoWonder ===' >> $GITHUB_STEP_SUMMARY
-        find WoWonder -type f -newer WoWonder/WoWonder.csproj 2>/dev/null | grep -v '.git/' | grep -v '.log' | head -30 >> $GITHUB_STEP_SUMMARY
+        echo '=== All new/modified files ===' >> $GITHUB_STEP_SUMMARY
+        find WoWonder -type f -newer WoWonder/WoWonder.sln -name '*.apk' -o -name '*.aab' 2>/dev/null >> $GITHUB_STEP_SUMMARY
+        find WoWonder -type d -name 'publish' -o -name 'Release' -o -name 'Debug' 2>/dev/null | head -20 >> $GITHUB_STEP_SUMMARY
+        echo '=== Find any .apk or .aab anywhere ===' >> $GITHUB_STEP_SUMMARY
+        find . -name '*.apk' -o -name '*.aab' 2>/dev/null | head -10 >> $GITHUB_STEP_SUMMARY
       continue-on-error: true
 
     - name: Find APK
