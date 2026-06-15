@@ -408,7 +408,9 @@ namespace WoWonder.Activities.Tabbes
         {
             try
             {
-                Methods.App.OpenAppByPackageName(this, AppSettings.MessengerPackageName, "OpenChatApp");
+                var intent = new Intent(this, typeof(ChatWebViewActivity));
+                intent.AddFlags(ActivityFlags.NewTask | ActivityFlags.ClearTask);
+                StartActivity(intent);
             }
             catch (Exception exception)
             {

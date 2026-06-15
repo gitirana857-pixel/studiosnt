@@ -130,6 +130,7 @@
 				<data android:host="rzp.io" android:scheme="io.rzp" />
 			</intent-filter>
 		</activity>
+		<activity android:name=".Activities.ChatWebViewActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
 		<service android:name=".Services.AppApiService" android:exported="true" android:permission="android.permission.BIND_JOB_SERVICE" />
 	</application>
 	<queries>
