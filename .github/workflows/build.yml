@@ -1,21 +1,18 @@
-name: Build Xamarin.Android APK (Debug)
+name: Build APK (Debug)
 
 on:
   push:
-    branches: [ main, master ]
-  pull_request:
     branches: [ main, master ]
   workflow_dispatch:
 
 jobs:
   build:
-    name: Build Debug APK
+    name: Build APK
     runs-on: ubuntu-latest
     timeout-minutes: 40
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+    - uses: actions/checkout@v4
 
     - name: Setup Java 17
       uses: actions/setup-java@v4
@@ -23,7 +20,7 @@ jobs:
         distribution: 'microsoft'
         java-version: '17'
 
-    - name: Setup Android SDK
+    - name: Setup Android SDK 34
       uses: android-actions/setup-android@v3
       with:
         api-level: 34
@@ -38,75 +35,22 @@ jobs:
       with:
         dotnet-version: '8.0.x'
 
-    - name: Install .NET Android workload
-      run: |
-        dotnet workload install android
-        dotnet --list-sdks
+    - name: Install Android workload
+      run: dotnet workload install android
 
-    - name: Build Debug APK
+    - name: Publish APK (android-arm64)
       run: |
         cd WoWonder
-        set -o pipefail
         dotnet publish WoWonder.csproj -c Debug -f net8.0-android \
+          -r android-arm64 \
           -p:AndroidPackageFormat=apk \
           -p:AndroidKeyStore=false \
-          -p:RuntimeIdentifier=android-arm64 \
-          2>&1 | tee build.log
-        echo "EXIT_CODE=$?"
-      continue-on-error: true
+          -p:DebugType=none \
+          -p:DebugSymbols=false
 
-    - name: Check build result
-      run: |
-        {
-          echo '=== EXIT_CODE found in log ==='
-          grep 'EXIT_CODE=' WoWonder/build.log || echo 'Not found'
-          echo '=== Build log (last 80 lines) ==='
-          tail -80 WoWonder/build.log
-          echo '=== Searching for any apk/aab ==='
-          find . '(' -name '*.apk' -o -name '*.aab' ')' 2>/dev/null | head -20
-        } | tee WoWonder/debug-info.txt
-      continue-on-error: true
-
-    - name: Upload debug info
-      if: always()
+    - name: Upload APK
       uses: actions/upload-artifact@v4
       with:
-        name: debug-info
-        path: WoWonder/debug-info.txt
-
-    - name: Find APK
-      id: find_apk
-      run: |
-        echo "=== Looking for APK files ==="
-        APK_PATH=$(find WoWonder -type f -name "*.apk" 2>/dev/null | head -5)
-        if [ -n "$APK_PATH" ]; then
-          FIRST_APK=$(echo "$APK_PATH" | head -1)
-          echo "apk_path=$FIRST_APK" >> $GITHUB_OUTPUT
-          echo "Found APK: $FIRST_APK"
-        else
-          echo "No APK files found!"
-          echo "=== Checking bin ==="
-          find WoWonder/bin -type f 2>/dev/null | head -30
-          echo "=== Checking obj ==="
-          find WoWonder/obj -type f -name "*.apk" -o -name "*.aab" 2>/dev/null | head -10
-          echo "=== Checking all output dirs ==="
-          find WoWonder -type d -name "net8.0-android" 2>/dev/null | head -5
-          echo "apk_path=" >> $GITHUB_OUTPUT
-        fi
-
-    - name: Upload build log
-      if: always()
-      uses: actions/upload-artifact@v4
-      with:
-        name: build-log
-        path: WoWonder/build.log
-        retention-days: 7
-
-    - name: Upload Debug APK
-      if: always()
-      uses: actions/upload-artifact@v4
-      with:
-        name: timeline-debug-apk
-        path: WoWonder/**/*.apk
+        name: timeline-apk
+        path: WoWonder/bin/Debug/net8.0-android/android-arm64/publish/*.apk
         retention-days: 30
-      continue-on-error: true
