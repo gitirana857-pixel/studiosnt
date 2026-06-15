@@ -46,7 +46,13 @@ jobs:
     - name: Restore NuGet packages
       run: |
         cd WoWonder
-        dotnet restore WoWonder.csproj 2>&1 | tee restore.log; exit ${PIPESTATUS[0]}
+        set -o pipefail
+        dotnet restore WoWonder.csproj --verbosity detailed 2>&1 | tee restore.log
+    - name: Capture restore errors
+      if: failure()
+      run: |
+        echo "RESTORE LOG:" >> $GITHUB_STEP_SUMMARY
+        grep -i "error\|warning.*NU1\|not found\|unable" WoWonder/restore.log | head -30 >> $GITHUB_STEP_SUMMARY || echo "No specific errors found" >> $GITHUB_STEP_SUMMARY
     - name: Upload restore log
       if: failure()
       uses: actions/upload-artifact@v4
