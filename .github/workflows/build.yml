@@ -5,7 +5,7 @@ on:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
-  workflow_dispatch:  # Manual trigger
+  workflow_dispatch:
 
 jobs:
   build:
@@ -73,17 +73,3 @@ jobs:
         name: timeline-debug-apk
         path: ${{ steps.find_apk.outputs.apk_path }}
         retention-days: 30
-
-    - name: Build Summary
-      run: |
-        echo "## Build Complete ✅" >> $GITHUB_STEP_SUMMARY
-        echo "**APK:** ${{ steps.find_apk.outputs.apk_path }}" >> $GITHUB_STEP_SUMMARY
-        echo "**Download:** Actions → Build → Artifacts → timeline-debug-apk" >> $GITHUB_STEP_SUMMARY
-        echo "" >> $GITHUB_STEP_SUMMARY
-        echo "### Install on Android:" >> $GITHUB_STEP_SUMMARY
-        echo "1. Download APK from artifacts" >> $GITHUB_STEP_SUMMARY
-        echo "2. Transfer to phone (Drive, WhatsApp, USB)" >> $GITHUB_STEP_SUMMARY
-        echo "3. Enable 'Install unknown apps' in Settings" >> $GITHUB_STEP_SUMMARY
-        echo "4. Tap APK → Install" >> $GITHUB_STEP_SUMMARY
-        echo "5. Open app → Enter: https://www.studiosnt.sntwork.com" >> $GITHUB_STEP_SUMMARY
-        echo "6. Login with your site credentials" >> $GITHUB_STEP_SUMMARY
