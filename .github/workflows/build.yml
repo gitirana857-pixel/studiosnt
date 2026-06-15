@@ -59,15 +59,12 @@ jobs:
     - name: Find APK
       id: find_apk
       run: |
-        APK_PATH=$(find WoWonder -name "*.apk" -type f | head -1)
-        if [ -z "$APK_PATH" ]; then
-          echo "No APK found - checking build output..."
-          ls -la WoWonder/bin/ 2>/dev/null || true
-          echo "apk_path=" >> $GITHUB_OUTPUT
-        else
-          echo "apk_path=$APK_PATH" >> $GITHUB_OUTPUT
-          echo "Found APK: $APK_PATH"
-        fi
+        echo "=== Looking for APK files ==="
+        find WoWonder -type f -name "*.apk" -o -name "*.aab" 2>/dev/null | head -20 || echo "No APK found"
+        echo "=== Checking bin directory ==="
+        find WoWonder/bin -type f 2>/dev/null | head -30 || echo "No bin contents"
+        echo "=== Checking output dirs ==="
+        find WoWonder/obj -type f -name "*.apk" 2>/dev/null | head -10 || true
 
     - name: Upload build log
       if: always()
