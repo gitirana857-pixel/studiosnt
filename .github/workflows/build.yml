@@ -104,3 +104,21 @@ jobs:
           WoWonder/**/com.wowondertimeline*.apk
         retention-days: 30
         if-no-files-found: warn
+
+    - name: Upload to GitHub Release
+      if: success()
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: |
+        # Find the signed APK
+        APK_FILE=$(find WoWonder -name "*Signed*" -o -name "*signed*" -o -name "*.apk" | grep -i "com.wowonder" | head -1)
+        if [ -z "$APK_FILE" ]; then
+          APK_FILE=$(find WoWonder -name "*.apk" -type f | head -1)
+        fi
+        echo "APK: $APK_FILE ($(stat -c%s "$APK_FILE") bytes)"
+        
+        # Create/update release
+        TAG="v$(date +%s)"
+        gh release create "$TAG" "$APK_FILE" --title "Timeline APK $(date +%Y-%m-%d)" --notes "Build #${{ github.run_number }}" --clobber 2>&1 || \
+        gh release upload "$TAG" "$APK_FILE" --clobber 2>&1
+        echo "RELEASE_TAG=$TAG" >> $GITHUB_ENV
