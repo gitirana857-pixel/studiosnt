@@ -33,16 +33,15 @@ jobs:
     - name: Publish APK
       run: |
         cd WoWonder
-        set -x
-        echo "dotnet SDK: $(dotnet --version)"
-        dotnet workload list 2>&1
+        echo "SDK: $(dotnet --version)"
+        echo "Workloads:" && dotnet workload list 2>&1
+        set -o pipefail
         dotnet publish WoWonder.csproj -c Debug -f net8.0-android \
           -r android-arm64 \
           -p:AndroidPackageFormat=apk \
           -p:AndroidKeyStore=false \
           -p:DebugType=none \
           -p:DebugSymbols=false 2>&1 | tee build.log
-        echo "Build exit: $?"
       continue-on-error: true
 
     - name: Upload build log
