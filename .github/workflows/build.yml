@@ -28,29 +28,28 @@ jobs:
       with:
         dotnet-version: '8.0.x'
 
-    - name: Install Android workload
+    - name: Install Android workload (.NET 8)
       run: |
-        dotnet workload install android
+        # Ensure we use .NET 8 SDK for workload install
+        DOTNET8=$(dirname $(readlink -f $(which dotnet)))
+        echo "Using dotnet from: $DOTNET8"
+        $DOTNET8/dotnet --info | head -5
+        $DOTNET8/dotnet workload install android
         echo "ANDROID_SDK_ROOT=$ANDROID_SDK_ROOT"
-
-    - name: Restore NuGet packages (android-arm64 only)
-      run: |
-        cd WoWonder
-        dotnet restore WoWonder.csproj \
-          --runtime android-arm64 \
-          -p:CheckEolTargetFramework=false
 
     - name: Publish APK
       run: |
         cd WoWonder
-        dotnet publish WoWonder.csproj -c Debug \
-          -f net8.0-android34.0 \
+        dotnet publish WoWonder.csproj \
+          -c Debug \
+          -f net8.0-android \
           -r android-arm64 \
           -p:AndroidPackageFormat=apk \
           -p:AndroidKeyStore=false \
           -p:DebugType=none \
           -p:DebugSymbols=false \
           -p:CheckEolTargetFramework=false \
+          -p:NoWarn=NU1202 \
           2>&1 | tee build.log
         exit_code=${PIPESTATUS[0]}
         echo "PUBLISH_EXIT_CODE=$exit_code"
@@ -72,11 +71,12 @@ jobs:
         retention-days: 7
 
     - name: Upload APK
+      if: success()
       uses: actions/upload-artifact@v4
       with:
         name: timeline-apk
         path: |
-          WoWonder/bin/Debug/net8.0-android34.0/**/*.apk
+          WoWonder/bin/Debug/net8.0-android/**/*.apk
           WoWonder/**/com.wowondertimeline*.apk
           WoWonder/**/*-Signed.apk
           WoWonder/**/*-unsigned.apk
