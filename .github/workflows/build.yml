@@ -5,6 +5,9 @@ on:
     branches: [ main, master ]
   workflow_dispatch:
 
+env:
+  DOTNET_CLI_TELEMETRY_OPTOUT: 1
+
 jobs:
   build:
     name: Build APK
@@ -25,20 +28,30 @@ jobs:
       with:
         dotnet-version: '8.0.x'
 
-    - name: Install Android workload & dependencies
+    - name: Install Android workload
       run: |
         dotnet workload install android
         echo "ANDROID_SDK_ROOT=$ANDROID_SDK_ROOT"
 
+    - name: Restore NuGet packages (android-arm64 only)
+      run: |
+        cd WoWonder
+        dotnet restore WoWonder.csproj \
+          --runtime android-arm64 \
+          -p:CheckEolTargetFramework=false
+
     - name: Publish APK
       run: |
         cd WoWonder
-        dotnet publish WoWonder.csproj -c Debug -f net8.0-android \
+        dotnet publish WoWonder.csproj -c Debug \
+          -f net8.0-android34.0 \
           -r android-arm64 \
           -p:AndroidPackageFormat=apk \
           -p:AndroidKeyStore=false \
           -p:DebugType=none \
-          -p:DebugSymbols=false 2>&1 | tee build.log
+          -p:DebugSymbols=false \
+          -p:CheckEolTargetFramework=false \
+          2>&1 | tee build.log
         exit_code=${PIPESTATUS[0]}
         echo "PUBLISH_EXIT_CODE=$exit_code"
         exit $exit_code
@@ -63,7 +76,7 @@ jobs:
       with:
         name: timeline-apk
         path: |
-          WoWonder/bin/Debug/net8.0-android/**/*.apk
+          WoWonder/bin/Debug/net8.0-android34.0/**/*.apk
           WoWonder/**/com.wowondertimeline*.apk
           WoWonder/**/*-Signed.apk
           WoWonder/**/*-unsigned.apk
