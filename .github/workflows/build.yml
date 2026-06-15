@@ -46,7 +46,16 @@ jobs:
           -p:AndroidPackageFormat=apk \
           -p:AndroidKeyStore=false \
           -p:DebugType=none \
-          -p:DebugSymbols=false
+          -p:DebugSymbols=false 2>&1 | tee build.log
+      continue-on-error: true
+
+    - name: Upload build log
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: build-log
+        path: WoWonder/build.log
+        retention-days: 7
 
     - name: Upload APK
       uses: actions/upload-artifact@v4
@@ -54,3 +63,4 @@ jobs:
         name: timeline-apk
         path: WoWonder/bin/Debug/net8.0-android/android-arm64/publish/*.apk
         retention-days: 30
+        if-no-files-found: warn
