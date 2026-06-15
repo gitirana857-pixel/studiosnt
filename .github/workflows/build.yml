@@ -33,15 +33,15 @@ jobs:
     - name: Publish APK
       run: |
         cd WoWonder
-        echo "SDK: $(dotnet --version)"
-        echo "Workloads:" && dotnet workload list 2>&1
-        set -o pipefail
         dotnet publish WoWonder.csproj -c Debug -f net8.0-android \
           -r android-arm64 \
           -p:AndroidPackageFormat=apk \
           -p:AndroidKeyStore=false \
           -p:DebugType=none \
-          -p:DebugSymbols=false 2>&1 | tee build.log; exit_code=${PIPESTATUS[0]}; echo "PUBLISH_EXIT_CODE=$exit_code" >> build.log; exit $exit_code
+          -p:DebugSymbols=false 2>&1 | tee build.log
+        exit_code=${PIPESTATUS[0]}
+        echo "PUBLISH_EXIT_CODE=$exit_code"
+        exit $exit_code
 
     - name: Verify APK was created
       run: |
