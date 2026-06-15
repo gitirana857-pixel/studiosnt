@@ -113,10 +113,10 @@ jobs:
       env:
         GH_TOKEN: ${{ github.token }}
       run: |
-        # Find the APK
-        APK_FILE=$(find WoWonder -name "*Signed*" -o -name "*signed*" -o -name "*.apk" | grep -i "com.wowonder" | head -1)
+        # Find the APK - prefer signed version
+        APK_FILE=$(find WoWonder -name "*Signed*" -type f 2>/dev/null | head -1)
         if [ -z "$APK_FILE" ]; then
-          APK_FILE=$(find WoWonder -name "*.apk" -type f | head -1)
+          APK_FILE=$(find WoWonder -name "*.apk" -type f 2>/dev/null | head -1)
         fi
         APK_NAME=$(basename "$APK_FILE")
         echo "APK: $APK_NAME ($(stat -c%s "$APK_FILE") bytes)"
