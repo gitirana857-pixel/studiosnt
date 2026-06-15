@@ -33,20 +33,20 @@ jobs:
     - name: Accept Android SDK licenses
       run: yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses
 
+    - name: Setup .NET 8 SDK
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.x'
+
     - name: Install .NET Android workload
       run: |
         dotnet workload install android
         dotnet --list-sdks
 
-    - name: NuGet source
-      run: |
-        cd WoWonder
-        dotnet nuget list source
-
     - name: Restore NuGet packages
       run: |
         cd WoWonder
-        dotnet restore WoWonder.csproj --verbosity normal
+        dotnet restore WoWonder.csproj
 
     - name: Build Debug APK
       run: |
