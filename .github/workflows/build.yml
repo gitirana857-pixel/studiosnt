@@ -60,11 +60,21 @@ jobs:
       id: find_apk
       run: |
         echo "=== Looking for APK files ==="
-        find WoWonder -type f -name "*.apk" -o -name "*.aab" 2>/dev/null | head -20 || echo "No APK found"
-        echo "=== Checking bin directory ==="
-        find WoWonder/bin -type f 2>/dev/null | head -30 || echo "No bin contents"
-        echo "=== Checking output dirs ==="
-        find WoWonder/obj -type f -name "*.apk" 2>/dev/null | head -10 || true
+        APK_PATH=$(find WoWonder -type f -name "*.apk" 2>/dev/null | head -5)
+        if [ -n "$APK_PATH" ]; then
+          FIRST_APK=$(echo "$APK_PATH" | head -1)
+          echo "apk_path=$FIRST_APK" >> $GITHUB_OUTPUT
+          echo "Found APK: $FIRST_APK"
+        else
+          echo "No APK files found!"
+          echo "=== Checking bin ==="
+          find WoWonder/bin -type f 2>/dev/null | head -30
+          echo "=== Checking obj ==="
+          find WoWonder/obj -type f -name "*.apk" -o -name "*.aab" 2>/dev/null | head -10
+          echo "=== Checking all output dirs ==="
+          find WoWonder -type d -name "net8.0-android" 2>/dev/null | head -5
+          echo "apk_path=" >> $GITHUB_OUTPUT
+        fi
 
     - name: Upload build log
       if: always()
