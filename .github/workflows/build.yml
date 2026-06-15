@@ -50,8 +50,9 @@ jobs:
         dotnet publish WoWonder.csproj -c Debug -f net8.0-android \
           -p:AndroidPackageFormat=apk \
           -p:AndroidKeyStore=false \
+          -p:RuntimeIdentifier=android-arm64 \
           2>&1 | tee build.log
-        echo "Build exit code: $?"
+        echo "EXIT_CODE=$?"
       continue-on-error: true
 
     - name: Check build result
