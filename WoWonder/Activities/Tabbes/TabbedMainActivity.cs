@@ -408,8 +408,7 @@ namespace WoWonder.Activities.Tabbes
         {
             try
             {
-                var intent = new Intent(this, typeof(ChatWebViewActivity));
-                StartActivity(intent);
+                // Chat removido
             }
             catch (Exception exception)
             {
