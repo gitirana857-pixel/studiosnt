@@ -41,8 +41,14 @@ jobs:
           -p:AndroidPackageFormat=apk \
           -p:AndroidKeyStore=false \
           -p:DebugType=none \
-          -p:DebugSymbols=false 2>&1 | tee build.log
-      continue-on-error: true
+          -p:DebugSymbols=false 2>&1 | tee build.log; exit_code=${PIPESTATUS[0]}; echo "PUBLISH_EXIT_CODE=$exit_code" >> build.log; exit $exit_code
+
+    - name: Verify APK was created
+      run: |
+        echo "=== Searching for APK files ==="
+        find . -name "*.apk" -type f 2>/dev/null | head -20 || echo "No APK found"
+        echo "=== Checking bin directory structure ==="
+        find WoWonder/bin -type d 2>/dev/null | head -30 || echo "No bin dir"
 
     - name: Upload build log
       if: always()
@@ -56,6 +62,10 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: timeline-apk
-        path: WoWonder/bin/Debug/net8.0-android/android-arm64/publish/*.apk
+        path: |
+          WoWonder/bin/Debug/net8.0-android/**/*.apk
+          WoWonder/**/com.wowondertimeline*.apk
+          WoWonder/**/*-Signed.apk
+          WoWonder/**/*-unsigned.apk
         retention-days: 30
         if-no-files-found: warn
