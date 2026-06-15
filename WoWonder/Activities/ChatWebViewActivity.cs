@@ -18,6 +18,7 @@ namespace WoWonder.Activities
         private WebView _webView;
         private ImageView _backButton;
         private ProgressBar _progressBar;
+        private bool _autoLoginAttempted;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -45,37 +46,6 @@ namespace WoWonder.Activities
         {
             if (_webView == null) return;
 
-            string siteUrl = GetSiteUrl();
-            string authToken = UserDetails.AccessToken;
-
-            // Set the PHP session cookie so the WebView is already logged in
-            if (!string.IsNullOrEmpty(authToken))
-            {
-                var cookieManager = CookieManager.Instance;
-                cookieManager.SetAcceptCookie(true);
-                if (Android.OS.Build.VERSION.SdkInt >= Android.OS.BuildVersionCodes.Lollipop)
-                {
-                    cookieManager.SetAcceptThirdPartyCookies(_webView, true);
-                }
-
-                // Set PHPSESSID cookie for the site domain
-                string domain = Android.Net.Uri.Parse(siteUrl).Host;
-                cookieManager.SetCookie(domain, "PHPSESSID=" + authToken + "; Domain=" + domain + "; Path=/");
-                
-                // Also try with www prefix if needed
-                if (domain.StartsWith("www."))
-                {
-                    string bareDomain = domain.Substring(4);
-                    cookieManager.SetCookie(bareDomain, "PHPSESSID=" + authToken + "; Domain=" + bareDomain + "; Path=/");
-                }
-
-                // Sync cookies
-                if (Android.OS.Build.VERSION.SdkInt >= Android.OS.BuildVersionCodes.Lollipop)
-                {
-                    cookieManager.Flush();
-                }
-            }
-
             _webView.Settings.JavaScriptEnabled = true;
             _webView.Settings.DomStorageEnabled = true;
             _webView.Settings.AllowFileAccess = true;
@@ -88,7 +58,9 @@ namespace WoWonder.Activities
             _webView.SetWebViewClient(new ChatWebViewClient(this));
             _webView.SetWebChromeClient(new ChatWebChromeClient(this));
 
-            _webView.LoadUrl(siteUrl + "/messages");
+            // Start at the welcome page to auto-login
+            string siteUrl = GetSiteUrl();
+            _webView.LoadUrl(siteUrl + "/welcome");
         }
 
         private string GetSiteUrl()
@@ -103,12 +75,61 @@ namespace WoWonder.Activities
             return siteUrl.TrimEnd('/');
         }
 
+        private void TryAutoLogin()
+        {
+            if (_autoLoginAttempted) return;
+            _autoLoginAttempted = true;
+
+            string email = UserDetails.Email;
+            string password = UserDetails.Password;
+
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+            {
+                // No credentials available, just go to messages
+                string siteUrl = GetSiteUrl();
+                _webView.LoadUrl(siteUrl + "/messages");
+                return;
+            }
+
+            // Escape special characters for JavaScript string
+            email = email.Replace("\\", "\\\\").Replace("'", "\\'");
+            password = password.Replace("\\", "\\\\").Replace("'", "\\'");
+
+            string js = "javascript:(function(){" +
+                "var u=document.getElementById('username');" +
+                "var p=document.getElementById('password');" +
+                "if(u&&p){" +
+                    "u.value='" + email + "';" +
+                    "p.value='" + password + "';" +
+                    "var btn=document.querySelector('button[type=submit]')||document.querySelector('input[type=submit]')||document.getElementById('sign-in-button');" +
+                    "if(btn)btn.click();" +
+                    "else{" +
+                        "var f=u.closest('form');" +
+                        "if(f)f.submit();" +
+                    "}" +
+                "}" +
+            "})()";
+
+            if (Android.OS.Build.VERSION.SdkInt >= Android.OS.BuildVersionCodes.Kitkat)
+            {
+                _webView.EvaluateJavascript(js, null);
+            }
+            else
+            {
+                _webView.LoadUrl(js);
+            }
+        }
+
         public override void OnBackPressed()
         {
             if (_webView.CanGoBack())
+            {
                 _webView.GoBack();
+            }
             else
+            {
                 Finish();
+            }
         }
 
         private class ChatWebViewClient : WebViewClient
@@ -130,6 +151,19 @@ namespace WoWonder.Activities
             {
                 base.OnPageFinished(view, url);
                 _activity._progressBar.Visibility = ViewStates.Gone;
+
+                // If we're on the welcome page and haven't tried auto-login yet
+                if (url.Contains("/welcome") && !_activity._autoLoginAttempted)
+                {
+                    _activity.TryAutoLogin();
+                }
+
+                // If login succeeded (we're no longer on welcome page), navigate to messages
+                if (!url.Contains("/welcome") && !url.Contains("/messages") && _activity._autoLoginAttempted)
+                {
+                    string siteUrl = _activity.GetSiteUrl();
+                    view.LoadUrl(siteUrl + "/messages");
+                }
             }
 
             public override bool ShouldOverrideUrlLoading(WebView view, IWebResourceRequest request)

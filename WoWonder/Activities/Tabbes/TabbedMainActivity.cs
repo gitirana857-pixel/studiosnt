@@ -409,7 +409,6 @@ namespace WoWonder.Activities.Tabbes
             try
             {
                 var intent = new Intent(this, typeof(ChatWebViewActivity));
-                intent.AddFlags(ActivityFlags.NewTask | ActivityFlags.ClearTask);
                 StartActivity(intent);
             }
             catch (Exception exception)
