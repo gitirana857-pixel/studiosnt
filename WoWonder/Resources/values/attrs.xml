@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<declare-styleable name="ExtraTheme">
+		<attr name="colorFill" format="reference|color"/>
+		<attr name="colorReact" format="reference|color"/>
+		<attr name="colorBubble" format="reference|color"/>
+		<attr name="colorDivider" format="reference|color"/>
+		<attr name="colorBgApp" format="reference|color"/>
+		<attr name="colorHint" format="reference|color"/>
+	</declare-styleable>
+ 
+	<declare-styleable name="TemplateView">
+		<attr name="gnt_template_type" format="reference"/>
+	</declare-styleable>
+ 
+	<declare-styleable name="TemplateShimmer">
+		<attr name="template_res" format="reference"/>
+	</declare-styleable>
+ 
+	<declare-styleable name="StoriesProgressView">
+		<attr name="progressCount" format="integer|reference" />
+	</declare-styleable>
+
+  <declare-styleable name="SpannedGridLayoutManager">
+    <attr name="android:orientation" />
+    <attr name="spanCount" />
+    <attr name="aspectRatio" format="string" />
+  </declare-styleable>
+  
+  <declare-styleable name="DragToClose">
+    <attr name="draggableView" format="reference" />
+    <attr name="draggableContainer" format="reference" />
+    <attr name="finishActivity" format="boolean" />
+    <attr name="closeOnClick" format="boolean" />
+  </declare-styleable>
+ 
+</resources>

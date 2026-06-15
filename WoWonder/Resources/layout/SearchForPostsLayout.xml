@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/coordinatorLayout"
+    android:background="?attr/colorFill"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+      <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="top"
+        app:layout_collapseMode="pin"
+        app:layout_scrollFlags="scroll|enterAlways"
+        app:theme="@style/ToolbarTheme"
+        app:titleTextAppearance="@style/Toolbar.TitleText"
+        android:background="?attr/colorFill"
+        android:elevation="2dp" >
+        <AutoCompleteTextView
+          android:id="@+id/searchBox"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content" 
+          android:textSize="14sp"
+          android:layout_centerVertical="true"
+          android:hint="@string/Lbl_Search"
+          android:paddingTop="8dp"
+          android:paddingStart="8dp"
+          android:paddingEnd="8dp"
+          android:paddingBottom="8dp"
+          android:background="@drawable/create_border_edit_text"
+          android:backgroundTint="?attr/colorReact"
+          android:drawableStart="@drawable/ic_action_search_color"
+          android:drawablePadding="10dp"
+          android:drawableTint="@color/accent"
+          android:layout_marginStart="0dp"  
+          android:layout_marginEnd="10dp"  
+          android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+          android:singleLine="true"
+          android:imeOptions="actionSearch" />
+      </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_width="match_parent"
+        android:layout_marginTop="0dp"
+        android:layout_alignParentTop="false"
+        android:layout_height="match_parent">
+        <WoWonder.Activities.NativePost.Extra.WRecyclerView
+            android:id="@+id/Recyler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+  <ViewStub
+    android:id="@+id/viewStub"
+    android:inflatedId="@+id/subView"
+    android:layout="@layout/EmptyStateLayout"
+    android:layout_centerInParent="true"
+    android:layout_gravity="center"
+    android:gravity="center" 
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" /> 
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

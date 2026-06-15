@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:orientation="vertical"
+	android:layout_margin="8dp"
+	android:id="@+id/mainLayout"
+	android:background="@drawable/round_gray_border">
+
+	<ImageView
+		android:id="@+id/image"
+		android:layout_width="match_parent"
+		android:layout_height="200dp"
+		android:adjustViewBounds="true"
+		android:scaleType="centerCrop"
+		 />
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		android:layout_marginVertical="8dp"
+		android:layout_marginHorizontal="8dp"
+		android:gravity="center">
+
+		<LinearLayout
+			android:layout_width="0dp"
+			android:layout_weight="1"
+			android:layout_height="wrap_content"
+			android:layout_marginEnd="5dp"
+			android:orientation="vertical">
+
+			<TextView
+				android:id="@+id/postProductTitle"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="When Sustainability and Finance"
+				android:textStyle="bold"
+				android:textSize="15sp"
+				android:lines="1"/>
+
+			<TextView
+				android:id="@+id/postProductContent"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="When Sustainability and Finance"
+				android:textFontWeight="400"
+				android:textSize="14sp"
+				android:textColor="?attr/colorReact"
+				android:lines="1"/>
+
+		</LinearLayout>
+
+		<androidx.appcompat.widget.AppCompatButton
+			android:id="@+id/btnShopNow"
+			android:layout_width="120dp"
+			android:layout_height="36dp"
+			android:text="@string/Lbl_ShopNow"
+			android:textSize="15sp"
+			android:textFontWeight="500"
+			android:layout_gravity="center"
+			android:background="@drawable/round_button_pressed"
+			android:tag="false"
+			android:textAlignment="center"
+			android:textAllCaps="false"
+			android:forceDarkAllowed="false"
+			android:textColor="@color/gnt_white" />
+
+	</LinearLayout>
+
+</LinearLayout> 

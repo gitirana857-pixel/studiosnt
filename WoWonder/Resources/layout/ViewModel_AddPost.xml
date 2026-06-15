@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:layout_weight="10"
+	android:orientation="vertical">
+	<LinearLayout
+		android:id="@+id/addLayout"
+		android:layout_width="match_parent"
+		android:layout_height="75dp"
+		android:background="?attr/selectableItemBackground"
+		android:focusable="true"
+		android:clickable="true"
+		android:orientation="horizontal"
+		android:gravity="center_vertical">
+
+		<de.hdodenhof.circleimageview.CircleImageView
+			android:id="@+id/image"
+			android:layout_weight="0"
+			android:layout_width="40dp"
+			android:layout_marginStart="16dp"
+			android:layout_height="40dp"
+			android:layout_gravity="center"
+			android:layout_centerVertical="true"
+			android:layout_alignParentStart="true"
+			android:scaleType="centerCrop"
+			app:civ_border_width="1dp"
+			app:civ_border_color="@color/gnt_white"
+			android:src="@drawable/Cover_image" />
+		<LinearLayout
+			android:id="@+id/ll_post_text"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:orientation="vertical"
+			android:gravity="center_vertical"
+			android:layout_marginStart="13dp">
+
+			<TextView
+				android:id="@+id/postText"
+				android:layout_toEndOf="@+id/image"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center"
+				android:gravity="center_vertical"
+				android:layout_centerVertical="true"
+				android:lines="1"
+				android:text="@string/Lbl_Whats_Going_On"
+				android:textSize="16sp" />
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="3dp"
+				android:text="@string/Lbl_TypeSomethingsHere"
+				android:textSize="12sp"
+				android:textColor="@color/text_color_in_between"/>
+
+		</LinearLayout>
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="35dp"
+		android:orientation="horizontal"
+		android:weightSum="4"
+		android:layout_marginBottom="12dp">
+
+		<LinearLayout
+			android:id="@+id/rlPostGallery"
+			android:layout_width="0dp"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+			android:background="?attr/selectableItemBackground"
+			android:gravity="center"
+			android:orientation="horizontal">
+			<ImageView
+				android:layout_width="16dp"
+				android:layout_height="16dp"
+				android:src="@drawable/icon_addpost_image_vector"/>
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
+				android:layout_marginStart="7dp"
+				android:text="@string/Lbl_Gallery"
+				android:gravity="center_vertical"
+				android:textSize="13sp"
+				android:textColor="?attr/colorReact"/>
+		</LinearLayout>
+
+		<LinearLayout
+			android:id="@+id/rlPostFriend"
+			android:layout_width="0dp"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+			android:background="?attr/selectableItemBackground"
+			android:gravity="center"
+			android:orientation="horizontal">
+			<ImageView
+				android:layout_width="16dp"
+				android:layout_height="16dp"
+				android:src="@drawable/icon_addpost_users_vector"/>
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
+				android:layout_marginStart="7dp"
+				android:text="@string/Lbl_Friend"
+				android:gravity="center_vertical"
+				android:textSize="12sp"
+				android:textColor="?attr/colorReact"/>
+		</LinearLayout>
+
+		<LinearLayout
+			android:id="@+id/rlPostFeeling"
+			android:layout_width="0dp"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+			android:background="?attr/selectableItemBackground"
+			android:gravity="center"
+			android:orientation="horizontal">
+			<ImageView
+				android:layout_width="16dp"
+				android:layout_height="16dp"
+				android:src="@drawable/icon_addpost_feeling_vector"/>
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
+				android:layout_marginStart="7dp"
+				android:text="@string/Lbl_Feeling"
+				android:gravity="center_vertical"
+				android:textSize="13sp"
+				android:textColor="?attr/colorReact"/>
+		</LinearLayout>
+
+		<LinearLayout
+			android:id="@+id/rlPostLive"
+			android:layout_width="0dp"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+			android:background="?attr/selectableItemBackground"
+			android:gravity="center"
+			android:orientation="horizontal">
+			<ImageView
+				android:layout_width="16dp"
+				android:layout_height="16dp"
+				android:src="@drawable/icon_addpost_video_vector"/>
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
+				android:layout_marginStart="7dp"
+				android:text="@string/Lbl_PostLive"
+				android:gravity="center_vertical"
+				android:textSize="13sp"
+				android:textColor="?attr/colorReact"/>
+		</LinearLayout>
+
+	</LinearLayout>
+
+	<View
+		android:id="@+id/simpleViewAnimator"
+		android:layout_width="match_parent"
+		android:background="?attr/colorDivider"
+		android:layout_height="10dp"/>
+
+</LinearLayout>

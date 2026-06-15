@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/rl_container"
+	android:background="?attr/colorFill"
+	android:orientation="vertical"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+	<com.google.android.material.appbar.AppBarLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar">
+		<androidx.appcompat.widget.Toolbar
+			android:id="@+id/toolbar"
+			app:theme="@style/ToolbarTheme"
+			android:layout_width="match_parent"
+			android:layout_height="50dp"
+			app:titleTextAppearance="@style/Toolbar.TitleText"
+			android:background="?attr/colorFill">
+			<ImageView
+				android:id="@+id/more"
+				android:layout_width="24dp"
+				android:layout_height="24dp"
+				android:tint="?attr/colorReact"
+				android:layout_gravity="center|end"
+				android:src="@xml/ic_more_vert" />
+		</androidx.appcompat.widget.Toolbar>
+	</com.google.android.material.appbar.AppBarLayout>
+	<androidx.core.widget.NestedScrollView
+		android:id="@+id/ScrollView"
+		app:layout_behavior="@string/appbar_scrolling_view_behavior"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="?attr/colorFill"
+			android:orientation="vertical">
+			<FrameLayout
+				android:layout_width="match_parent"
+				android:layout_height="320dp">
+				<androidx.viewpager.widget.ViewPager
+					android:id="@+id/pager"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent" />
+				<me.relex.circleindicator.CircleIndicator
+					android:id="@+id/indicator"
+					android:layout_width="match_parent"
+					android:layout_height="40dp"
+					android:layout_gravity="bottom"
+					android:layout_marginBottom="5dp"
+					app:ci_drawable="@drawable/white_radius"
+					app:ci_drawable_unselected="@drawable/black_radius" />
+			</FrameLayout>
+
+			<TextView
+				android:id="@+id/tv_name"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textFontWeight="600"
+				android:paddingVertical="10dp"
+				android:paddingHorizontal="15dp"
+				android:textSize="24sp" />
+
+			<TextView
+				android:id="@+id/tv_price"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:paddingHorizontal="15dp"
+				android:textSize="20sp"
+				android:textFontWeight="500"
+				android:textColor="@color/accent"/>
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="18dp"
+				android:paddingHorizontal="15dp"
+				android:gravity="center"
+				android:layout_marginBottom="5dp"
+				android:weightSum="10"
+				android:orientation="horizontal">
+
+				<androidx.appcompat.widget.AppCompatButton
+					android:id="@+id/btnBuy"
+					android:layout_width="0dp"
+					android:layout_weight="6"
+					android:layout_height="48dp"
+					android:layout_marginEnd="5dp" 
+					android:clickable="true"
+					android:focusable="true"
+					android:background="@drawable/round_button_pressed"
+					android:textSize="16sp"
+					android:textFontWeight="500"
+					android:textAppearance="?android:attr/textAppearanceSmall"
+					android:textColor="@color/gnt_white"/>
+
+				<LinearLayout
+					android:id="@+id/ll_ContactSeller"
+					android:layout_width="0dp"
+					android:layout_weight="2"
+					android:orientation="vertical"
+					android:layout_gravity="center"
+					android:gravity="center"
+					android:layout_margin="5dp"
+					android:layout_height="60dp">
+
+					<ImageView
+						android:layout_width="40dp"
+						android:layout_height="40dp"
+						android:padding="12dp"
+						android:layout_gravity="center"
+						android:gravity="center"
+						android:background="@drawable/circlegradient"
+						android:backgroundTint="?attr/colorBubble"
+						android:tint="@color/accent"
+						android:src="@drawable/icon_chat" />
+
+					<TextView
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:textSize="14sp"
+						android:layout_gravity="center"
+						android:gravity="center"
+						android:text="@string/Lbl_ContactSeller"
+						android:textFontWeight="500" />
+
+				</LinearLayout>
+
+				<LinearLayout
+					android:id="@+id/ll_share"
+					android:layout_width="0dp"
+					android:layout_weight="2"
+					android:orientation="vertical"
+					android:layout_gravity="center"
+					android:gravity="center"
+					android:layout_margin="5dp"
+					android:layout_height="60dp">
+
+					<ImageView
+						android:layout_width="40dp"
+						android:layout_height="40dp"
+						android:padding="12dp"
+						android:layout_gravity="center"
+						android:gravity="center"
+						android:background="@drawable/circlegradient"
+						android:backgroundTint="?attr/colorBubble"
+						android:tint="@color/accent"
+						android:src="@drawable/icon_post_share_vector" />
+
+					<TextView
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_gravity="center"
+						android:gravity="center"
+						android:textSize="14sp"
+						android:text="@string/Lbl_Share"
+						android:textFontWeight="500" />
+
+				</LinearLayout>
+
+			</LinearLayout>
+
+			<View
+				android:layout_width="match_parent"
+				android:layout_height="1dp"
+				android:layout_marginVertical="5dp"
+				android:background="?attr/colorDivider" />
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textSize="18sp"
+				android:textStyle="bold"
+				android:text="@string/Lbl_SellerInformation"
+				android:paddingHorizontal="15dp" />
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal"
+				android:paddingHorizontal="15dp">
+
+				<ImageView
+					android:id="@+id/user_pic"
+					android:layout_width="48dp"
+					android:layout_height="48dp"
+					android:layout_gravity="center_vertical"
+					android:gravity="center_vertical"
+					android:src="@drawable/no_profile_image_circle"/>
+
+				<TextView
+					android:id="@+id/user_name"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="16sp"
+					android:textFontWeight="600"
+					android:layout_gravity="center_vertical"
+					android:gravity="center_vertical"
+					android:layout_marginHorizontal="12dp"/>
+
+				<View
+					android:layout_width="0dp"
+					android:layout_height="1dp"
+					android:layout_weight="1"  />
+
+				<androidx.appcompat.widget.AppCompatButton
+					android:id="@+id/btnFollow"
+					android:layout_width="wrap_content"
+					android:layout_height="48dp"
+					android:layout_margin="5dp"
+					android:layout_marginStart="10dp"
+					android:clickable="true"
+					android:focusable="true"
+					android:background="@drawable/round_button_pressed"
+					android:layout_gravity="end|center_vertical"
+					android:textSize="16sp"
+					android:textFontWeight="500"
+					android:textAppearance="?android:attr/textAppearanceSmall"
+					android:textColor="@color/gnt_white"
+					android:text="@string/Lbl_Follow"/>
+
+			</LinearLayout>
+
+			<View
+				android:layout_width="match_parent"
+				android:layout_height="1dp"
+				android:layout_marginVertical="5dp"
+				android:background="?attr/colorDivider" />
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textSize="18sp"
+				android:textStyle="bold"
+				android:text="@string/Lbl_ProductDetails"
+				android:paddingHorizontal="15dp" />
+
+			<androidx.gridlayout.widget.GridLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginHorizontal="15dp"
+				android:layout_marginTop="10dp"
+				android:gravity="start"
+				app:columnCount="2"
+				app:useDefaultMargins="true">
+
+				<TextView
+					android:layout_width="100dp"
+					android:layout_height="wrap_content"
+					android:layout_marginEnd="15dp"
+					android:text="@string/Lbl_Type"
+					android:textColor="#7F8191"
+					app:layout_columnWeight="0"
+					android:layout_marginStart="5dp"
+					android:textSize="14sp"
+					android:textFontWeight="400"
+					android:layout_gravity="center_vertical"
+					android:gravity="center_vertical" />
+				<TextView
+					android:id="@+id/TypeTextView"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:lines="1"
+					android:layout_marginEnd="15dp"
+					android:text="@string/Radio_New"
+					app:layout_columnWeight="1"
+					android:layout_gravity="center_vertical"
+					android:gravity="center_vertical"
+					android:textFontWeight="500"
+					android:textSize="14sp"  />
+
+				<TextView
+					android:layout_width="100dp"
+					android:layout_height="wrap_content"
+					android:layout_marginEnd="15dp"
+					android:text="@string/Lbl_Status"
+					android:textColor="#7F8191"
+					app:layout_columnWeight="0"
+					android:layout_marginStart="5dp"
+					android:textSize="14sp"
+					android:textFontWeight="400"
+					android:layout_gravity="center_vertical"
+					android:gravity="center_vertical" />
+				<TextView
+					android:id="@+id/StatusTextView"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:lines="1"
+					android:layout_marginEnd="15dp"
+					android:text="@string/Lbl_In_Stock"
+					app:layout_columnWeight="1"
+					android:layout_gravity="center_vertical"
+					android:gravity="center_vertical"
+					android:textFontWeight="500"
+					android:textSize="14sp"  />
+
+				<TextView
+					android:layout_width="100dp"
+					android:layout_height="wrap_content"
+					android:layout_marginEnd="15dp"
+					android:text="@string/Lbl_Location"
+					android:textColor="#7F8191"
+					app:layout_columnWeight="0"
+					android:layout_marginStart="5dp"
+					android:textSize="14sp"
+					android:textFontWeight="400"
+					android:layout_gravity="center_vertical"
+					android:gravity="center_vertical" />
+				<TextView
+					android:id="@+id/locationTextView"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:lines="1"
+					android:layout_marginEnd="15dp"
+					android:text="@string/Lbl_Unknown"
+					app:layout_columnWeight="1"
+					android:layout_gravity="center_vertical"
+					android:gravity="center_vertical"
+					android:textFontWeight="500"
+					android:textSize="14sp"  />
+
+				<TextView
+					android:layout_width="100dp"
+					android:layout_height="wrap_content"
+					android:layout_marginEnd="15dp"
+					android:text="@string/Lbl_Reviews"
+					android:textColor="#7F8191"
+					app:layout_columnWeight="0"
+					android:layout_marginStart="5dp"
+					android:textSize="14sp"
+					android:textFontWeight="400"
+					android:layout_gravity="center_vertical"
+					android:gravity="center_vertical" />
+				<TextView
+					android:id="@+id/ReviewsTextView"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:lines="1"
+					android:layout_marginEnd="15dp"
+					android:text="@string/Lbl_Reviews"
+					app:layout_columnWeight="1"
+					android:layout_gravity="center_vertical"
+					android:gravity="center_vertical"
+					android:textFontWeight="500"
+					android:textSize="14sp"  />
+
+				<TextView
+					android:layout_width="100dp"
+					android:layout_height="wrap_content"
+					android:layout_marginEnd="15dp"
+					android:text="@string/Lbl_Category"
+					android:textColor="#7F8191"
+					app:layout_columnWeight="0"
+					android:layout_marginStart="5dp"
+					android:textSize="14sp"
+					android:textFontWeight="400"
+					android:layout_gravity="center_vertical"
+					android:gravity="center_vertical" />
+				<TextView
+					android:id="@+id/CategoryTextView"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:lines="1"
+					android:layout_marginEnd="15dp"
+					android:text="@string/Lbl_Category"
+					app:layout_columnWeight="1"
+					android:layout_gravity="center_vertical"
+					android:gravity="center_vertical"
+					android:textFontWeight="500"
+					android:textSize="14sp"  />
+
+			</androidx.gridlayout.widget.GridLayout>
+
+			<WoWonder.Library.Anjo.SuperTextLibrary.SuperTextView
+				android:id="@+id/tv_description"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="11dp"
+				android:layout_marginHorizontal="15dp"
+				android:lineSpacingExtra="3dp"
+				android:textFontWeight="400"
+				android:textSize="14sp" />
+
+			<View
+				android:layout_width="match_parent"
+				android:layout_height="1dp"
+				android:layout_marginTop="30dp"
+				android:background="?attr/colorDivider"/>
+
+			<include
+				android:layout_width="match_parent"
+				android:layout_height="48dp"
+				layout="@layout/post_buttomsection_layout"/>
+
+			<View
+				android:layout_width="match_parent"
+				android:layout_height="1dp"
+				android:background="?attr/colorDivider" />
+
+			<androidx.recyclerview.widget.RecyclerView
+				android:id="@+id/recycler_view"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginVertical="10dp"  />
+
+		</LinearLayout>
+	</androidx.core.widget.NestedScrollView>
+</LinearLayout>

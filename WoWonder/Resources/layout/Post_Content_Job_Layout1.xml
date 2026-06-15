@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:orientation="vertical"
+	android:layout_margin="8dp"
+	android:id="@+id/mainLayout"
+	android:background="@drawable/round_gray_border">
+
+	<ImageView
+		android:id="@+id/image"
+		android:layout_width="match_parent"
+		android:layout_height="130dp"
+		android:adjustViewBounds="true"
+		android:scaleType="centerCrop"
+		 />
+
+	<TextView
+		android:id="@+id/Jobtitle"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="Hirewell Weekly Audio Chat feat. Zac Colip (VP, Technology Recruiting)"
+		android:textFontWeight="400"
+		android:textSize="15sp"
+		android:maxLines="2"
+		android:layout_marginTop="8dp"
+		android:layout_marginStart="8dp"
+		android:layout_marginEnd="8dp"/>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		android:layout_marginStart="8dp"
+		android:layout_marginEnd="8dp">
+
+		<TextView
+			android:id="@+id/pageName"
+			android:layout_width="0dp"
+			android:layout_weight="1"
+			android:layout_height="wrap_content"
+			android:text="Sustainability"
+			android:textFontWeight="400"
+			android:textSize="14sp"
+			android:textColor="?attr/colorReact"
+			android:lines="1"/>
+
+		<TextView
+			android:id="@+id/jobInfo"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="$ 1000 - Full time"
+			android:textFontWeight="400"
+			android:textSize="14sp"
+			android:textColor="?attr/colorReact"
+			android:lines="1"/>
+
+	</LinearLayout>
+	  
+	<androidx.appcompat.widget.AppCompatButton
+		android:layout_width="match_parent"
+		android:layout_height="42dp"
+		android:id="@+id/JobButton"
+		android:textSize="16sp"
+		android:layout_gravity="center" 
+		android:background="@drawable/round_button_outline"
+		android:tag="false"
+		android:paddingStart="17dp"
+		android:paddingEnd="17dp"
+		android:textAlignment="center"
+		android:textAllCaps="false"
+		android:text="@string/Lbl_View"
+		android:forceDarkAllowed="false"
+		android:textColor="@color/accent"
+		android:layout_margin="12dp"
+		android:layout_marginStart="8dp"
+		android:layout_marginEnd="8dp"/>
+
+</LinearLayout>  

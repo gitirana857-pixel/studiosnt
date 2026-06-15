@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:id="@+id/main"
+	android:layout_width="100dp"
+	android:layout_height="150dp"
+	android:layout_margin="5dp">
+
+	<com.makeramen.roundedimageview.RoundedImageView
+		android:id="@+id/iv_round_story"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:adjustViewBounds="true"
+		android:src="@drawable/no_profile_image"
+		app:riv_corner_radius="10dp"
+		android:scaleType="centerCrop"/>
+
+	<LinearLayout
+		android:id="@+id/ll_video_story"
+		android:layout_width="wrap_content"
+		android:layout_height="20dp"
+		android:layout_gravity="end"
+		android:layout_marginEnd="8dp"
+		android:layout_marginTop="8dp"
+		android:visibility="gone"
+		android:background="@drawable/round_gradient"
+		android:paddingStart="7dp"
+		android:paddingEnd="10dp"
+		android:paddingTop="3dp"
+		android:paddingBottom="3dp"
+		android:orientation="horizontal"
+		android:gravity="center_vertical">
+		<ImageView
+			android:layout_width="14dp"
+			android:layout_height="14dp"
+			android:padding="2dp"
+			android:src="@drawable/icon_video_camera"/>
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="3dp"
+			android:text="@string/Lbl_PostLive"
+			android:textColor="@color/gnt_white"
+			android:textSize="7sp"
+			android:textStyle="bold"/>
+	</LinearLayout>
+
+	<de.hdodenhof.circleimageview.CircleImageView
+		android:id="@+id/civ_story_avatar"
+		android:layout_width="28dp"
+		android:layout_height="28dp"
+		android:layout_gravity="center"
+		app:civ_border_color="?attr/colorFill"
+		app:civ_border_width="1.5dp"
+		android:translationY="35dp"
+		android:src="@drawable/no_profile_image_circle"/>
+
+	<FrameLayout
+		android:layout_width="match_parent"
+		android:layout_height="41dp"
+		android:orientation="vertical"
+		android:layout_gravity="bottom"
+		android:background="@drawable/bg_story_subtract">
+		<TextView
+			android:id="@+id/Txt_Username"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_marginTop="8dp"
+			android:gravity="center"
+			android:layout_gravity="center"
+			android:text="Alexfin"
+			android:textSize="10dp"
+			android:lines="1"
+			android:clickable="false"
+			android:focusable="false"
+			android:textColor="@color/gnt_white"
+			android:textStyle="bold"/>
+
+	</FrameLayout>
+</FrameLayout>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:orientation="vertical"
+	android:layout_margin="8dp"
+	android:id="@+id/mainLayout">
+	<ImageView
+		android:id="@+id/image"
+		android:layout_width="match_parent"
+		android:layout_height="200dp"
+		android:adjustViewBounds="true"
+		android:scaleType="centerCrop"
+		 />
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		android:layout_marginVertical="8dp"
+		android:layout_marginHorizontal="8dp"
+		android:gravity="center">
+
+		<FrameLayout
+			android:layout_width="44dp"
+			android:layout_height="44dp"
+			android:background="@drawable/round_button_gray"
+			android:backgroundTint="#E8E8EE"
+			android:orientation="vertical">
+
+			<ImageView
+				android:id="@+id/linkIcon"
+				android:layout_width="44dp"
+				android:layout_height="44dp"
+				android:tint="#A1A6B3"
+				android:padding="10dp"
+				android:src="@drawable/ic_go_link"/>
+
+		</FrameLayout>
+		
+		<LinearLayout
+			android:layout_width="0dp"
+			android:layout_weight="1"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="15dp"
+			android:orientation="vertical">
+
+			<TextView
+				android:id="@+id/postLinkTitle"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="When Sustainability and Finance"
+				android:textStyle="bold"
+				android:textSize="15sp" 
+				android:lines="1"/>
+
+			<TextView
+				android:id="@+id/linkUrl"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="demo.com"
+				android:textFontWeight="400"
+				android:textSize="14sp"
+				android:textColor="?attr/colorReact"
+				android:lines="1"/>
+
+		</LinearLayout>
+	 
+		<ImageView
+			android:layout_width="24dp"
+			android:layout_height="24dp"
+			android:tint="#A1A6B3"
+			android:padding="5dp"
+			android:src="@drawable/icon_arrow_right_vector"/>
+
+	</LinearLayout>
+	  
+</LinearLayout> 

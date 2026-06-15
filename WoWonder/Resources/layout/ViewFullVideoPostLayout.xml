@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" 	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/main_content"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical">
+	<com.google.android.material.appbar.AppBarLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:outlineProvider="none"
+		app:elevation="0dp"
+		android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar">
+		<androidx.appcompat.widget.Toolbar
+			android:id="@+id/toolbar"
+			android:layout_width="match_parent"
+			android:layout_height="50dp"
+			app:theme="@style/ToolbarTheme"
+			app:titleTextAppearance="@style/Toolbar.TitleText"
+			android:layout_gravity="top"
+			android:background="?attr/colorFill"
+			android:elevation="0dp">
+		</androidx.appcompat.widget.Toolbar>
+	</com.google.android.material.appbar.AppBarLayout>
+	 <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_width="match_parent" 
+        android:layout_height="wrap_content">
+	    <androidx.core.widget.NestedScrollView
+		    android:id="@+id/nestedScrollView"
+		    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+		    android:layout_width="match_parent"
+		    android:layout_height="match_parent" >
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical"
+			android:paddingVertical="10dp">
+			<!--Including User Post Owner Layout -->
+			<include 
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="15dp"
+				android:layout_marginEnd="27dp" 
+				layout="@layout/Post_TopSection_Layout" />
+			<include 
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				layout="@layout/Post_TextSection_Layout" />
+			<androidx.media3.ui.PlayerView
+				android:id="@+id/itemVideoPlayer"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				app:resize_mode="fixed_width"
+				app:controller_layout_id="@layout/exo_player_control_view"
+				android:animateLayoutChanges="true"
+				android:maxHeight="400dp"/> 
+			<!--Including Post Actions -->
+			<include
+				android:layout_width="match_parent"
+				android:layout_height="50dp"
+				layout="@layout/Post_PreButtomSection_Layout" />
+			<include
+				android:layout_width="match_parent"
+				android:layout_height="55dp"
+				layout="@layout/Post_ButtomSection_Layout" />
+			<androidx.recyclerview.widget.RecyclerView
+				android:id="@+id/RecylerComment"
+				app:layout_behavior="@string/appbar_scrolling_view_behavior"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginVertical="5dp"
+				android:scrollbars="none"  />
+		</LinearLayout>
+	</androidx.core.widget.NestedScrollView> 
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout> 
+</LinearLayout>  

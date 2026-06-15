@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorFill"
+    android:orientation="vertical">
+	<com.google.android.material.appbar.AppBarLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar">
+		<androidx.appcompat.widget.Toolbar
+			android:id="@+id/toolbar"
+			app:theme="@style/ToolbarTheme" 
+			android:layout_width="match_parent"
+			android:layout_height="50dp"
+			app:titleTextAppearance="@style/Toolbar.TitleText"
+			android:background="?attr/colorFill"> 
+		</androidx.appcompat.widget.Toolbar>
+	</com.google.android.material.appbar.AppBarLayout> 
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nested_scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?attr/colorFill"
+            android:clipToPadding="false"
+            android:scrollbars="none"
+            android:scrollingCache="true"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            <LinearLayout
+                android:id="@+id/lyt_form"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="0dp">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:layout_alignParentBottom="true" />
+                
+                <!--Name Section -->
+                <LinearLayout
+                    android:id="@+id/LayoutName"
+                    android:paddingTop="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/IconName"
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="#"
+                        android:textSize="20sp"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="5dp" />
+                    <EditText
+                        android:id="@+id/NameEditText"
+                        style="@style/EditTextNormalStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/EditTextStyleOne"
+                        android:layout_alignParentEnd="true"
+                        android:hint="@string/Lbl_Name"
+                        android:inputType="text"
+                        android:textSize="15sp"
+                        android:lines="1"
+                        android:layout_marginStart="3dp" />
+                </LinearLayout>
+          
+                <!--Phone Section -->
+                <LinearLayout
+                    android:id="@+id/LayoutPhone"
+                    android:paddingTop="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/IconPhone"
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="#"
+                        android:textSize="20sp"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="5dp" />
+                    <EditText
+                        android:id="@+id/PhoneEditText"
+                        style="@style/EditTextNormalStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/EditTextStyleOne"
+                        android:layout_alignParentEnd="true"
+                        android:hint="@string/Lbl_Phone"
+                        android:inputType="number"
+                        android:textSize="15sp"
+                        android:lines="1"
+                        android:layout_marginStart="3dp" />
+                </LinearLayout>
+           
+                <!--Country Section -->
+                <LinearLayout
+	                android:id="@+id/LayoutCountry"
+	                android:paddingTop="5dp"
+	                android:layout_marginTop="5dp"
+	                android:layout_marginEnd="5dp"
+	                android:layout_width="match_parent"
+	                android:orientation="horizontal"
+	                android:layout_height="wrap_content">
+	                <TextView
+		                android:id="@+id/IconCountry"
+		                android:layout_width="40dp"
+		                android:layout_height="wrap_content"
+		                android:layout_centerVertical="true"
+		                android:text="#"
+		                android:textSize="20sp"
+		                android:gravity="center"
+		                android:layout_gravity="center"
+		                android:layout_marginStart="5dp" />
+	                <EditText
+		                android:id="@+id/CountryEditText"
+		                style="@style/EditTextNormalStyle"
+		                android:layout_width="match_parent"
+		                android:layout_height="50dp"
+		                android:background="@drawable/EditTextStyleOne"
+		                android:layout_alignParentEnd="true"
+		                android:hint="@string/Lbl_Country"
+		                android:inputType="text"
+		                android:textSize="15sp"
+		                android:lines="1"
+		                android:layout_marginStart="3dp" />
+                </LinearLayout>
+
+                <!--City Section -->
+                <LinearLayout
+	                android:id="@+id/LayoutCity"
+	                android:paddingTop="5dp"
+	                android:layout_marginTop="5dp"
+	                android:layout_marginEnd="5dp"
+	                android:layout_width="match_parent"
+	                android:orientation="horizontal"
+	                android:layout_height="wrap_content">
+	                <TextView
+		                android:id="@+id/IconCity"
+		                android:layout_width="40dp"
+		                android:layout_height="wrap_content"
+		                android:layout_centerVertical="true"
+		                android:text="#"
+		                android:textSize="20sp"
+		                android:gravity="center"
+		                android:layout_gravity="center"
+		                android:layout_marginStart="5dp" />
+	                <EditText
+		                android:id="@+id/CityEditText"
+		                style="@style/EditTextNormalStyle"
+		                android:layout_width="match_parent"
+		                android:layout_height="50dp"
+		                android:background="@drawable/EditTextStyleOne"
+		                android:layout_alignParentEnd="true"
+		                android:hint="@string/Lbl_City"
+		                android:inputType="text"
+		                android:textSize="15sp"
+		                android:lines="1"
+		                android:layout_marginStart="3dp" />
+                </LinearLayout>
+
+                <!--Zip Section -->
+                <LinearLayout
+	                android:id="@+id/LayoutZip"
+	                android:paddingTop="5dp"
+	                android:layout_marginTop="5dp"
+	                android:layout_marginEnd="5dp"
+	                android:layout_width="match_parent"
+	                android:orientation="horizontal"
+	                android:layout_height="wrap_content">
+	                <TextView
+		                android:id="@+id/IconZip"
+		                android:layout_width="40dp"
+		                android:layout_height="wrap_content"
+		                android:layout_centerVertical="true"
+		                android:text="#"
+		                android:textSize="20sp"
+		                android:gravity="center"
+		                android:layout_gravity="center"
+		                android:layout_marginStart="5dp" />
+	                <EditText
+		                android:id="@+id/ZipEditText"
+		                style="@style/EditTextNormalStyle"
+		                android:layout_width="match_parent"
+		                android:layout_height="50dp"
+		                android:background="@drawable/EditTextStyleOne"
+		                android:layout_alignParentEnd="true"
+		                android:hint="@string/Lbl_Zip"
+		                android:inputType="number"
+		                android:textSize="15sp"
+		                android:lines="1"
+		                android:layout_marginStart="3dp" />
+                </LinearLayout>
+
+                <!--Address Section -->
+                <LinearLayout
+	                android:id="@+id/LayoutAddress"
+	                android:paddingTop="5dp"
+	                android:layout_marginTop="5dp"
+	                android:layout_marginEnd="5dp"
+	                android:layout_width="match_parent"
+	                android:orientation="horizontal"
+	                android:layout_height="wrap_content">
+	                <TextView
+		                android:id="@+id/IconAddress"
+		                android:layout_width="40dp"
+		                android:layout_height="wrap_content"
+		                android:layout_centerVertical="true"
+		                android:text="#"
+		                android:textSize="20sp"
+		                android:gravity="top|center"
+		                android:layout_gravity="top|center"
+		                android:layout_marginTop="5dp"
+		                android:layout_marginStart="5dp" />
+	                <EditText
+		                android:id="@+id/AddressEditText"
+		                style="@style/EditTextNormalStyle"
+		                android:layout_width="match_parent" 
+		                android:layout_height="90dp"
+		                android:background="@drawable/EditTextStyleOne"
+		                android:layout_alignParentEnd="true"
+		                android:hint="@string/Lbl_Address" 
+		                android:textSize="15sp"
+		                android:gravity="top|center"
+		                android:layout_marginStart="3dp" />
+                </LinearLayout>
+
+                <!--Buttons Section -->
+                <LinearLayout
+                    android:paddingTop="5dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_width="match_parent"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/ApplyButton"
+                        android:background="@drawable/round_button_pressed"
+                        android:layout_height="50dp"
+                        android:layout_width="match_parent"
+                        android:padding="5dp"
+                        style="@style/TextAppearance.MaterialComponents.Body1"
+                        android:text="@string/Lbl_Create"
+                        android:textColor="@color/gnt_white"
+                        android:textSize="16sp"
+                        android:clickable="true"
+                        android:layout_marginEnd="30dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="19dp"
+                        android:gravity="center"
+                        android:forceDarkAllowed="false"
+                        android:layout_marginBottom="10dp" />
+                </LinearLayout>
+                <View
+                    android:layout_height="?android:attr/actionBarSize"
+                    android:layout_width="match_parent" />
+
+                <com.google.android.gms.ads.admanager.AdManagerAdView
+                    android:id="@+id/multiple_ad_sizes_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    app:adSize="MEDIUM_RECTANGLE,120x20,250x250,320x100,SMART_BANNER"
+                    app:adUnitId="@string/banner_multiple_ad_sizes_id" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</LinearLayout>

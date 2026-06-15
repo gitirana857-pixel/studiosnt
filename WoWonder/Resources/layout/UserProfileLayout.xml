@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/swipeRefreshLayout"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="?attr/colorFill">
+	<androidx.coordinatorlayout.widget.CoordinatorLayout
+		android:id="@+id/main_content"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:fitsSystemWindows="true"
+		android:orientation="vertical">
+		<com.google.android.material.appbar.AppBarLayout
+			android:id="@+id/appBarLayout"
+			android:layout_width="match_parent"
+			android:layout_height="470dp"
+			android:background="?attr/colorFill"
+			android:clickable="true"
+			android:focusable="false"
+			android:fitsSystemWindows="true"
+			android:focusableInTouchMode="false"
+			android:longClickable="false"
+			android:animationCache="true"
+			android:duplicateParentState="true"
+			android:filterTouchesWhenObscured="true">
+			<com.google.android.material.appbar.CollapsingToolbarLayout
+				android:id="@+id/collapsingToolbar"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:background="?attr/colorFill"
+				app:contentScrim="?attr/colorFill"
+				android:clickable="true"
+				android:focusable="false"
+				android:minHeight="350dp"
+				android:fitsSystemWindows="true"
+				android:focusableInTouchMode="true"
+				app:scrimAnimationDuration="250"
+				app:layout_collapseParallaxMultiplier="0.2"
+				app:layout_scrollFlags="scroll|exitUntilCollapsed"
+				app:collapsedTitleTextAppearance="@style/TextAppearance.MyApp.Title.Collapsed"
+				app:expandedTitleTextAppearance="@style/TextAppearance.MyApp.Title.Expanded">
+				<RelativeLayout
+					android:fitsSystemWindows="true"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:orientation="vertical">
+
+					<ImageView
+						android:id="@+id/cover_image"
+						android:layout_width="match_parent"
+						android:fitsSystemWindows="true"
+						app:layout_anchor="@+id/appBarLayout"
+						app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
+						app:layout_collapseMode="parallax"
+						android:layout_alignParentTop="true"
+						android:layout_height="205dp" />
+
+					<LinearLayout
+						android:fitsSystemWindows="true"
+						android:layout_width="match_parent"
+						android:layout_alignParentBottom="true"
+						android:layout_height="wrap_content"
+						android:orientation="vertical">
+
+						<WoWonder.Helpers.Fonts.TextViewWithImages
+							android:id="@+id/name_profile"
+							android:layout_gravity="center_horizontal"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:drawablePadding="4dp"
+							android:layout_marginTop="70dp"
+							android:textSize="20sp"
+							android:textFontWeight="600"
+							android:textStyle="bold"/>
+						<TextView
+							android:id="@+id/username_profile"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:textSize="15sp"
+							android:layout_marginTop="5dp"
+							android:layout_gravity="center_horizontal"
+							android:textColor="@color/colorIcon"/>
+
+						<LinearLayout
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:layout_marginTop="18dp"
+							android:layout_marginStart="10dp"
+							android:layout_marginEnd="10dp"
+							android:gravity="center_horizontal"
+							android:layout_marginBottom="5dp"
+							android:weightSum="10"
+							android:orientation="horizontal">
+
+							<androidx.appcompat.widget.AppCompatButton
+								android:id="@+id/btnFollow"
+								android:layout_width="0dp"
+								android:layout_weight="7"
+								android:layout_height="40dp"
+								android:layout_margin="5dp"
+								android:layout_marginStart="10dp"
+								android:foreground="?android:attr/selectableItemBackground"
+								android:clickable="true"
+								android:focusable="true"
+								android:background="@drawable/round_button_pressed"
+								android:textSize="12sp"
+								android:textFontWeight="500"
+								android:textAppearance="?android:attr/textAppearanceSmall"
+								android:textColor="@color/gnt_white"
+								android:text="@string/Lbl_Follow"/>
+
+							<FrameLayout
+								android:id="@+id/btnMessage"
+								android:layout_width="0dp"
+								android:layout_weight="1.5"
+								android:background="@drawable/round_button_gray"
+								android:backgroundTint="#F1F1F1"
+								android:layout_margin="5dp"
+								android:layout_height="40dp">
+
+								<ImageView
+									android:layout_margin="5dp"
+									android:layout_width="22dp"
+									android:layout_gravity="center"
+									android:layout_height="22dp"
+									android:src="@drawable/icon_chat"/>
+
+							</FrameLayout>
+
+							<FrameLayout
+								android:id="@+id/BtnTopMore"
+								android:layout_width="0dp"
+								android:layout_weight="1.5"
+								android:background="@drawable/round_button_gray"
+								android:backgroundTint="#F1F1F1"
+								android:layout_margin="5dp"
+								android:layout_marginEnd="10dp"
+								android:layout_height="40dp">
+
+								<ImageView
+									android:layout_width="16dp"
+									android:layout_gravity="center"
+									android:layout_height="16dp"
+									android:tint="@color/textDark_color"
+									android:src="@drawable/icon_more_dots_vector"/>
+
+							</FrameLayout>
+
+						</LinearLayout>
+
+						<LinearLayout
+							android:orientation="horizontal"
+							android:id="@+id/mainLayout"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:weightSum="4"
+							android:padding="15dp">
+
+							<LinearLayout
+								android:id="@+id/CountFollowersLayout"
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:layout_weight="1"
+								android:orientation="vertical"
+								android:gravity="center_horizontal">
+
+								<TextView
+									android:id="@+id/CountFollowers"
+									android:layout_width="wrap_content"
+									android:layout_height="wrap_content"
+									android:text="0"
+									android:textFontWeight="500"
+									android:textSize="18sp"/>
+
+								<TextView
+									android:id="@+id/txtFollowers"
+									android:layout_width="wrap_content"
+									android:layout_height="wrap_content"
+									android:text="@string/Lbl_Followers"
+									android:textColor="@color/colorIcon"
+									android:textSize="10sp"/>
+
+							</LinearLayout>
+
+							<LinearLayout
+								android:id="@+id/CountFollowingLayout"
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:layout_weight="1"
+								android:orientation="vertical"
+								android:gravity="center_horizontal">
+
+								<TextView
+									android:id="@+id/CountFollowing"
+									android:layout_width="wrap_content"
+									android:layout_height="wrap_content"
+									android:text="0"
+									android:textFontWeight="500"
+									android:textSize="18sp"/>
+
+								<TextView
+									android:id="@+id/txtFollowing"
+									android:layout_width="wrap_content"
+									android:layout_height="wrap_content"
+									android:text="@string/Lbl_Following"
+									android:textColor="@color/colorIcon"
+									android:textSize="10sp"/>
+
+							</LinearLayout>
+
+							<LinearLayout
+								android:id="@+id/CountLikesLayout"
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:layout_weight="1"
+								android:orientation="vertical"
+								android:gravity="center_horizontal">
+
+								<TextView
+									android:id="@+id/CountLikes"
+									android:layout_width="wrap_content"
+									android:layout_height="wrap_content"
+									android:text="0"
+									android:textFontWeight="500"
+									android:textSize="18sp"/>
+
+								<TextView
+									android:layout_width="wrap_content"
+									android:layout_height="wrap_content"
+									android:text="@string/Btn_Likes"
+									android:textColor="@color/colorIcon"
+									android:textSize="10sp"/>
+							</LinearLayout>
+							<LinearLayout
+								android:id="@+id/CountPointsLayout"
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:layout_weight="1"
+								android:orientation="vertical"
+								android:gravity="center_horizontal">
+
+								<TextView
+									android:id="@+id/CountPoints"
+									android:layout_width="wrap_content"
+									android:layout_height="wrap_content"
+									android:text="0"
+									android:textFontWeight="500"
+									android:textSize="18sp"/>
+								<TextView
+									android:layout_width="wrap_content"
+									android:layout_height="wrap_content"
+									android:text="@string/Btn_Points"
+									android:textColor="@color/colorIcon"
+									android:textSize="10sp"/>
+							</LinearLayout>
+
+						</LinearLayout>
+					</LinearLayout>
+
+					<de.hdodenhof.circleimageview.CircleImageView
+						android:id="@+id/profileimage_head"
+						app:civ_border_color="@color/gnt_white"
+						app:civ_border_width="3dp"
+						android:scaleType="centerCrop"
+						android:layout_width="110dp"
+						android:layout_height="110dp"
+						android:gravity="center"
+						android:src="@drawable/no_profile_image_circle"
+						android:layout_centerInParent="true"
+						android:translationY="-30dp"
+						app:layout_collapseParallaxMultiplier="0.7"
+						app:layout_scrollFlags="scroll|exitUntilCollapsed"
+						app:layout_collapseMode="parallax" />
+				</RelativeLayout>
+				<androidx.appcompat.widget.Toolbar
+					android:id="@+id/toolbar"
+					android:layout_width="match_parent"
+					android:layout_height="50dp"
+					android:layout_marginTop="0dp"
+					app:layout_collapseMode="pin"
+					android:focusable="false"
+					android:focusableInTouchMode="false"
+					android:descendantFocusability="blocksDescendants"
+					android:contentDescription="false"
+					android:clickable="false"
+					app:layout_scrollFlags="scroll|enterAlways"
+					android:animationCache="false"
+					android:keepScreenOn="false">
+					<RelativeLayout
+						android:layout_gravity="center_vertical"
+						android:foregroundGravity="center_vertical"
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:paddingStart="5dp"
+						android:paddingEnd="5dp">
+						<ImageView
+							android:id="@+id/back"
+							android:layout_width="20dp"
+							android:layout_height="20dp"
+							android:layout_centerVertical="true"
+							android:layout_marginTop="5dp"
+							android:layout_marginStart="0dp"
+							android:tint="@color/gnt_white"
+							android:src="@drawable/icon_back_arrow_left" />
+						<TextView
+							android:id="@+id/tv_SearchForPost"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:textSize="14sp"
+							android:layout_centerVertical="true"
+							android:text="@string/Lbl_SearchForPosts"
+							android:paddingTop="8dp"
+							android:paddingStart="8dp"
+							android:paddingEnd="8dp"
+							android:paddingBottom="8dp"
+							android:visibility="invisible"
+							android:background="@drawable/create_border_edit_text"
+							android:backgroundTint="#ecedf1"
+							android:drawableStart="@drawable/ic_action_search_color"
+							android:drawablePadding="10dp"
+							android:drawableTint="@color/accent"
+							android:layout_marginStart="15dp"
+							android:layout_marginEnd="40dp"
+							android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+							android:layout_toEndOf="@+id/back"/>
+						<ImageButton
+							android:id="@+id/BtnMore"
+							android:layout_width="24dp"
+							android:layout_height="24dp"
+							android:layout_alignParentEnd="true"
+							android:layout_centerVertical="true"
+							android:src="@drawable/icon_more_dots_vector"
+							android:background="@null"
+							android:tint="@color/gnt_white"
+							android:layout_marginEnd="10dp"/>
+					</RelativeLayout>
+				</androidx.appcompat.widget.Toolbar>
+			</com.google.android.material.appbar.CollapsingToolbarLayout>
+		</com.google.android.material.appbar.AppBarLayout>
+		<FrameLayout
+			app:layout_behavior="@string/appbar_scrolling_view_behavior"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent">
+			<ViewStub
+				android:id="@+id/viewStubShimmer"
+				android:inflatedId="@+id/subViewShimmer"
+				android:layout="@layout/ShimmerLoadPageLayout"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent" />
+			<WoWonder.Activities.NativePost.Extra.WRecyclerView
+				android:id="@+id/newsfeedRecyler"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:scrollbars="vertical"
+				android:background="?attr/colorFill"
+				android:layout_marginTop="9dp"
+				android:layout_marginBottom="50dp" />
+			<com.google.android.gms.ads.AdView
+				android:id="@+id/adView"
+				app:adSize="SMART_BANNER"
+				app:adUnitId="@string/banner_ad_unit_id"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_gravity="bottom"
+				android:layout_alignParentBottom="true"
+				android:layout_centerHorizontal="true" />
+		</FrameLayout>
+	</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout> 

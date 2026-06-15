@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:background="?attr/colorFill"
+    android:layout_height="match_parent">
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+	        app:theme="@style/ToolbarTheme"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:titleTextAppearance="@style/Toolbar.TitleText"
+            android:background="?attr/colorFill"> 
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar"
+        android:clipToPadding="false"
+        android:padding="20dp"
+        android:scrollbars="none"
+        android:scrollingCache="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+	        <TextView
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:id="@+id/describe" 
+		        android:layout_marginEnd="5dp"
+		        android:layout_marginTop="10dp"
+		        android:text="@string/Lbl_Describe_Advertise"
+		        android:textStyle="bold"
+		        android:textSize="22dp" />
+	        <TextView
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:id="@+id/description"
+		        android:layout_below="@+id/describe" 
+		        android:layout_marginEnd="5dp"
+		        android:layout_marginTop="5dp"
+		        android:text="@string/Lbl_Describe_Description_Advertise"
+		        android:textSize="14dp" /> 
+             
+	        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Lbl_MediaFile"
+                    android:textStyle="bold"
+                    android:textSize="18dp"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"/>
+            </LinearLayout>
+
+	        <!--Image Section -->
+	        <RelativeLayout
+		        android:id="@+id/SelectImageView"
+		        android:layout_width="match_parent"
+		        android:layout_height="200dp"
+		        android:layout_marginTop="5dp"
+		        android:layout_marginEnd="5dp"
+		        android:layout_marginStart="5dp"
+		        android:background="@drawable/shape_bg_round_dotted">
+		        <ImageView
+			        android:id="@+id/image"
+			        android:layout_width="match_parent"
+			        android:layout_height="match_parent"
+			        android:scaleType="centerCrop"
+			        app:riv_corner_radius="4dp"/>
+		        <ImageView
+			        android:id="@+id/ChooseImageText"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:layout_centerInParent="true"
+			        android:src="@drawable/icon_select_image"/>
+		        <TextView
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:layout_marginTop="25dp"
+			        android:layout_below="@id/ChooseImageText"
+			        android:layout_centerHorizontal="true"
+			        android:textSize="14sp"
+			        android:textColor="@color/accent"
+			        android:text="@string/Lbl_ChooseImage"/>
+	        </RelativeLayout>
+             
+			<!--Name Section -->
+			<LinearLayout
+				android:id="@+id/LayoutName"
+				android:paddingTop="5dp"
+				android:layout_marginTop="20dp"
+				android:layout_marginEnd="5dp"
+				android:layout_width="match_parent"
+				android:orientation="horizontal"
+				android:layout_height="wrap_content">
+				<EditText
+					android:id="@+id/NameEditText"
+					style="@style/EditTextNormalStyle"
+					android:layout_width="match_parent"
+					android:layout_height="48dp"
+					android:hint="@string/Lbl_CompanyName"
+					android:textSize="16sp"
+					android:gravity="start|center"
+					android:background="@drawable/EditTextStyleOne"
+					android:layout_alignParentEnd="true"
+					android:layout_marginStart="3dp" />
+			</LinearLayout>
+	          
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:padding="5dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Lbl_Details"
+                    android:textStyle="bold"
+                    android:textSize="18dp"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"/>
+            </LinearLayout>
+
+	        <!--Title Section -->
+	        <LinearLayout
+		        android:id="@+id/LayoutTitle"
+		        android:paddingTop="5dp"
+		        android:layout_marginTop="5dp"
+		        android:layout_marginEnd="5dp"
+		        android:layout_width="match_parent"
+		        android:orientation="horizontal"
+		        android:layout_height="wrap_content">
+		        <EditText
+			        android:id="@+id/TitleEditText"
+			        style="@style/EditTextNormalStyle"
+			        android:layout_width="match_parent"
+			        android:layout_height="48dp"
+			        android:hint="@string/Lbl_CampaignTitle"
+			        android:textSize="16sp"
+			        android:gravity="start|center"
+			        android:background="@drawable/EditTextStyleOne"
+			        android:layout_alignParentEnd="true"
+			        android:layout_marginStart="3dp" />
+	        </LinearLayout>
+
+	        <!--Description Section -->
+	        <LinearLayout
+		        android:id="@+id/LayoutDescription"
+		        android:paddingTop="5dp"
+		        android:layout_marginTop="5dp"
+		        android:layout_marginEnd="5dp"
+		        android:layout_width="match_parent"
+		        android:orientation="horizontal"
+		        android:layout_height="wrap_content">
+		        <EditText
+			        android:id="@+id/DescriptionEditText"
+			        style="@style/EditTextNormalStyle"
+			        android:layout_width="match_parent"
+			        android:layout_height="80dp"
+			        android:background="@drawable/EditTextStyleOne"
+			        android:hint="@string/Lbl_CampaignDescription"
+			        android:textSize="16sp"
+			        android:gravity="start"
+			        android:layout_alignParentEnd="true"
+			        android:layout_marginStart="3dp" />
+	        </LinearLayout>
+
+	        <LinearLayout
+		        android:id="@+id/LayoutCurrency"
+		        android:paddingTop="5dp"
+		        android:layout_marginTop="5dp"
+		        android:layout_width="wrap_content"
+		        android:orientation="horizontal"
+		        android:weightSum="100"
+		        android:layout_marginEnd="5dp"
+		        android:layout_height="wrap_content">
+		        <EditText
+			        android:id="@+id/StartDateEditText"
+			        style="@style/EditTextNormalStyle"
+			        android:layout_width="match_parent"
+			        android:layout_weight="50"
+			        android:ems="10"
+			        android:layout_height="48dp"
+			        android:background="@drawable/EditTextStyleOne"
+			        android:layout_alignParentEnd="true"
+			        android:hint="@string/Lbl_Start_Date"
+			        android:textSize="16sp"
+			        android:maxLines="1"
+			        android:gravity="start|center"
+			        android:inputType="datetime"
+			        android:layout_marginStart="3dp" />
+		        <EditText
+			        android:id="@+id/EndDateEditText"
+			        style="@style/EditTextNormalStyle"
+			        android:layout_width="match_parent"
+			        android:layout_weight="50"
+			        android:ems="10"
+			        android:layout_height="48dp"
+			        android:background="@drawable/EditTextStyleOne"
+			        android:layout_alignParentEnd="true"
+			        android:hint="@string/Lbl_End_Date"
+			        android:textSize="16sp"
+			        android:maxLines="1"
+			        android:gravity="start|center"
+			        android:inputType="datetime"
+			        android:layout_marginStart="3dp" />
+	        </LinearLayout>
+             
+	        <!--website Section -->
+	        <LinearLayout
+		        android:id="@+id/Layoutwebsite"
+		        android:paddingTop="5dp"
+		        android:layout_marginTop="5dp"
+		        android:layout_marginEnd="5dp"
+		        android:layout_width="match_parent"
+		        android:orientation="horizontal"
+		        android:layout_height="wrap_content">
+		        <EditText
+			        android:id="@+id/websiteEditText"
+			        style="@style/EditTextNormalStyle"
+			        android:layout_width="match_parent"
+			        android:layout_height="48dp"
+			        android:hint="@string/Lbl_website"
+			        android:textSize="16sp"
+			        android:gravity="start|center"
+			        android:background="@drawable/EditTextStyleOne"
+			        android:layout_alignParentEnd="true"
+			        android:layout_marginStart="3dp" />
+	        </LinearLayout>
+
+	        <!--MyPages Section -->
+	        <LinearLayout
+		        android:id="@+id/LayoutMyPages"
+		        android:paddingTop="5dp"
+		        android:layout_marginTop="5dp"
+		        android:layout_marginEnd="5dp"
+		        android:layout_width="match_parent"
+		        android:orientation="horizontal"
+		        android:layout_height="wrap_content">
+		        <EditText
+			        android:id="@+id/MyPagesEditText"
+			        style="@style/EditTextNormalStyle"
+			        android:layout_width="match_parent"
+			        android:layout_height="48dp"
+			        android:hint="@string/Lbl_MyPages"
+			        android:textSize="16sp"
+			        android:gravity="start|center"
+			        android:background="@drawable/EditTextStyleOne"
+			        android:layout_alignParentEnd="true"
+			        android:layout_marginStart="3dp" />
+	        </LinearLayout>
+			 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:padding="5dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Lbl_Targeting"
+                    android:textStyle="bold"
+                    android:textSize="18dp"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"/>
+            </LinearLayout>
+
+	        <!--Location Section -->
+	        <LinearLayout
+		        android:id="@+id/LayoutLocation"
+		        android:paddingTop="5dp"
+		        android:layout_marginTop="5dp"
+		        android:layout_width="match_parent"
+		        android:orientation="horizontal"
+		        android:layout_marginEnd="5dp"
+		        android:layout_height="wrap_content">
+		        <EditText
+			        android:id="@+id/LocationEditText"
+			        style="@style/EditTextNormalStyle"
+			        android:layout_width="match_parent"
+			        android:layout_height="48dp"
+			        android:hint="@string/Lbl_Location"
+			        android:textSize="16sp"
+			        android:gravity="start|center"
+			        android:background="@drawable/EditTextStyleOne"
+			        android:layout_alignParentEnd="true"
+			        android:layout_marginStart="3dp" />
+	        </LinearLayout>
+			 
+	        <!--Audience Section -->
+	        <LinearLayout
+		        android:id="@+id/LayoutAudience"
+		        android:paddingTop="5dp"
+		        android:layout_marginTop="5dp"
+		        android:layout_marginEnd="5dp"
+		        android:layout_width="match_parent"
+		        android:orientation="horizontal"
+		        android:layout_height="wrap_content">
+		        <EditText
+			        android:id="@+id/AudienceEditText"
+			        style="@style/EditTextNormalStyle"
+			        android:layout_width="match_parent"
+			        android:layout_height="48dp"
+			        android:hint="@string/Lbl_Audience"
+			        android:textSize="16sp"
+			        android:gravity="start|center"
+			        android:background="@drawable/EditTextStyleOne"
+			        android:layout_alignParentEnd="true"
+			        android:layout_marginStart="3dp" />
+	        </LinearLayout>
+
+	        <!--Gender Section -->
+	        <LinearLayout
+		        android:id="@+id/LayoutGender"
+		        android:paddingTop="5dp"
+		        android:layout_marginTop="5dp"
+		        android:layout_marginEnd="5dp"
+		        android:layout_width="match_parent"
+		        android:orientation="horizontal"
+		        android:layout_height="wrap_content">
+		        <EditText
+			        android:id="@+id/GenderEditText"
+			        style="@style/EditTextNormalStyle"
+			        android:layout_width="match_parent"
+			        android:layout_height="48dp"
+			        android:hint="@string/Lbl_Gender"
+			        android:textSize="16sp"
+			        android:gravity="start|center"
+			        android:background="@drawable/EditTextStyleOne"
+			        android:layout_alignParentEnd="true"
+			        android:layout_marginStart="3dp" />
+	        </LinearLayout>
+			 
+	        <!--Placement Section -->
+	        <LinearLayout
+		        android:id="@+id/LayoutPlacement"
+		        android:paddingTop="5dp"
+		        android:layout_marginTop="5dp"
+		        android:layout_marginEnd="5dp"
+		        android:layout_width="match_parent"
+		        android:orientation="horizontal"
+		        android:layout_height="wrap_content">
+		        <EditText
+			        android:id="@+id/PlacementEditText"
+			        style="@style/EditTextNormalStyle"
+			        android:layout_width="match_parent"
+			        android:layout_height="48dp"
+			        android:hint="@string/Lbl_Placement"
+			        android:textSize="16sp"
+			        android:gravity="start|center"
+			        android:background="@drawable/EditTextStyleOne"
+			        android:layout_alignParentEnd="true"
+			        android:layout_marginStart="3dp" />
+	        </LinearLayout>
+
+	        <!--Budget Section -->
+	        <LinearLayout
+		        android:id="@+id/LayoutBudget"
+		        android:paddingTop="5dp"
+		        android:layout_marginTop="5dp"
+		        android:layout_marginEnd="5dp"
+		        android:layout_width="match_parent"
+		        android:orientation="horizontal"
+		        android:layout_height="wrap_content">
+		        <EditText
+			        android:id="@+id/BudgetEditText"
+			        style="@style/EditTextNormalStyle"
+			        android:layout_width="match_parent"
+			        android:layout_height="48dp"
+			        android:hint="@string/Lbl_CampaignBudget"
+			        android:textSize="16sp"
+					android:inputType="number"
+			        android:gravity="start|center"
+			        android:background="@drawable/EditTextStyleOne"
+			        android:layout_alignParentEnd="true"
+			        android:layout_marginStart="3dp" />
+	        </LinearLayout>
+
+	        <!--Bidding Section -->
+	        <LinearLayout
+		        android:id="@+id/LayoutBidding"
+		        android:paddingTop="5dp"
+		        android:layout_marginTop="5dp"
+		        android:layout_marginEnd="5dp"
+		        android:layout_width="match_parent"
+		        android:orientation="horizontal"
+		        android:layout_height="wrap_content">
+		        <EditText
+			        android:id="@+id/BiddingEditText"
+			        style="@style/EditTextNormalStyle"
+			        android:layout_width="match_parent"
+			        android:layout_height="48dp"
+			        android:hint="@string/Lbl_Bidding"
+			        android:textSize="16sp"
+			        android:gravity="start|center"
+			        android:background="@drawable/EditTextStyleOne"
+			        android:layout_alignParentEnd="true"
+			        android:layout_marginStart="3dp" />
+	        </LinearLayout>
+			 
+
+	        <androidx.appcompat.widget.AppCompatButton
+		        android:id="@+id/SubmitButton"
+		        android:layout_width="match_parent"
+		        android:layout_height="48dp"
+		        android:layout_marginTop="15dp"
+		        android:layout_marginHorizontal="16dp"
+		        android:background="@drawable/round_button_pressed"
+		        android:textColor="@color/gnt_white"
+		        android:text="@string/Lbl_Submit" 
+		        android:textAllCaps="false"
+		        android:textSize="17sp"
+		        android:clickable="true"/>
+			 
+	        <View
+		        android:layout_height="?android:attr/actionBarSize"
+		        android:layout_width="match_parent" />
+	        <com.google.android.gms.ads.admanager.AdManagerAdView
+		        android:id="@+id/multiple_ad_sizes_view"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_alignParentBottom="true"
+		        android:layout_centerHorizontal="true"
+		        app:adSize="MEDIUM_RECTANGLE,120x20,250x250,320x100,SMART_BANNER"
+		        app:adUnitId="@string/banner_multiple_ad_sizes_id" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

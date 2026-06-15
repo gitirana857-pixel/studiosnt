@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="130dp"
+	app:cardCornerRadius="12dp"
+	android:layout_margin="10dp"
+	app:cardBackgroundColor="?attr/colorFill"
+	android:paddingTop="5dp"
+	app:cardElevation="2dp">
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical">
+		 
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			android:weightSum="5"
+			android:padding="8dp"
+			android:layout_gravity="center_vertical"
+			android:gravity="center_vertical">
+
+			<TextView
+				android:id="@+id/name"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textSize="18dp"
+				android:drawableStart="@drawable/icon_address_vector"
+				android:drawablePadding="10dp"
+				android:drawableTint="@color/accent"
+				android:layout_weight="5"
+				android:gravity="start"
+				android:maxLines="1" />
+
+			<View
+				android:layout_width="0dp"
+				android:layout_height="1dp"
+				android:layout_weight="1" />
+
+			<TextView
+				android:id="@+id/edit"
+				android:layout_width="30dp"
+				android:layout_height="wrap_content"
+				android:lines="1"
+				android:layout_weight="1"
+				android:gravity="center"
+				android:layout_gravity="top|end"
+				android:background="?android:attr/selectableItemBackgroundBorderless"
+				android:layout_marginStart="5dp"
+				android:layout_marginEnd="5dp"
+				android:textSize="20dp"
+				android:text="ic"/> 
+
+			<TextView
+				android:id="@+id/delete"
+				android:layout_width="30dp"
+				android:layout_height="wrap_content"
+				android:lines="1"
+				android:layout_weight="1"
+				android:gravity="center"
+				android:layout_gravity="top|end"
+				android:background="?android:attr/selectableItemBackgroundBorderless"
+				android:layout_marginStart="5dp"
+				android:layout_marginEnd="5dp"
+				android:textSize="20dp"
+				android:text="ic"/> 
+			
+			<CheckBox
+				android:layout_width="30dp"
+				android:layout_height="wrap_content"
+				android:id="@+id/check"
+				android:layout_marginStart="5dp"
+				android:layout_marginEnd="5dp"
+				android:layout_weight="1"
+				android:tag="false"
+				android:visibility="gone"
+				android:focusable="true"
+				android:clickable="false"
+				android:gravity="center"
+				android:layout_gravity="top|end"
+				android:buttonTint="@color/accent" />
+
+		</LinearLayout>
+		 
+		<TextView
+			android:id="@+id/phone"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="13dp" 
+			android:gravity="start"
+			android:layout_marginStart="25dp"
+			android:maxLines="1" />
+		
+		<TextView
+			android:id="@+id/address"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="13dp" 
+			android:gravity="start"
+			android:layout_marginStart="25dp"/>
+		
+		<TextView
+			android:id="@+id/country"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="13dp" 
+			android:gravity="start"
+			android:layout_marginStart="25dp"
+			android:maxLines="1" />
+		 
+	</LinearLayout>
+</androidx.cardview.widget.CardView>

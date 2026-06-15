@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/announcementLayout"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:padding="17dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/round_button_pressed"
+                android:backgroundTint="#E8F5E9">
+  
+	<ImageView
+		android:layout_width="80dp"
+		android:layout_height="80dp"
+		android:layout_alignParentEnd="true"
+		android:layout_alignParentBottom="true"
+		android:scaleX="-1"  
+		android:tint="@color/AnnouncementColor"
+		android:src="@drawable/icon_announcement_vector"/>
+
+	<LinearLayout
+		 android:layout_width="match_parent"
+		 android:layout_height="wrap_content"
+		 android:orientation="vertical">
+
+		 <TextView
+			 android:layout_width="wrap_content"
+			 android:layout_height="wrap_content"
+			 android:text="@string/Lbl_Announcement"
+			 android:textSize="25sp"
+			 android:textStyle="bold"
+			 android:textColor="@color/gnt_black"/>
+	 
+		 <TextView
+			 android:layout_width="wrap_content"
+			 android:layout_height="wrap_content"
+			 android:text="@string/Lbl_Announcement_SubText"
+			 android:textSize="10sp" 
+			 android:textColor="@color/gnt_black"
+			 android:layout_marginTop="3dp"/>
+
+		 <androidx.appcompat.widget.AppCompatButton
+			 android:id="@+id/announcementButton"
+			 android:layout_width="wrap_content"
+			 android:layout_height="35dp"
+			 android:background="@drawable/round_button_pressed" 
+			 android:backgroundTint="#1B5E20"
+			 android:layout_marginTop="15dp"
+			 android:text="@string/Lbl_Open" 
+			 android:textStyle="bold"
+			 android:textSize="13sp"
+			 android:textColor="@color/gnt_white"
+			 android:textAppearance="?android:attr/textAppearanceSmall"
+			 style="?android:attr/borderlessButtonStyle"/>
+
+
+	 </LinearLayout>
+    
+</RelativeLayout>

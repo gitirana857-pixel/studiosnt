@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:layout_margin="10dp"
+	app:cardCornerRadius="20dp"
+	app:cardElevation="0dp"
+	android:elevation="0dp"
+	app:cardPreventCornerOverlap="true">
+	
+	<LinearLayout 
+		android:orientation="vertical"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:padding="10dp">
+		<TextView
+			android:id="@+id/purchaseId"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginVertical="2dp"
+			android:text="#999"
+			android:textSize="15sp"/>
+		<TextView
+			android:id="@+id/name"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginVertical="2dp"
+			android:text="selling"
+			android:textSize="16sp"
+			android:textStyle="bold"/>
+		<TextView
+			android:id="@+id/price"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginVertical="2dp"
+			android:text="30.00"
+			android:textSize="15sp"/>
+		<TextView
+			android:id="@+id/time"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginVertical="2dp"
+			android:text="23 hrs"
+			android:textSize="15sp"/>
+
+		<androidx.appcompat.widget.AppCompatButton
+			android:id="@+id/btnDownloadInvoice"
+			android:layout_width="match_parent"
+			android:layout_height="48dp"
+			android:textSize="15sp"
+			android:layout_gravity="center" 
+			android:background="@drawable/round_button_pressed"
+			android:tag="false" 
+			android:layout_marginVertical="2dp"
+			android:layout_marginHorizontal="5dp"
+			android:textAlignment="center"
+			android:textAllCaps="false"
+			android:visibility="gone"
+			android:text="@string/Lbl_DownloadInvoice"
+			android:forceDarkAllowed="false"
+			android:textColor="@color/gnt_white" />
+
+	</LinearLayout>
+</androidx.cardview.widget.CardView>

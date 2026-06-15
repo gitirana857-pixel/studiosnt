@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="256"
+    android:viewportHeight="256">
+
+	<group
+            android:translateX="128"
+            android:translateY="128"
+            android:scaleX="0.72"
+            android:scaleY="0.72">
+		<group
+                android:translateX="-175.05"
+                android:translateY="-175.05000000000004"
+                android:scaleX="3.89"
+                android:scaleY="3.89">
+			<path
+                android:fillColor="#000000"
+                android:strokeWidth="1"
+                android:strokeMiterLimit="10"
+                android:strokeLineCap="round"
+                android:pathData="M 45 90 C 20.187 90 0 69.813 0 45 C 0 20.187 20.187 0 45 0 c 24.813 0 45 20.187 45 45 C 90 69.813 69.813 90 45 90 z M 45 4 C 22.393 4 4 22.393 4 45 s 18.393 41 41 41 s 41 -18.393 41 -41 S 67.607 4 45 4 z" />
+			<path
+                android:fillColor="#000000"
+                android:strokeWidth="1"
+                android:strokeMiterLimit="10"
+                android:pathData="M 31 30.55 C 33.7614237492 30.55 36 32.7885762508 36 35.55 C 36 38.3114237492 33.7614237492 40.55 31 40.55 C 28.2385762508 40.55 26 38.3114237492 26 35.55 C 26 32.7885762508 28.2385762508 30.55 31 30.55 Z" />
+			<path
+                android:fillColor="#000000"
+                android:strokeWidth="1"
+                android:strokeMiterLimit="10"
+                android:pathData="M 59 30.55 C 61.7614237492 30.55 64 32.7885762508 64 35.55 C 64 38.3114237492 61.7614237492 40.55 59 40.55 C 56.2385762508 40.55 54 38.3114237492 54 35.55 C 54 32.7885762508 56.2385762508 30.55 59 30.55 Z" />
+			<path
+                android:fillColor="#000000"
+                android:strokeWidth="1"
+                android:strokeMiterLimit="10"
+                android:strokeLineCap="round"
+                android:pathData="M 45 69.345 c -7.954 0 -15.337 -3.969 -19.751 -10.617 c -0.611 -0.92 -0.36 -2.162 0.56 -2.772 c 0.92 -0.613 2.162 -0.36 2.772 0.56 c 3.671 5.529 9.809 8.83 16.419 8.83 c 6.61 0 12.748 -3.301 16.419 -8.83 c 0.61 -0.921 1.85 -1.173 2.772 -0.56 c 0.92 0.61 1.171 1.853 0.56 2.772 C 60.337 65.376 52.953 69.345 45 69.345 z" />
+		</group>
+	</group>
+</vector>
