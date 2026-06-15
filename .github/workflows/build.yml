@@ -47,7 +47,7 @@ jobs:
       run: |
         cd WoWonder
         set -o pipefail
-        dotnet build WoWonder.csproj -c Debug -f net8.0-android \
+        dotnet publish WoWonder.csproj -c Debug -f net8.0-android \
           -p:AndroidPackageFormat=apk \
           -p:AndroidKeyStore=false \
           2>&1 | tee build.log
