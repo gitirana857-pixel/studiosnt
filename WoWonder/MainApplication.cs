@@ -73,22 +73,39 @@ namespace WoWonder
 
                 JsonConvert.DefaultSettings = () => UserDetails.JsonSettings;
 
-                InitializeWoWonder.Initialize(AppSettings.TripleDesAppServiceProvider, PackageName, AppSettings.TurnTrustFailureOnWebException, MyReportModeApp.CreateInstance());
-
-                // Override WebsiteUrl and ServerKey via reflection (properties are private set)
+                // Override WebsiteUrl and ServerKey via reflection (internal setters)
                 try
                 {
-                    var wowonderType = typeof(InitializeWoWonder);
-                    var urlField = wowonderType.GetField("<WebsiteUrl>k__BackingField", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.NonPublic);
-                    if (urlField != null)
-                        urlField.SetValue(null, "https://www.studiosnt.sntwork.com");
-                    var keyField = wowonderType.GetField("<ServerKey>k__BackingField", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.NonPublic);
-                    if (keyField != null)
-                        keyField.SetValue(null, "HjrIe2ihvP7KXW0xpLOC3Rg8yZlY9dMo");
+                    var t = typeof(InitializeWoWonder);
+                    var setUrl = t.GetMethod("set_WebsiteUrl", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.NonPublic);
+                    if (setUrl != null)
+                        setUrl.Invoke(null, new object[] { "https://www.studiosnt.sntwork.com" });
+                    var setKey = t.GetMethod("set_ServerKey", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.NonPublic);
+                    if (setKey != null)
+                        setKey.Invoke(null, new object[] { "HjrIe2ihvP7KXW0xpLOC3Rg8yZlY9dMo" });
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine("Reflection override failed: " + ex.Message);
+                }
+
+
+                InitializeWoWonder.Initialize(AppSettings.TripleDesAppServiceProvider, PackageName, AppSettings.TurnTrustFailureOnWebException, MyReportModeApp.CreateInstance());
+
+                // Override WebsiteUrl and ServerKey via reflection (internal setters) - again after Initialize
+                try
+                {
+                    var tPost = typeof(InitializeWoWonder);
+                    var setUrlPost = tPost.GetMethod("set_WebsiteUrl", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.NonPublic);
+                    if (setUrlPost != null)
+                        setUrlPost.Invoke(null, new object[] { "https://www.studiosnt.sntwork.com" });
+                    var setKeyPost = tPost.GetMethod("set_ServerKey", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.NonPublic);
+                    if (setKeyPost != null)
+                        setKeyPost.Invoke(null, new object[] { "HjrIe2ihvP7KXW0xpLOC3Rg8yZlY9dMo" });
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Reflection override (post-init) failed: " + ex.Message);
                 }
 
                 var sqLiteDatabase = new SqLiteDatabase();
