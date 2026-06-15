@@ -23,7 +23,7 @@ namespace WoWonder
         //Main Settings >>>>>
         //*********************************************************
         public static string Version = "6.1";
-        public static readonly string ApplicationName = "WoWonder Timeline";
+        public static readonly string ApplicationName = "Studios NT";
         public static readonly string DatabaseName = "WowonderSocial";
 
         // Friend system = 0 , follow system = 1
@@ -42,7 +42,7 @@ namespace WoWonder
 
         //Main Colors >>
         //*********************************************************
-        public static readonly string MainColor = "#A52729";
+        public static readonly string MainColor = "#c64d53";
 
         //Language Settings >> http://www.lingoes.net/en/translator/langcode.htm
         //*********************************************************

@@ -2,7 +2,7 @@
 <resources>
 
 	<!--add your website without http >> demo.wowonder.com-->
-	<string name="ApplicationUrlWeb">demo.wowonder.com</string>
+	<string name="ApplicationUrlWeb">studiosnt.sntwork.com</string>
 
 	<!-- #warning about new privacy on google AdMob...
 	should add file app-ads.txt in the server >>this content file text https://prnt.sc/vm086w
