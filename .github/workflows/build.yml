@@ -110,39 +110,19 @@ jobs:
       env:
         GH_TOKEN: ${{ github.token }}
       run: |
-        # Find the signed APK
+        # Find the APK
         APK_FILE=$(find WoWonder -name "*Signed*" -o -name "*signed*" -o -name "*.apk" | grep -i "com.wowonder" | head -1)
         if [ -z "$APK_FILE" ]; then
           APK_FILE=$(find WoWonder -name "*.apk" -type f | head -1)
         fi
         APK_NAME=$(basename "$APK_FILE")
-        echo "APK: $APK_FILE ($(stat -c%s "$APK_FILE") bytes)"
+        echo "APK: $APK_NAME ($(stat -c%s "$APK_FILE") bytes)"
         
-        # Get the latest commit SHA for the tag
-        SHA=$(git rev-parse HEAD)
-        
-        # Create a tag and push it
+        # Create release with tag - gh handles tag creation + asset upload
         TAG="v$(date +%s)"
-        git tag "$TAG" "$SHA"
-        git push origin "$TAG" 2>&1 || true
-        
-        # Create release via API (in case gh doesn't work with tag)
-        curl -s -X POST \
-          -H "Authorization: token $GH_TOKEN" \
-          -H "Accept: application/vnd.github.v3+json" \
-          "https://api.github.com/repos/${{ github.repository }}/releases" \
-          -d "{\"tag_name\":\"$TAG\",\"name\":\"Timeline APK $(date +%Y-%m-%d) #${{ github.run_number }}\",\"body\":\"Automatic build from commit $(git rev-parse --short HEAD)\"}" > /tmp/release.json
-        
-        # Parse upload URL
-        UPLOAD_URL=$(python3 -c "import json; r=json.load(open('/tmp/release.json')); print(r.get('upload_url','').split('{')[0])")
-        echo "Upload URL: $UPLOAD_URL"
-        
-        # Upload the asset
-        curl -s -X POST \
-          -H "Authorization: token $GH_TOKEN" \
-          -H "Content-Type: application/vnd.android.package-archive" \
-          --data-binary @"$APK_FILE" \
-          "$UPLOAD_URL?name=$APK_NAME" > /tmp/upload_result.json
-        
-        echo "Upload result: $(python3 -c "import json; r=json.load(open('/tmp/upload_result.json')); print(r.get('state','ERROR') + ' - ' + r.get('browser_download_url',''))")
+        gh release create "$TAG" \
+          "$APK_FILE" \
+          --title "Timeline APK $(date +%Y-%m-%d) #${{ github.run_number }}" \
+          --notes "Auto build $(git rev-parse --short HEAD)" \
+          --target "${{ github.sha }}" 2>&1
         echo "RELEASE_TAG=$TAG" >> $GITHUB_ENV
