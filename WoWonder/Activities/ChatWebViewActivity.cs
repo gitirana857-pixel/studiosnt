@@ -123,13 +123,13 @@ namespace WoWonder.Activities
             public override void OnPageStarted(WebView view, string url, Bitmap favicon)
             {
                 base.OnPageStarted(view, url, favicon);
-                _activity._progressBar?.SetVisibility(ViewStates.Visible);
+                _activity._progressBar.Visibility = ViewStates.Visible;
             }
 
             public override void OnPageFinished(WebView view, string url)
             {
                 base.OnPageFinished(view, url);
-                _activity._progressBar?.SetVisibility(ViewStates.Gone);
+                _activity._progressBar.Visibility = ViewStates.Gone;
             }
 
             public override bool ShouldOverrideUrlLoading(WebView view, IWebResourceRequest request)
@@ -160,7 +160,7 @@ namespace WoWonder.Activities
             public override void OnProgressChanged(WebView view, int newProgress)
             {
                 base.OnProgressChanged(view, newProgress);
-                _activity._progressBar?.SetProgress(newProgress);
+                _activity._progressBar.Progress = newProgress;
             }
         }
     }
