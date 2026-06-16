@@ -128,8 +128,9 @@
 				android:layout_marginStart="7dp"
 				android:text="@string/Lbl_Feeling"
 				android:gravity="center_vertical"
-				android:textSize="13sp"
-				android:textColor="?attr/colorReact"/>
+				android:textSize="10sp"
+				android:textColor="?attr/colorReact"
+				android:singleLine="true"/>
 		</LinearLayout>
 
 		<LinearLayout
