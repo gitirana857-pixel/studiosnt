@@ -317,7 +317,7 @@ namespace WoWonder
         public static readonly bool EmbedDeepSoundPostType = true;
         public static readonly VideoPostTypeSystem EmbedFacebookVideoPostType = VideoPostTypeSystem.EmbedVideo;
         public static readonly VideoPostTypeSystem EmbedVimeoVideoPostType = VideoPostTypeSystem.EmbedVideo;
-        public static readonly VideoPostTypeSystem EmbedPlayTubeVideoPostType = VideoPostTypeSystem.EmbedVideo;
+        public static readonly VideoPostTypeSystem EmbedPlayTubeVideoPostType = VideoPostTypeSystem.Link;
         public static readonly VideoPostTypeSystem EmbedTikTokVideoPostType = VideoPostTypeSystem.Link;
         public static readonly VideoPostTypeSystem EmbedTwitterPostType = VideoPostTypeSystem.Link;
         public static readonly bool ShowSearchForPosts = true;

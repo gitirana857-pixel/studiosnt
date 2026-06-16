@@ -404,7 +404,6 @@ namespace WoWonder.Activities.NativePost.Extra
 
                             item.PostLinkTitle = playTubeUrl.Replace("https://", "").Replace("http://", "");
                             item.PostLinkContent = item.PostLinkTitle + " " + MainContext.GetText(Resource.String.Lbl_PostLinkContentVideo);
-                            item.PostLinkImage = "default_video_thumbnail.png";
                             break;
                         }
                 }
