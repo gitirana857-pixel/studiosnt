@@ -6,10 +6,10 @@
 		<Nullable>disable</Nullable>
 		<ImplicitUsings>disable</ImplicitUsings>
 		<ApplicationId>com.studiosnt.timeline</ApplicationId>
-		<ApplicationVersion>1</ApplicationVersion>
-		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>2</ApplicationVersion>
+		<ApplicationDisplayVersion>1.1</ApplicationDisplayVersion>
 		<Copyright>Copyright © 2024</Copyright>
-		<AndroidSigningKeyStore>KeyApk\WoWonder.keystore</AndroidSigningKeyStore>
+		<AndroidSigningKeyStore>$(RELEASE_KEYSTORE_PATH)</AndroidSigningKeyStore>
 		<Title>WoWonder</Title>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -34,12 +34,11 @@
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
 		<JavaMaximumHeapSize>4G</JavaMaximumHeapSize>
 		<AndroidKeyStore>True</AndroidKeyStore>
-		<AndroidSigningKeyAlias>WoWonder</AndroidSigningKeyAlias>
-		<AndroidSigningStorePass>aaaaaaaa</AndroidSigningStorePass>
-		<AndroidSigningKeyPass>aaaaaaaa</AndroidSigningKeyPass>
-		<!--apk - aab-->
-		<AndroidPackageFormat>apk</AndroidPackageFormat>
-		<!--<AndroidPackageFormats>apk;aab</AndroidPackageFormats>-->
+		<AndroidSigningKeyAlias>$(RELEASE_KEY_ALIAS)</AndroidSigningKeyAlias>
+		<AndroidSigningStorePass>$(RELEASE_KEYSTORE_PASS)</AndroidSigningStorePass>
+		<AndroidSigningKeyPass>$(RELEASE_KEYSTORE_PASS)</AndroidSigningKeyPass>
+		<!--aab for Play Store-->
+		<AndroidPackageFormat>aab</AndroidPackageFormat>
 		<NoWarn>1701;1702;CA1416;CA1422;CS0618;SYSLIB0039</NoWarn>
 		<!--for Release Recommended : android-arm - android-arm64 -->
 		<RuntimeIdentifiers>android-arm;android-arm64;</RuntimeIdentifiers>
