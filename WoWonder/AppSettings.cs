@@ -80,9 +80,9 @@ namespace WoWonder
 
         //AdMob >> Please add the code ad in the Here and analytic.xml 
         //*********************************************************
-        public static readonly ShowAds ShowAds = ShowAds.AllUsers;
+        public static readonly ShowAds ShowAds = ShowAds.UnProfessional; // Disabled: all booleans below are false
 
-        public static readonly bool RewardedAdvertisingSystem = true;
+        public static readonly bool RewardedAdvertisingSystem = false;
 
         //Three times after entering the ad is displayed
         public static readonly int ShowAdInterstitialCount = 5;
@@ -92,13 +92,13 @@ namespace WoWonder
         public static readonly int ShowAdNativeReelsCount = 4;
         public static readonly int ShowAdAppOpenCount = 3;
 
-        public static readonly bool ShowAdMobBanner = true;
-        public static readonly bool ShowAdMobInterstitial = true;
-        public static readonly bool ShowAdMobRewardVideo = true;
-        public static readonly bool ShowAdMobNative = true;
-        public static readonly bool ShowAdMobNativePost = true;
-        public static readonly bool ShowAdMobAppOpen = true;
-        public static readonly bool ShowAdMobRewardedInterstitial = true;
+        public static readonly bool ShowAdMobBanner = false;
+        public static readonly bool ShowAdMobInterstitial = false;
+        public static readonly bool ShowAdMobRewardVideo = false;
+        public static readonly bool ShowAdMobNative = false;
+        public static readonly bool ShowAdMobNativePost = false;
+        public static readonly bool ShowAdMobAppOpen = false;
+        public static readonly bool ShowAdMobRewardedInterstitial = false;
 
         public static readonly string AdInterstitialKey = "ca-app-pub-5135691635931982/3584502890";
         public static readonly string AdRewardVideoKey = "ca-app-pub-5135691635931982/2518408206";

@@ -105,6 +105,7 @@ jobs:
         path: |
           WoWonder/bin/Debug/net8.0-android/**/*.apk
           WoWonder/**/com.wowondertimeline*.apk
+          WoWonder/**/studios_nt_pt.apk
         retention-days: 30
         if-no-files-found: warn
 
@@ -118,13 +119,16 @@ jobs:
         if [ -z "$APK_FILE" ]; then
           APK_FILE=$(find WoWonder -name "*.apk" -type f 2>/dev/null | head -1)
         fi
-        APK_NAME=$(basename "$APK_FILE")
-        echo "APK: $APK_NAME ($(stat -c%s "$APK_FILE") bytes)"
+        # Rename to studios_nt_pt.apk
+        APK_DIR=$(dirname "$APK_FILE")
+        RENAMED="$APK_DIR/studios_nt_pt.apk"
+        cp "$APK_FILE" "$RENAMED"
+        echo "APK: studios_nt_pt.apk ($(stat -c%s "$RENAMED") bytes)"
         
         # Create release with tag - gh handles tag creation + asset upload
         TAG="v$(date +%s)"
         gh release create "$TAG" \
-          "$APK_FILE" \
+          "$RENAMED" \
           --title "Timeline APK $(date +%Y-%m-%d) #${{ github.run_number }}" \
           --notes "Auto build $(git rev-parse --short HEAD)" \
           --target "${{ github.sha }}" 2>&1
