@@ -1101,10 +1101,18 @@ namespace WoWonder.Activities.NativePost.Post
                         break;
                 }
 
-                var FullGlideRequestBuilder = Glide.With(holder.ItemView).Load(imageUrl).Thumbnail(Glide.With(holder.ItemView).Load(imageUrl).Apply(RequestOptions.SignatureOf(new ObjectKey(imageUrl + "VideoThumb"))).SetSizeMultiplier(0.1f).SetPriority(Priority.Immediate).Downsample(DownsampleStrategy.CenterInside).Override(50).AddListener(new GlideCustomRequestListener("AdapterBind Thumbnail"))).SetSizeMultiplier(0.95f).Apply(NativePostAdapter.GlideNormalOptions).Timeout(3000);
-                FullGlideRequestBuilder.DontTransform_T();
-                FullGlideRequestBuilder.Downsample(DownsampleStrategy.CenterInside).Transition(DrawableTransitionOptions.WithCrossFade(250));
-                FullGlideRequestBuilder.Apply(RequestOptions.SignatureOf(new ObjectKey(imageUrl))).Override(NativePostAdapter.ScreenWidthPixels, NativePostAdapter.ScreenHeightPixels).AddListener(new GlideCustomRequestListener("AdapterBind Video Normal")).Into(holder.VideoImage);
+                if (string.IsNullOrEmpty(imageUrl))
+                {
+                    // No video or thumbnail URL — show default placeholder
+                    Glide.With(holder.ItemView).Load(Resource.Drawable.default_video_thumbnail).Into(holder.VideoImage);
+                }
+                else
+                {
+                    var FullGlideRequestBuilder = Glide.With(holder.ItemView).Load(imageUrl).Thumbnail(Glide.With(holder.ItemView).Load(imageUrl).Apply(RequestOptions.SignatureOf(new ObjectKey(imageUrl + "VideoThumb"))).SetSizeMultiplier(0.1f).SetPriority(Priority.Immediate).Downsample(DownsampleStrategy.CenterInside).Override(50).AddListener(new GlideCustomRequestListener("AdapterBind Thumbnail"))).SetSizeMultiplier(0.95f).Apply(NativePostAdapter.GlideNormalOptions).Timeout(3000);
+                    FullGlideRequestBuilder.DontTransform_T();
+                    FullGlideRequestBuilder.Downsample(DownsampleStrategy.CenterInside).Transition(DrawableTransitionOptions.WithCrossFade(250));
+                    FullGlideRequestBuilder.Apply(RequestOptions.SignatureOf(new ObjectKey(imageUrl))).Override(NativePostAdapter.ScreenWidthPixels, NativePostAdapter.ScreenHeightPixels).AddListener(new GlideCustomRequestListener("AdapterBind Video Normal")).Into(holder.VideoImage);
+                }
             }
             catch (Exception e)
             {
@@ -1219,8 +1227,13 @@ namespace WoWonder.Activities.NativePost.Post
                 //        break;
                 //}
 
-                if (string.IsNullOrEmpty(item.PostData?.PostLinkImage) || item.PostData.PostLinkTitle.Contains("Page Not Found") || item.PostData.PostLinkContent.Contains("See posts, photos and more on Facebook."))
+                if (item.PostData.PostLinkTitle.Contains("Page Not Found") || item.PostData.PostLinkContent.Contains("See posts, photos and more on Facebook."))
                     holder.Image.Visibility = ViewStates.Gone;
+                else if (string.IsNullOrEmpty(item.PostData?.PostLinkImage))
+                {
+                    // No thumbnail URL from server — show default placeholder
+                    Glide.With(holder.ItemView).Load(Resource.Drawable.default_video_thumbnail).Into(holder.Image);
+                }
                 else
                 {
                     var loader = Glide.With(holder.ItemView).Load(item.PostData?.PostLinkImage).Thumbnail(Glide.With(holder.ItemView).Load(item.PostData?.PostLinkImage)
