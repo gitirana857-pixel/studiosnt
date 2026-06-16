@@ -85,7 +85,7 @@
 	<string name="Lbl_ReadMore">Ler mais</string>
 	<string name="Lbl_ReadLess">Ler menos</string>
 	<string name="Lbl_Description">Descrição</string>
-	<string name="Lbl_Lets_get_started">\"Vamos começar!\"</string>
+	<string name="Lbl_Lets_get_started">"Vamos começar!"</string>
 	<string name="Lbl_Published_on">Publicado em</string>
 	<string name="Lbl_I_agree_to_the">Eu concordo com os</string>
 	<string name="Lbl_Image_file_creation_failed">Falha ao criar arquivo de imagem</string>
@@ -100,7 +100,7 @@
 	<string name="Lbl_ConfirmPassword">Confirmar Senha</string>
 	<string name="Lbl_Forget_password">Esqueceu a senha</string>
 	<string name="Lbl_Forgot_your_password">Esqueceu sua senha</string>
-	<string name="Lbl_Forgot_your_password_DontWorry">\"Não se preocupe, digite seu e-mail aqui e nós o recuperaremos para você.\"</string>
+	<string name="Lbl_Forgot_your_password_DontWorry">"Não se preocupe, digite seu e-mail aqui e nós o recuperaremos para você."</string>
 	<string name="Lbl_Change_Password">Alterar Senha</string>
 	<string name="Lbl_Current_Password">Senha Atual</string>
 	<string name="Lbl_New_Password">Nova senha</string>
@@ -171,7 +171,7 @@
 	<string name="Lbl_Gif">Gif</string>
 	<string name="Lbl_File">Arquivo</string>
 	<string name="Lbl_Music">Música</string>
-	<string name="Lbl_Whats_Going_On">\"O que está acontecendo? #Hashtag.. @Menção.\"</string>
+	<string name="Lbl_Whats_Going_On">"O que está acontecendo? #Hashtag.. @Menção."</string>
 	<string name="Lbl_Gallery">Galeria</string>
 	<string name="Lbl_Friend">Marcar Amigos</string>
 	<string name="Lbl_PostLive">Ao vivo</string>
@@ -254,7 +254,7 @@
 
 	<!--Movies-->
 	<string name="Lbl_Empty_Movies">Vídeos Vazios</string>
-	<string name="Lbl_Start_Movies">\"Você não tem nenhum vídeo\"</string>
+	<string name="Lbl_Start_Movies">"Você não tem nenhum vídeo"</string>
 	<string name="Lbl_Stars">Estrelas</string>
 	<string name="Lbl_Tag">Tag</string>
 	<string name="Lbl_Delete_video">Excluir vídeo</string>
@@ -468,7 +468,7 @@
 	<string name="Lbl_Your_account_was_successfully_deleted">Sua conta foi excluída com sucesso</string>
 	<string name="Lbl_Closed_App">O aplicativo será fechado</string>
 	<string name="Lbl_You_can_not_Download_video">Você não pode baixar este tipo de vídeo</string>
-	<string name="Lbl_Permission_is_denied">\"Desculpe: Você não pode prosseguir com sua ação se não permitir\"</string>
+	<string name="Lbl_Permission_is_denied">"Desculpe: Você não pode prosseguir com sua ação se não permitir"</string>
 	<string name="Lbl_received_your_report">Obrigado, recebemos sua denúncia!</string>
 	<string name="Lbl_Image_changed_successfully">Imagem alterada com sucesso</string>
 	<string name="Lbl_Uploads_Image">Sua foto será atualizada em breve</string>
@@ -525,7 +525,7 @@
 	<string name="Lbl_ErrorRegister_7">E-mail já está em uso</string>
 	<string name="Lbl_ErrorRegister_8">E-mail inválido</string>
 	<string name="Lbl_ErrorRegister_9">A senha é muito curta</string>
-	<string name="Lbl_ErrorRegister_10">\"As senhas não conferem\"</string>
+	<string name="Lbl_ErrorRegister_10">"As senhas não conferem"</string>
 	<string name="Lbl_ErrorRegister_11">Erro ao enviar o e-mail de verificação, tente novamente mais tarde</string>
 	<!--===============================================================-->
 
@@ -544,7 +544,7 @@
 	<string name="Lbl_SetPositiveButton_Back">Descartar Postagem</string>
 	<string name="Lbl_SetNegativeButton_Back">Continuar Editando</string>
 	<string name="Lbl_Title_Location">Minha Posição</string>
-	<string name="Lbl_Snippet_Location">\"Esta é a posição do meu dispositivo\"</string>
+	<string name="Lbl_Snippet_Location">"Esta é a posição do meu dispositivo"</string>
 	<string name="Lbl_Title_DeletePost">Excluir Postagem</string>
 	<string name="Lbl_Content_DeletePost">Gostaria de excluir esta postagem</string>
 	<string name="Lbl_leave_comment">Deixe um comentário</string>
@@ -675,7 +675,7 @@
 	<string name="Lbl_NoUsers_DescriptionText">Bem-vindo, você é o primeiro usuário aqui!</string>
 
 	<string name="Lbl_NoFollow_TitleText">Nenhum Usuário Ainda</string>
-	<string name="Lbl_NoFollow_DescriptionText">\"Você não tem amigos para seguir\"</string>
+	<string name="Lbl_NoFollow_DescriptionText">"Você não tem amigos para seguir"</string>
 
 	<!-- V2.5 String translate -->
 	<string name="Lbl_Popular_Posts">Postagens Populares</string>
@@ -781,7 +781,7 @@
 	<string name="Lbl_NoComments">Nenhum Comentário a ser exibido</string>
 	<string name="Lbl_ActivationSent">E-mail de Ativação Enviado</string>
 	<string name="Lbl_ActivationDetails">
-		\"Enviamos um e-mail para @.&lt;br /&gt;Clique no link do e-mail para ativar sua conta\"
+		"Enviamos um e-mail para @.&lt;br /&gt;Clique no link do e-mail para ativar sua conta"
 	</string>
 	<string name="Lbl_FindYourGroups">Encontre seus Grupos</string>
 	<string name="Lbl_FindPopularPages">Encontre páginas populares</string>
@@ -901,7 +901,7 @@
 	<string name="Lbl_jobSuccessfullyEdited">vaga editada com sucesso</string>
 	<string name="Lbl_jobSuccessfullyAdded">vaga adicionada com sucesso</string>
 	<string name="Lbl_DescriptionOfAnswer">
-		Adicione tags para descrever mais sobre sua faixa adicionando um sinal de <b>\"&apos;,&apos;\"</b> no final de cada
+		Adicione tags para descrever mais sobre sua faixa adicionando um sinal de <b>"&apos;,&apos;"</b> no final de cada
 		<b>
 			<u>Resposta</u>
 		</b>
@@ -963,7 +963,7 @@
 	<string name="Lbl_Go_Pro">Seja Pro</string>
 
 	<string name="Lbl_TwoFactor">Autenticação de dois fatores</string>
-	<string name="Lbl_Describe_TwoFactor">\"Ative o login em 2 etapas para aumentar a segurança da sua conta. Depois de ativado, você usará sua senha e um código de segurança de 6 dígitos enviado para seu telefone ou e-mail para fazer login.\"</string>
+	<string name="Lbl_Describe_TwoFactor">"Ative o login em 2 etapas para aumentar a segurança da sua conta. Depois de ativado, você usará sua senha e um código de segurança de 6 dígitos enviado para seu telefone ou e-mail para fazer login."</string>
 	<string name="Lbl_ConfirmationEmail_TwoFactor">Enviamos um e-mail contendo o código de confirmação para ativar a autenticação de dois fatores.</string>
 	<string name="Lbl_ConfirmationEmailSent">Um e-mail de confirmação foi enviado.</string>
 	<string name="Lbl_ConfirmationCode">Código de confirmação</string>
@@ -1159,7 +1159,7 @@
 
 	<string name="Lbl_Memories">Memórias</string>
 	<string name="Lbl_NoMoreMemories">Nenhuma memória encontrada</string>
-	<string name="Lbl_Empty_Memories">\"Ops! Nenhuma memória\"</string>
+	<string name="Lbl_Empty_Memories">"Ops! Nenhuma memória"</string>
 	<string name="Lbl_Friendversaries">Aniversários de Amizade</string>
 
 	<string name="Lbl_Offers">Ofertas</string>
@@ -1286,7 +1286,7 @@
 	<string name="Lbl_CashFree">Cashfree</string>
 	<string name="Lbl_PaySera">Paysera</string>
 	<string name="Lbl_MoneySentSuccessfully">Dinheiro enviado com sucesso</string>
-	<string name="Lbl_CantDonate">\"Você não pode doar mais que\"</string>
+	<string name="Lbl_CantDonate">"Você não pode doar mais que"</string>
 	<string name="Lbl_HoldToRecord">segure para gravar, solte para enviar</string>
 	<string name="Lbl_Processing">Processando...</string>
 	<string name="Lbl_CreateArticle">Criar Artigo</string>
@@ -1358,9 +1358,9 @@
 	<string name="Lbl_StartedBroadcastingLive">começou a transmitir ao vivo</string>
 	<string name="Lbl_StreamHasEnded">a transmissão terminou.</string>
 	<string name="Lbl_LiveStreamer_alert_title">Pronto para parar a transmissão ao vivo?</string>
-	<string name="Lbl_LiveStreamer_alert_message">\"Toque em &apos;Sim&apos; para encerrar a transmissão ou &apos;Não&apos; para continuar\"</string>
+	<string name="Lbl_LiveStreamer_alert_message">"Toque em &apos;Sim&apos; para encerrar a transmissão ou &apos;Não&apos; para continuar"</string>
 	<string name="Lbl_LiveViewer_alert_title">Pronto para parar de assistir?</string>
-	<string name="Lbl_LiveViewer_alert_message">\"Toque em &apos;Sim&apos; para sair da transmissão ao vivo ou &apos;Não&apos; para continuar assistindo\"</string>
+	<string name="Lbl_LiveViewer_alert_message">"Toque em &apos;Sim&apos; para sair da transmissão ao vivo ou &apos;Não&apos; para continuar assistindo"</string>
 
 	<!--Weather-->
 	<string name="Lbl_NoTrending_TitleText">Nenhum em alta disponível</string>
@@ -1398,12 +1398,12 @@
 	<string name="Lbl_CoronaVirus_HeadText">Ajude a prevenir a propagação do coronavírus.</string>
 	<string name="Lbl_CoronaVirus_SubText">Veja as informações mais recentes da Organização Mundial da Saúde para ajudar a prevenir a propagação da covid-19.</string>
 
-	<string name="Lbl_NoPageManaged">\"Você não gerencia nenhuma página\"</string>
-	<string name="Lbl_NoGroupManaged">\"Você não tem nenhum grupo\"</string>
+	<string name="Lbl_NoPageManaged">"Você não gerencia nenhuma página"</string>
+	<string name="Lbl_NoGroupManaged">"Você não tem nenhum grupo"</string>
 
 	<string name="login_description">Digite seu e-mail ou faça login com contas sociais</string>
 	<string name="no_account">
-		\"Não tem uma conta?\"  <font color='#A52729'>Cadastre-se</font>
+		"Não tem uma conta?"  <font color='#A52729'>Cadastre-se</font>
 	</string>
 	<string name="field_required">Este campo é obrigatório</string>
 	<string name="register_description">Digite seu e-mail ou cadastre-se com contas sociais</string>
@@ -1634,7 +1634,7 @@
 
 	<!-- V4.5 String translate -->
 	<!--===============================================================-->
-	<string name="Lbl_Iam">\"Eu sou...\"</string>
+	<string name="Lbl_Iam">"Eu sou..."</string>
 	<string name="Lbl_WhatAboutYou">E você?</string>
 	<string name="Lbl_Star">STAR</string>
 	<string name="Lbl_Ultima">ULTIMA</string>
@@ -1657,7 +1657,7 @@
 	<!-- V4.7 String translate -->
 	<!--===============================================================-->
 	<string name="Lbl_ReportLive_Title">Selecione um problema</string>
-	<string name="Lbl_ReportLive_desc">\"Se alguém estiver em perigo iminente, obtenha ajuda antes de denunciar. Não espere.\"</string>
+	<string name="Lbl_ReportLive_desc">"Se alguém estiver em perigo iminente, obtenha ajuda antes de denunciar. Não espere."</string>
 	<string name="Lbl_Nudity">Nudez</string>
 	<string name="Lbl_Violence">Violência</string>
 	<string name="Lbl_Harassment">Assédio</string>
@@ -1679,7 +1679,7 @@
 	<string name="Lbl_SearchTrendingStickers">Pesquisar Figurinhas em Alta</string>
 	<string name="Lbl_MyStickers">Minhas Figurinhas</string>
 	<string name="Lbl_AllStickers">Todas as Figurinhas</string>
-	<string name="Lbl_VideoUploadWithProcessed">\"Seu vídeo está sendo processado. Avise quando estiver pronto para visualizar.\"</string>
+	<string name="Lbl_VideoUploadWithProcessed">"Seu vídeo está sendo processado. Avise quando estiver pronto para visualizar."</string>
 	<string name="Lbl_SendStickerFile">Figurinha</string>
 
 	<!-- V5.1 String translate -->
@@ -1736,7 +1736,7 @@
 	<string name="Lbl_GooglePay">Google Pay</string>
 	<string name="Lbl_YooMoney">YooMoney</string>
 	<string name="Lbl_FlutterWave">FlutterWave</string>
-	<string name="Lbl_ErrorConnectionPayment">\"Não está disponível no momento, tente novamente mais tarde\"</string>
+	<string name="Lbl_ErrorConnectionPayment">"Não está disponível no momento, tente novamente mais tarde"</string>
 	<string name="Lbl_SuccessfullyUpgraded">Atualizado com Sucesso</string>
 	<string name="Lbl_Purchase">Compra</string>
 	<string name="Lbl_PleaseAddPhoneNumberCorrectly">Adicione o número de telefone corretamente</string>
@@ -1775,7 +1775,7 @@
 	<string name="Lbl_ErrorBackward">Não é possível retroceder 10 segundos</string>
 	<string name="Lbl_ScanQRCode_text">Deixe alguém escanear seu QR Code para adicionar você como amigo</string>
 
-	<string name="Lbl_TextBlockedUser_BoxOpenProfile">\"Você não pode abrir o perfil deste usuário porque você bloqueou esta conta\"</string>
+	<string name="Lbl_TextBlockedUser_BoxOpenProfile">"Você não pode abrir o perfil deste usuário porque você bloqueou esta conta"</string>
 
 	<!-- V5.6 String translate -->
 	<!--===============================================================-->
