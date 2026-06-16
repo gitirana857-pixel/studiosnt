@@ -108,12 +108,14 @@
 				android:layout_gravity="center_horizontal"
 				android:paddingStart="4dp"
 				android:paddingEnd="4dp"
-				android:textSize="14sp"
+				android:textSize="11sp"
 				android:drawableTint="?attr/colorReact"
-				android:drawablePadding="8dp"
+				android:drawablePadding="4dp"
 				android:drawableStart="@drawable/icon_post_share_vector"
 				android:textColor="?attr/colorReact"
-				android:text="@string/Lbl_Share"/>
+				android:text="@string/Lbl_Share"
+				android:ellipsize="none"
+				android:singleLine="true"/>
 		</LinearLayout>
 	</LinearLayout>
 	<View
