@@ -132,6 +132,22 @@ namespace WoWonder
             {
                 switch (AppSettings.AppMode)
                 {
+                    case AppMode.Default:
+                        //Enable all features (Facebook mode)
+                        AppSettings.ShowPokes = true;
+                        AppSettings.ShowMovies = true;
+                        AppSettings.ShowMemories = true;
+                        AppSettings.ShowStory = true;
+                        AppSettings.ShowGames = true;
+                        AppSettings.ShowCommonThings = true;
+                        AppSettings.ShowMarket = true;
+                        AppSettings.ShowArticles = true;
+                        AppSettings.ShowFundings = true;
+                        AppSettings.ShowCommunitiesPages = true;
+                        AppSettings.ShowEvents = true;
+                        AppSettings.ShowJobs = true;
+                        AppSettings.ShowCommunitiesGroups = true;
+                        break;
                     //case AppMode.Instagram:
                     //    //disable
                     //    AppSettings.ShowPokes = false;
