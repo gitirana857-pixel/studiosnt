@@ -56,6 +56,7 @@ namespace WoWonder
         {
             {"en", "English"},
             {"ar", "Arabic"},
+            {"pt", "Português (Brasil)"},
         };
 
         //Error Report Mode

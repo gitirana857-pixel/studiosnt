@@ -1,0 +1,1822 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!--Notes :-->
+	<!-- - If the text is marked ' Please replace with the symbol &apos; and add at the beginning and end of the sentence "
+        Example: Let's get started! >> "Let&apos;s get started!"  -->
+	<!-- - If the text is marked & Please replace with the symbol &amp; 
+        Example. Movies & Animation >> Movies &amp; Animation   -->
+
+	<!--Range seeker-->
+	<string name="demo_min_label">Mín</string>
+	<string name="demo_max_label">Máx</string>
+	<!--===============================================================-->
+
+	<!--EXO PLAYER NOT FOR TRANCALCTE-->
+	<string name="selection_disabled">Desativado</string>
+	<string name="selection_default">Padrão</string>
+	<string name="unexpected_intent_action">Ação de intent inesperada: </string>
+	<string name="enable_random_adaptation">Ativar adaptação aleatória</string>
+	<string name="error_drm_not_supported">Conteúdo protegido não é compatível com APIs abaixo da versão 18</string>
+	<string name="error_drm_unsupported_scheme">Este dispositivo não suporta o esquema DRM necessário</string>
+	<string name="error_drm_unknown">Ocorreu um erro DRM desconhecido</string>
+	<string name="error_no_decoder">Este dispositivo não fornece um decodificador para </string>
+	<string name="error_no_secure_decoder">Este dispositivo não fornece um decodificador seguro para </string>
+	<string name="error_querying_decoders">Não foi possível consultar os decodificadores do dispositivo</string>
+	<string name="error_instantiating_decoder">Não foi possível instanciar o decodificador </string>
+	<string name="error_unsupported_video">A mídia inclui faixas de vídeo, mas nenhuma é reproduzível neste dispositivo</string>
+	<string name="error_unsupported_audio">A mídia inclui faixas de áudio, mas nenhuma é reproduzível neste dispositivo</string>
+	<string name="storage_permission_denied">Permissão para acessar o armazenamento foi negada</string>
+	<string name="sample_list_load_error">Uma ou mais listas de amostras falharam ao carregar</string>
+	<string name="ima_not_loaded">Reproduzindo amostra sem anúncios, pois a extensão IMA não foi carregada</string>
+	<string name="Lbl_Download_faileds">Falha no download.</string>
+	<!--===============================================================-->
+
+	<!--most used-->
+	<string name="video">Vídeo</string>
+	<string name="audio">Áudio</string>
+	<string name="image">Imagem</string>
+	<string name="text">Texto</string>
+	<string name="retry">Tentar novamente</string>
+	<string name="Terms_of_service">Termos de serviço</string>
+	<string name="Privacy_Policy">Política de Privacidade</string>
+	<string name="Lbl_Username">Nome de usuário</string>
+	<string name="Lbl_Email">E-mail</string>
+	<string name="Lbl_Password">Senha</string>
+	<string name="Lbl_Login">Entrar</string>
+	<string name="Lbl_Register">Cadastrar</string>
+	<string name="Lbl_Empty">Vazio</string>
+	<string name="Lbl_Loading">Carregando</string>
+	<string name="Lbl_Comment">Comentar</string>
+	<string name="Lbl_Videos">Vídeos</string>
+	<string name="Lbl_Views">Visualizações</string>
+	<string name="Lbl_aboutMe">Sobre mim</string>
+	<string name="Lbl_About">Sobre</string>
+	<string name="Lbl_Error">Erro</string>
+	<string name="Lbl_Ok">OK</string>
+	<string name="Lbl_Security">Segurança</string>
+	<string name="Lbl_Deleted">Excluído</string>
+	<string name="Lbl_Delete">Excluir</string>
+	<string name="Lbl_Submit">Enviar</string>
+	<string name="Lbl_Cancel">Cancelar</string>
+	<string name="Lbl_Yes">Sim</string>
+	<string name="Lbl_No">Não</string>
+	<string name="Lbl_Warning">Aviso</string>
+	<string name="Lbl_Changed">Alterado</string>
+	<string name="Lbl_Crop">Cortar</string>
+	<string name="Lbl_Report">Denunciar</string>
+	<string name="Lbl_Quality">Qualidade</string>
+	<string name="Lbl_Help_feedback">Ajuda &amp; Feedback</string>
+	<string name="Lbl_Make_video_offline">Tornar vídeo offline</string>
+	<string name="Lbl_Share">Compartilhar</string>
+	<string name="Lbl_InviteSMSText_1">Olá, vamos nos encontrar no</string>
+	<string name="Lbl_InviteSMSText_2">para seu smartphone</string>
+	<string name="Lbl_Success">Sucesso</string>
+	<string name="Lbl_Offline_Mode">Modo Offline</string>
+	<string name="Lbl_Cover">Capa</string>
+	<string name="Lbl_Avatar">Avatar</string>
+	<string name="Lbl_Close">Fechar</string>
+	<string name="Lbl_With">Com</string>
+	<string name="Lbl_At">Em</string>
+	<string name="Lbl_SelectPictures">Selecionar Imagens</string>
+	<string name="Lbl_SelectImage">Selecionar Imagem</string>
+	<string name="Lbl_SelectFile">Selecionar Arquivo</string>
+	<string name="Lbl_SelectGif">Selecionar Gif</string>
+	<string name="Lbl_Unknown">Desconhecido</string>
+	<string name="Lbl_ReadMore">Ler mais</string>
+	<string name="Lbl_ReadLess">Ler menos</string>
+	<string name="Lbl_Description">Descrição</string>
+	<string name="Lbl_Lets_get_started">\"Vamos começar!\"</string>
+	<string name="Lbl_Published_on">Publicado em</string>
+	<string name="Lbl_I_agree_to_the">Eu concordo com os</string>
+	<string name="Lbl_Image_file_creation_failed">Falha ao criar arquivo de imagem</string>
+	<string name="Lbl_Please_write_your_email">Por favor, escreva seu e-mail</string>
+	<string name="Lbl_Last_seen">Visto por último</string>
+	<string name="Lbl_Create_Account">Criar Conta</string>
+	<string name="Lbl_SignUp">Cadastrar</string>
+	<string name="Lbl_SignIn">Entrar</string>
+	<!--===============================================================-->
+
+	<!-- Password-->
+	<string name="Lbl_ConfirmPassword">Confirmar Senha</string>
+	<string name="Lbl_Forget_password">Esqueceu a senha</string>
+	<string name="Lbl_Forgot_your_password">Esqueceu sua senha</string>
+	<string name="Lbl_Forgot_your_password_DontWorry">\"Não se preocupe, digite seu e-mail aqui e nós o recuperaremos para você.\"</string>
+	<string name="Lbl_Change_Password">Alterar Senha</string>
+	<string name="Lbl_Current_Password">Senha Atual</string>
+	<string name="Lbl_New_Password">Nova senha</string>
+	<string name="Lbl_Repeat_password">Repetir senha</string>
+	<string name="Lbl_Your_password_dont_match">Sua senha não corresponde</string>
+	<string name="Lbl_Enter_Password">Digite sua senha aqui</string>
+	<string name="Lbl_Change_your_password">Alterar sua senha</string>
+	<string name="Lbl_If_you_forgot_your_password">
+		Se você esqueceu sua senha, pode redefini-la <font color='#A52729'>aqui.</font>
+	</string>
+	<!--===============================================================-->
+
+	<!--Profile-->
+	<string name="Lbl_DefaultAbout">Olá, estou usando</string>
+	<string name="Lbl_CopeLinkToProfile">Copiar Link para o Perfil</string>
+	<string name="Lbl_Followers">Seguidores</string>
+	<string name="Lbl_Following">Seguindo</string>
+	<string name="Lbl_Follow">Seguir</string>
+	<string name="Lbl_Friends">Amigos</string>
+	<string name="Lbl_Requested">Solicitado</string>
+	<string name="Lbl_AddFriends">Adicionar Amigos</string>
+	<string name="Lbl_People_Following">Pessoas Seguindo</string>
+	<string name="Lbl_People_Followers">Pessoas Seguidores</string>
+	<string name="Lbl_Update_DataProfile">Atualizar Meu Perfil</string>
+	<string name="Lbl_First_Name">Nome</string>
+	<string name="Lbl_Last_Name">Sobrenome</string>
+	<string name="Lbl_Mobile">Celular</string>
+	<string name="Lbl_website">Site</string>
+	<string name="Lbl_Work_Place">Local de Trabalho</string>
+	<string name="Lbl_School">Escola</string>
+	<string name="Lbl_Photos">Fotos</string>
+	<string name="Lbl_View_All_Liked_Pages">Ver Páginas Curtidas pelo Usuário</string>
+	<string name="Lbl_Birthday">Aniversário</string>
+	<!--===============================================================-->
+
+	<!--Social Links-->
+	<string name="Lbl_Facebook">Facebook</string>
+	<string name="Lbl_Twitter">Twitter</string>
+	<string name="Lbl_GooglePlus">Google</string>
+	<string name="Lbl_Vk">Vkontakte</string>
+	<string name="Lbl_Linkedin">Linkedin</string>
+	<string name="Lbl_Instagram">Instagram</string>
+	<string name="Lbl_YouTube">YouTube</string>
+	<!--===============================================================-->
+
+	<!--WalkTroutPage-->
+	<string name="Lbl_Title_page1">Defina sua Localização</string>
+	<string name="Lbl_Description_page1">Defina sua localização para que possamos mostrar onde estão as pessoas interessantes mais próximas. Descubra amigos por perto.</string>
+	<string name="Lbl_Title_page2">Criar Grupos</string>
+	<string name="Lbl_Description_page2">Está entediado? Crie um novo grupo, adicione seus amigos e contatos e compartilhe todas as suas postagens de um só lugar.</string>
+	<string name="Lbl_Title_page3">Publicar Arquivos Multimídia</string>
+	<string name="Lbl_Description_page3">Publique todos os tipos de imagens &amp; figurinhas &amp; vídeos &amp; documentos em seu feed de notícias.</string>
+	<string name="Lbl_Title_page4">Acesso à Gravação</string>
+	<string name="Lbl_Description_page4">Conceda-nos permissão para permitir que seu aplicativo deixe notas de voz e músicas gravadas nos comentários do seu feed de notícias.</string>
+	<!--===============================================================-->
+
+	<!-- Add Post-->
+	<string name="Lbl_AddPost">Adicionar Postagem</string>
+	<string name="Lbl_Post">Publicar</string>
+	<string name="Lbl_AddToPost">Adicionar à Postagem</string>
+	<string name="Lbl_ImageGallery">Galeria de Imagens</string>
+	<string name="Lbl_VideoGallery">Galeria de Vídeos</string>
+	<string name="Lbl_MentionContact">Mencionar Contato</string>
+	<string name="Lbl_Location">Localização</string>
+	<string name="Lbl_Place">Local</string>
+	<string name="Lbl_Feeling">Sentimento</string>
+	<string name="Lbl_Camera">Câmera</string>
+	<string name="Lbl_Gif">Gif</string>
+	<string name="Lbl_File">Arquivo</string>
+	<string name="Lbl_Music">Música</string>
+	<string name="Lbl_Whats_Going_On">\"O que está acontecendo? #Hashtag.. @Menção.\"</string>
+	<string name="Lbl_Gallery">Galeria</string>
+	<string name="Lbl_Friend">Marcar Amigos</string>
+	<string name="Lbl_PostLive">Ao vivo</string>
+	<!--===============================================================-->
+
+	<!--Type Activity-->
+	<string name="Lbl_ListeningTo">Ouvindo</string>
+	<string name="Lbl_Listening">Ouvindo</string>
+	<string name="Lbl_Playing">Jogando</string>
+	<string name="Lbl_Watching">Assistindo</string>
+	<string name="Lbl_Traveling">Viajando</string>
+	<!--===============================================================-->
+
+	<!--Feelings-->
+	<string name="Lbl_Sad">Triste</string>
+	<string name="Lbl_Angry">Bravo</string>
+	<string name="Lbl_Funny">Engraçado</string>
+	<string name="Lbl_Loved">Apaixonado</string>
+	<string name="Lbl_Cool">Legal</string>
+	<string name="Lbl_Happy">Feliz</string>
+	<string name="Lbl_Tired">Cansado</string>
+	<string name="Lbl_Sleepy">Com sono</string>
+	<string name="Lbl_Expressionless">Sem expressão</string>
+	<string name="Lbl_Confused">Confuso</string>
+	<string name="Lbl_Shocked">Chocado</string>
+	<string name="Lbl_VerySad">Muito triste</string>
+	<string name="Lbl_Blessed">Abençoado</string>
+	<string name="Lbl_Bored">Entediado</string>
+	<string name="Lbl_Broken">Destroçado</string>
+	<string name="Lbl_Lovely">Encantador</string>
+	<string name="Lbl_Hot">Sexy</string>
+	<!--===============================================================-->
+
+	<!--Location-->
+	<string name="Lbl_Finding_your_Location">Encontrando sua Localização…</string>
+	<string name="Lbl_SearchForPlace">Pesquisar local</string>
+	<string name="Lbl_EventPlace">Local do evento</string>
+	<!--===============================================================-->
+
+	<!--Mentions-->
+	<string name="Lbl_MentionsFriend">Mencionar amigo</string>
+	<!--===============================================================-->
+
+	<!--User contacts-->
+	<string name="Lbl_Empty_usercontacts">Não há contatos</string>
+	<string name="Lbl_Start_usercontacts">Comece a adicionar novos contatos!</string>
+	<!--===============================================================-->
+
+	<!--Albums-->
+	<string name="Lbl_MyImages">Minhas Imagens</string>
+	<string name="Lbl_YourImages">Imagens do Usuário</string>
+	<string name="Lbl_Empty_Albums">Nenhuma Foto!!</string>
+	<string name="Lbl_Start_Albums">Comece a enviar suas próprias fotos</string>
+	<!--===============================================================-->
+
+	<!--Blocked Users-->
+	<string name="Lbl_Empty_BlockedUser">Nenhum Usuário Bloqueado</string>
+	<string name="Lbl_BlockedUsers">Usuários Bloqueados</string>
+	<string name="Lbl_Blocked_successfully">bloqueado com sucesso</string>
+	<string name="Lbl_Unblock_successfully">Desbloqueado com sucesso</string>
+	<!--===============================================================-->
+
+	<!--Story-->
+	<string name="Lbl_Addnewstory">Adicionar novo story</string>
+	<string name="Lbl_Stories">Stories</string>
+	<string name="Lbl_Story">Story</string>
+	<!--===============================================================-->
+
+	<!--Edit post-->
+	<string name="Lbl_EditPost">Editar postagem</string>
+	<string name="Lbl_PostPrivacy">Privacidade da Postagem</string>
+	<!--===============================================================-->
+
+	<!--Post Data-->
+	<string name="Lbl_PostLikes">Curtidas na Postagem</string>
+	<string name="Lbl_PostWonders">Wonder na Postagem</string>
+	<string name="Lbl_Empty_PostLikes">Nenhuma curtida ainda</string>
+	<string name="Lbl_Empty_PostWonders">Nenhum wonder ainda</string>
+	<!--===============================================================-->
+
+	<!--Movies-->
+	<string name="Lbl_Empty_Movies">Vídeos Vazios</string>
+	<string name="Lbl_Start_Movies">\"Você não tem nenhum vídeo\"</string>
+	<string name="Lbl_Stars">Estrelas</string>
+	<string name="Lbl_Tag">Tag</string>
+	<string name="Lbl_Delete_video">Excluir vídeo</string>
+	<string name="Lbl_Min">Min</string>
+	<!--===============================================================-->
+
+	<!--Events-->
+	<string name="Lbl_Create_Events">Criar Evento</string>
+	<string name="Lbl_Empty_Events">Nenhum evento</string>
+	<string name="Lbl_Start_Events">Não há eventos para visualizar</string>
+	<string name="Lbl_GoingPeople">Pessoas que vão</string>
+	<string name="Lbl_InterestedPeople">Pessoas interessadas</string>
+	<string name="Lbl_Going">Vou</string>
+	<string name="Lbl_Go">Ir</string>
+	<string name="Lbl_Interested">Interessado</string>
+	<string name="Lbl_Start_Date">Data de Início</string>
+	<string name="Lbl_End_Date">Data de Término</string>
+	<string name="Lbl_Event_Name">Nome do Evento</string>
+	<string name="Lbl_ViewEvent">Ver Evento</string>
+	<!--===============================================================-->
+
+	<!--Pages-->
+	<string name="Lbl_ExplorePage">Explorar Páginas</string>
+	<string name="Lbl_Create_New_Page">Criar Nova Página</string>
+	<string name="Lbl_New_Page">Nova página</string>
+	<string name="Lbl_Empty_LikedPages">Nenhuma Página Curtida</string>
+	<string name="Lbl_Start_LikedPages">Comece a visualizar ou criar sua própria página</string>
+	<string name="Lbl_Update_Data_Page">Atualizar Dados da Página</string>
+	<string name="Lbl_Describe_Page">Descreva Sua Página</string>
+	<string name="Lbl_Describe_Description_Page">Diga aos membros em potencial sobre o que é sua página para ajudá-los a saber se é relevante para eles.</string>
+	<string name="Lbl_Page_title">Título da Página</string>
+	<string name="Lbl_Page_URL">URL da Página</string>
+	<string name="Lbl_Page_About">Sobre a Página</string>
+	<string name="Lbl_Manage_Pages">Gerenciar Páginas</string>
+	<string name="Lbl_Your_Pages">Suas Páginas</string>
+	<string name="Lbl_Liked_Pages">Páginas Curtidas</string>
+	<!--===============================================================-->
+
+	<!--Group-->
+	<string name="Lbl_ExploreGroup">Explorar Grupos</string>
+	<string name="Lbl_New_Group">Novo Grupo</string>
+	<string name="Lbl_Create_New_Group">Criar Novo Grupo</string>
+	<string name="Lbl_Empty_JoinedGroup">Nenhum Grupo Ingressado Ainda</string>
+	<string name="Lbl_Start_JoinedGroup">Ingresse ou Crie Seu Próprio Grupo</string>
+	<string name="Lbl_Update_DataGroup">Atualizar Dados do Grupo</string>
+	<string name="Lbl_Describe_Group">Descreva Seu Grupo</string>
+	<string name="Lbl_Describe_Description_Group">Diga aos membros em potencial sobre o que é seu grupo para ajudá-los a saber se é relevante para eles.</string>
+	<string name="Lbl_Group_title">Título do Grupo</string>
+	<string name="Lbl_Group_URL">URL do Grupo</string>
+	<string name="Lbl_Group_About">Sobre o Grupo</string>
+	<string name="Lbl_Update_Data_Group">Atualizar Dados do Grupo</string>
+	<string name="Lbl_Manage_Groups">Seus Grupos</string>
+	<string name="Lbl_Joined_Groups">Grupos Ingressados</string>
+	<!--===============================================================-->
+
+	<!--Notification-->
+	<string name="Lbl_Empty_notifications">Nenhuma notificação ainda</string>
+	<!--===============================================================-->
+
+	<!--Search-->
+	<string name="Lbl_Empty_search">Nenhum Resultado Encontrado</string>
+	<string name="Lbl_Start_search">Inicie uma pesquisa com uma nova palavra</string>
+	<!--===============================================================-->
+
+	<!--Search Filter-->
+	<string name="Lbl_Search_Filter">Filtro de Pesquisa</string>
+	<string name="Lbl_All">Todos</string>
+	<string name="Lbl_Gender">Gênero</string>
+	<string name="Lbl_Profile_Picture">Foto de Perfil</string>
+	<!--===============================================================-->
+
+	<!--Market-->
+	<string name="Lbl_Empty_Market">Nenhum Produto</string>
+	<string name="Lbl_Start_Market">Comece a adicionar seu próprio produto</string>
+	<string name="Lbl_CreateNewProduct">Criar Novo Produto</string>
+	<string name="Lbl_NewProduct">Novo Produto</string>
+	<string name="Lbl_Describe_Product">Vender novo produto</string>
+	<string name="Lbl_Describe_Description_Product">Você pode listar produtos à venda na ferramenta Adicionar um Produto.</string>
+	<string name="Lbl_Product_name">Nome do Produto</string>
+	<string name="Lbl_Product_price">Preço do Produto</string>
+	<string name="Lbl_Product_Location">Localização do Produto</string>
+	<string name="Lbl_Product_description">Descrição do Produto</string>
+	<string name="Lbl_In_Stock">Em Estoque</string>
+	<!--===============================================================-->
+
+	<!--Article-->
+	<string name="Lbl_ExploreArticle">Explorar Artigos</string>
+	<string name="Lbl_Empty_Article">Nenhum artigo</string>
+	<string name="Lbl_Start_Article">Não há artigos disponíveis</string>
+	<!--===============================================================-->
+
+	<!--News-->
+	<string name="Lbl_Empty_News">Modo Offline</string>
+	<string name="Lbl_Start_News">Página Não Encontrada</string>
+	<!--===============================================================-->
+
+	<!--Friend Request-->
+	<string name="Lbl_FriendRequest">Solicitações de Amizade</string>
+	<string name="Lbl_Empty_FriendRequest">Você não tem nenhuma solicitação</string>
+	<string name="Lbl_View_All_FriendRequest">Ver todas as solicitações de amizade</string>
+	<!--===============================================================-->
+
+	<!--Trending-->
+	<string name="Lbl_Pro_Users">Usuários Pro</string>
+	<string name="Lbl_Pro_Pages">Páginas Pro</string>
+	<!--===============================================================-->
+
+	<!--Last Activities-->
+	<string name="Lbl_LastActivities">Últimas Atividades</string>
+	<string name="Lbl_CommentedOn">comentou em</string>
+	<string name="Lbl_ReactedTo">reagiu a</string>
+	<string name="Lbl_StartedFollowing">começou a seguir</string>
+	<string name="Lbl_BecomeFriendsWith">tornou-se amigo de</string>
+	<string name="Lbl_IsFollowing">está seguindo</string>
+	<string name="Lbl_wondered">wonder</string>
+	<string name="Lbl_disliked">não curtiu</string>
+	<string name="Lbl_shared">compartilhou</string>
+	<!--===============================================================-->
+
+	<!--Time-->
+	<string name="Lbl_hours">Horas atrás</string>
+	<string name="Lbl_days">Dias atrás</string>
+	<string name="Lbl_month">Mês atrás</string>
+	<string name="Lbl_minutes">Minutos atrás</string>
+	<string name="Lbl_seconds">Segundos atrás</string>
+	<string name="Lbl_year">Ano atrás</string>
+
+	<string name="Lbl_about_minute">Cerca de um minuto atrás</string>
+	<string name="Lbl_about_hour">Cerca de uma hora atrás</string>
+	<string name="Lbl_yesterday">Ontem</string>
+	<string name="Lbl_about_month">Cerca de um mês atrás</string>
+	<string name="Lbl_about_year">Cerca de um ano atrás</string>
+	<!--===============================================================-->
+
+	<!--NearBy-->
+	<string name="Lbl_NearBy">Por perto</string>
+	<string name="Lbl_Start_NearBy">Ops, parece que ninguém está perto de você</string>
+	<string name="Lbl_turn_your_GPS">Ative seu GPS para melhores resultados</string>
+	<string name="Lbl_distance_away">a uma distância</string>
+	<string name="Lbl_km">km</string>
+	<!--===============================================================-->
+
+	<!--Add Post-->
+	<string name="Lbl_YouCannot_PostanEmptyPost">Você não pode publicar uma postagem vazia</string>
+	<!--===============================================================-->
+
+	<!--Categories-->
+	<string name="Lbl_Category">Categoria</string>
+	<string name="Lbl_SelectCategories">Selecione uma categoria</string>
+
+	<!--===============================================================-->
+
+	<!--Button-->
+	<string name="Btn_Send">Enviar</string>
+	<string name="Btn_DeleteAccount">Excluir Conta</string>
+	<string name="Btn_UnBlock">Desbloquear</string>
+	<string name="Btn_SearchRandom">Pesquisa Aleatória</string>
+	<string name="Btn_reloadPage">Recarregar Página</string>
+	<string name="Btn_Skip">Pular</string>
+	<string name="Btn_Unlike">Não curtir</string>
+	<string name="Btn_Like">Curtir</string>
+	<string name="Btn_Liked">Curtiu</string>
+	<string name="Btn_Dislike">Não gostei</string>
+	<string name="Btn_Likes">Curtidas</string>
+	<string name="Btn_Contact">Contato</string>
+	<string name="Btn_Create_Events">Criar seu próprio evento</string>
+	<string name="Btn_AddProduct">Adicionar Produto</string>
+	<string name="Btn_Joined">Ingressou</string>
+	<string name="Btn_Join_Group">Ingressar no Grupo</string>
+	<!--===============================================================-->
+
+	<!--menu-->
+	<string name="Lbl_Add">Adicionar</string>
+	<string name="Lbl_Create">Criar</string>
+	<string name="Lbl_Update">Atualizar</string>
+	<string name="Lbl_Block">Bloquear</string>
+	<string name="Lbl_Edit">Editar</string>
+	<string name="Lbl_Save">Salvar</string>
+	<string name="Lbl_Invite_Friends">Convidar Amigos</string>
+	<string name="Lbl_Refresh">Atualizar</string>
+	<string name="Lbl_Blocked_User_List">Lista de Usuários Bloqueados</string>
+	<string name="Lbl_Settings">Configurações</string>
+	<string name="Lbl_CopeLink">Copiar Link</string>
+	<string name="Lbl_ViewPrivacy">Ver Atalhos de Privacidade</string>
+	<string name="Lbl_SettingsAccount">Configurações da Conta</string>
+	<!--===============================================================-->
+
+	<!--RadioButton-->
+	<string name="Radio_Male">Masculino</string>
+	<string name="Radio_Female">Feminino</string>
+	<string name="Radio_Public">Público</string>
+	<string name="Radio_Private">Privado</string>
+	<string name="Radio_New">Novo</string>
+	<string name="Radio_Used">Usado</string>
+	<!--===============================================================-->
+
+	<!--Toast && Messages-->
+	<string name="Lbl_CheckYourInternetConnection">Verifique sua conexão com a internet</string>
+	<string name="Lbl_You_can_not_access_your_disapproval">Você não pode acessar sua discordância dos Termos e Condições</string>
+	<string name="Lbl_Sent_successfully">Enviado com sucesso.</string>
+	<string name="Lbl_Sent_successfully_followed">Você seguiu o usuário com sucesso.</string>
+	<string name="Lbl_Sent_successfully_FriendRequest">A solicitação de amizade foi enviada com sucesso.</string>
+	<string name="Lbl_Sent_successfully_Unfollowed">O usuário foi deixado de seguir.</string>
+	<string name="Lbl_Sent_successfully_FriendRequestCancelled">A solicitação de amizade foi cancelada.</string>
+	<string name="Lbl_Copied">Copiado</string>
+	<string name="Lbl_VerificationFailed">Falha na verificação</string>
+	<string name="Lbl_something_went_wrong">Verifique suas credenciais, algo deu errado</string>
+	<string name="Lbl_Error_Login">Login incorreto, erro no Nome de Usuário ou Senha</string>
+	<string name="Lbl_Error_Register_password">Cadastro incorreto, erro na Senha</string>
+	<string name="Lbl_The_name_can_not_be_blank">O nome não pode estar em branco</string>
+	<string name="Lbl_Your_account_was_successfully_deleted">Sua conta foi excluída com sucesso</string>
+	<string name="Lbl_Closed_App">O aplicativo será fechado</string>
+	<string name="Lbl_You_can_not_Download_video">Você não pode baixar este tipo de vídeo</string>
+	<string name="Lbl_Permission_is_denied">\"Desculpe: Você não pode prosseguir com sua ação se não permitir\"</string>
+	<string name="Lbl_received_your_report">Obrigado, recebemos sua denúncia!</string>
+	<string name="Lbl_Image_changed_successfully">Imagem alterada com sucesso</string>
+	<string name="Lbl_Uploads_Image">Sua foto será atualizada em breve</string>
+	<string name="Lbl_Post_Added">Postagem Adicionada</string>
+	<string name="Lbl_Post_Failed">Falha na Postagem</string>
+	<string name="Lbl_Google_Not_Available">O Google Play Services não está disponível.</string>
+	<string name="Lbl_Google_Exception">Exceção do Google Play Services.</string>
+	<string name="Lbl_Camera_Not_Available">Câmera não disponível.</string>
+	<string name="Lbl_Failed_to_load">Falha ao carregar</string>
+	<string name="Lbl_NotEnoughPermission">Permissão Insuficiente</string>
+	<string name="Lbl_YourGroupWasUpdated">Seu grupo foi atualizado</string>
+	<string name="Lbl_YourPageWasUpdated">Sua página foi atualizada</string>
+	<string name="Lbl_Email_Has_Been_Send">E-mail foi enviado</string>
+	<string name="Lbl_Application_Restart">O aplicativo será reiniciado</string>
+	<string name="Lbl_ImageSaved">Imagem salva na galeria</string>
+	<string name="Lbl_Null_Data_User">Dados de usuário nulos</string>
+	<string name="Lbl_Loading_From_Server">Carregando do servidor</string>
+	<string name="Lbl_You_will_be_logged">Você será desconectado agora, até logo</string>
+	<string name="Lbl_No_have_more_users">Não há mais usuários</string>
+	<!--===============================================================-->
+
+	<!--Error-->
+	<string name="Lbl_Error_Code">Código de Erro</string>
+	<string name="Lbl_Please_check_your_details">Erro, por favor verifique seus dados</string>
+	<string name="Lbl_Please_enter_your_data">Erro, por favor insira seus dados</string>
+	<string name="Lbl_IsEmailValid">Erro, por favor escreva seu endereço de e-mail completo</string>
+	<string name="Lbl_Please_confirm_your_password">Erro, por favor confirme sua senha</string>
+	<string name="Lbl_Please_enter_name">Erro, por favor insira o nome</string>
+	<string name="Lbl_Please_enter_title">Erro, por favor insira o título</string>
+	<string name="Lbl_Please_enter_about">Erro, por favor insira sobre</string>
+	<string name="Lbl_Please_enter_Description">Erro, por favor insira a Descrição</string>
+	<string name="Lbl_Please_select_category">Erro, por favor selecione a categoria</string>
+	<string name="Lbl_Please_select_start_date">Erro, por favor selecione a data de início</string>
+	<string name="Lbl_Please_select_end_date">Erro, por favor selecione a data de término</string>
+	<string name="Lbl_Please_select_Location">Erro, por favor insira a Localização</string>
+	<string name="Lbl_Please_select_start_time">Erro, por favor selecione o horário de início</string>
+	<string name="Lbl_Please_select_end_time">Erro, por favor selecione o horário de término</string>
+	<string name="Lbl_Please_select_Image">Erro, por favor selecione a Imagem</string>
+	<string name="Lbl_Please_enter_price">Erro, por favor insira o preço</string>
+	<string name="Lbl_Error_path_image">Caminho da imagem com erro</string>
+	<string name="Lbl_Error_DisplayAddress">Não foi possível determinar o endereço. Tente novamente em alguns minutos.</string>
+	<string name="Lbl_Error_LocationChanged">Não foi possível determinar sua localização. Tente novamente em alguns instantes.</string>
+	<!--===============================================================-->
+
+	<!--Login && Register-->
+	<string name="Lbl_ErrorLogin_3">Nome de usuário ou senha incorretos</string>
+	<string name="Lbl_ErrorLogin_4">Nome de usuário não encontrado</string>
+	<string name="Lbl_ErrorLogin_5">Senha incorreta</string>
+
+	<string name="Lbl_ErrorRegister_3">Erro encontrado, tente novamente mais tarde</string>
+	<string name="Lbl_ErrorRegister_4">Nome de usuário já está em uso</string>
+	<string name="Lbl_ErrorRegister_5">Caracteres de nome de usuário inválidos, escolha outro nome de usuário</string>
+	<string name="Lbl_ErrorRegister_6">O nome de usuário deve ter entre 5 e 32 letras</string>
+	<string name="Lbl_ErrorRegister_7">E-mail já está em uso</string>
+	<string name="Lbl_ErrorRegister_8">E-mail inválido</string>
+	<string name="Lbl_ErrorRegister_9">A senha é muito curta</string>
+	<string name="Lbl_ErrorRegister_10">\"As senhas não conferem\"</string>
+	<string name="Lbl_ErrorRegister_11">Erro ao enviar o e-mail de verificação, tente novamente mais tarde</string>
+	<!--===============================================================-->
+
+	<!--AlertDialog-->
+	<string name="Lbl_Are_you_logout">Tem certeza de que deseja sair?</string>
+	<string name="Lbl_Please_wait">Aguarde...</string>
+	<string name="Lbl_Do_You_want_to_remove_video">Deseja remover o vídeo do cache</string>
+	<string name="Lbl_Comment_Hint_Listening">O que você está ouvindo?</string>
+	<string name="Lbl_Comment_Hint_Playing">O que você está jogando?</string>
+	<string name="Lbl_Comment_Hint_Watching">O que você está assistindo?</string>
+	<string name="Lbl_Comment_Hint_Traveling">Para onde você está viajando?</string>
+	<string name="Lbl_What_Are_You_Doing">O que você está fazendo?</string>
+	<string name="Lbl_Enter_your_link">Insira seu link</string>
+	<string name="Lbl_Title_Back">Tem certeza de que deseja sair?</string>
+	<string name="Lbl_Content_Back">A entrada completa será excluída se você sair ou pode continuar editando.</string>
+	<string name="Lbl_SetPositiveButton_Back">Descartar Postagem</string>
+	<string name="Lbl_SetNegativeButton_Back">Continuar Editando</string>
+	<string name="Lbl_Title_Location">Minha Posição</string>
+	<string name="Lbl_Snippet_Location">\"Esta é a posição do meu dispositivo\"</string>
+	<string name="Lbl_Title_DeletePost">Excluir Postagem</string>
+	<string name="Lbl_Content_DeletePost">Gostaria de excluir esta postagem</string>
+	<string name="Lbl_leave_comment">Deixe um comentário</string>
+	<string name="Lbl_Write_comment">Escreva um Comentário...</string>
+	<string name="Lbl_No_more_users">Não há mais usuários para exibir</string>
+	<!--===============================================================-->
+
+	<!--Fragment-->
+	<string name="Lbl_Library">Biblioteca</string>
+	<string name="Lbl_Notifications">Notificações</string>
+	<string name="Lbl_Trending">Em alta</string>
+	<string name="Lbl_Search">Pesquisar</string>
+	<string name="Lbl_Activity">Atividade</string>
+	<string name="Lbl_More">Mais</string>
+	<string name="Lbl_Market">Marketplace</string>
+	<string name="Lbl_MyProducts">Meus Produtos</string>
+	<string name="Lbl_All_Events">Todos os Eventos</string>
+	<string name="Lbl_My_Events">Meus Eventos</string>
+	<string name="Lbl_Users">Usuários</string>
+	<string name="Lbl_Pages">Páginas</string>
+	<string name="Lbl_Groups">Grupos</string>
+	<string name="Lbl_News_Feed">Feed de Notícias</string>
+	<!--===============================================================-->
+
+	<!--Page-->
+	<string name="Lbl_MyProfile">Meu Perfil</string>
+	<string name="Lbl_Messages">Mensagens</string>
+	<string name="Lbl_Contacts">Contatos</string>
+	<string name="Lbl_Albums">Álbuns</string>
+	<string name="Lbl_Saved_Posts">Postagens Salvas</string>
+	<string name="Lbl_Blogs">Blogs</string>
+	<string name="Lbl_Marketplace">Marketplace</string>
+	<string name="Lbl_Events">Eventos</string>
+	<string name="Lbl_FindFriends">Encontrar Amigos</string>
+	<string name="Lbl_Movies">Vídeos</string>
+	<string name="Lbl_Tell_Friends">Indicar para um Amigo</string>
+	<string name="Lbl_CleanCashed">Limpar arquivos em cache</string>
+	<string name="Lbl_Help_Support">Ajuda &amp; Suporte</string>
+	<string name="Lbl_Logout">Sair</string>
+	<!--===============================================================-->
+
+	<!--SettingsPreferences-->
+	<!--===============================================================-->
+	<string name="Lbl_Account_and_Profile">Conta e Perfil</string>
+	<string name="Lbl_Edit_Profile_and_avatar">Editar Perfil</string>
+	<string name="Lbl_My_Account">Minha Conta</string>
+	<string name="Lbl_SocialLinks">Links Sociais</string>
+	<string name="Lbl_DeleteAccount">Excluir conta</string>
+	<string name="Lbl_GeneralAccount">Conta Geral</string>
+
+	<string name="Lbl_General">Geral</string>
+	<string name="Lbl_Language">Idioma</string>
+	<string name="Lbl_Display_your_app_Language">Exibir o idioma do seu aplicativo</string>
+
+	<string name="Lbl_Privacy">Privacidade</string>
+	<string name="Lbl_Who_can_follow_me">Quem pode me seguir?</string>
+	<string name="Lbl_Who_can_message_me">Quem pode me enviar mensagem?</string>
+	<string name="Lbl_CanSeeMyfriends">Quem pode ver meus amigos?</string>
+	<string name="Lbl_CanPostOnMyTimeline">Quem pode postar na minha linha do tempo?</string>
+	<string name="Lbl_Who_can_see_my_birthday">Quem pode ver meu aniversário?</string>
+	<string name="Lbl_ConfirmRequestFollows">Confirmar solicitação</string>
+	<string name="Lbl_Summary_ConfirmRequestFollows">Quando alguém me segue</string>
+	<string name="Lbl_ShowMyActivities">Mostrar minhas atividades</string>
+	<string name="Lbl_Status">Status</string>
+	<string name="Lbl_ShareMyLocation">Compartilhar minha localização com o público</string>
+	<string name="Lbl_Everyone">Todos</string>
+	<string name="Lbl_People_i_Follow">Pessoas que sigo</string>
+	<string name="Lbl_People_Follow_Me">Pessoas que me seguem</string>
+	<string name="Lbl_No_body">Ninguém</string>
+	<string name="Lbl_Online">Online</string>
+	<string name="Lbl_Offline">Offline</string>
+
+	<string name="Lbl_Message_Notifications">Notificações de Mensagens</string>
+	<string name="Lbl_Notification_Popup">Popup de Notificação</string>
+	<string name="Lbl_Summary_notifications">Receber notificações quando você receber mensagens</string>
+	<string name="Lbl_Conversation_tones">Sons de conversa</string>
+	<string name="Lbl_Summary_Play_sounds">Reproduzir sons para mensagens recebidas e enviadas</string>
+
+	<string name="Lbl_TellFriend">Indicar Amigo</string>
+	<string name="Lbl_Summary_Share">Compartilhe este aplicativo com seus amigos</string>
+	<string name="Lbl_MyAffiliates">Meus Afiliados</string>
+
+	<string name="Lbl_Support">Suporte</string>
+	<string name="Lbl_Help">Central de Ajuda</string>
+	<string name="Lbl_Report_Problem">Denunciar um Problema</string>
+	<string name="Lbl_Legal_and_Policies">Jurídico e Políticas</string>
+	<string name="Lbl_PrivacyPolicy">Política de Privacidade</string>
+	<string name="Lbl_About_App">Sobre Nós</string>
+	<string name="Lbl_TermsOfUse">Termos de Uso</string>
+
+	<!--Delete Account-->
+	<string name="Lbl_Are_you_DeleteAccount">Tem certeza de que deseja excluir a conta de</string>
+
+	<string name="Lbl_IWantToDelete1">Sim, quero excluir</string>
+	<string name="Lbl_IWantToDelete2">permanentemente de</string>
+	<string name="Lbl_IWantToDelete3">Conta.</string>
+	<!--===============================================================-->
+
+	<!--V2.3 String translate-->
+	<string name="Lbl2_Polls">Enquetes</string>
+	<string name="Lbl2_Answer">Resposta</string>
+	<string name="Lbl2_PollsLimitError">Você pode definir no máximo 8 respostas</string>
+	<string name="Lbl2_PollsLimitTwo">Você deve definir no mínimo 2 respostas</string>
+
+	<!--V2.4 String translate-->
+	<string name="Lbl3_Use_Location">Usar Localização?</string>
+	<string name="Lbl3_GPS_is_disabled">O GPS está desativado. Deseja ativar o GPS</string>
+
+	<!--V2.4.2 String translate-->
+	<string name="Lbl3_SuggestionsUsers">Usuários Sugeridos</string>
+
+	<!--Empty State Inflater-->
+	<string name="Lbl_NoConnection_TitleText">Sem Internet Disponível</string>
+	<string name="Lbl_NoConnection_DescriptionText">Não foi possível estabelecer uma conexão com nossos servidores. Tente novamente mais tarde.</string>
+	<string name="Lbl_NoConnection_Button">Tentar Novamente</string>
+
+	<string name="Lbl_NoSearchResult_TitleText">Triste, nenhum resultado!</string>
+	<string name="Lbl_NoSearchResult_DescriptionText">Não encontramos a palavra-chave que você está pesquisando. Talvez um pequeno erro de digitação?</string>
+	<string name="Lbl_NoSearchResult_Button">Pesquisa Aleatória</string>
+
+	<string name="Lbl_SomThingWentWrong_TitleText">Algo deu Errado</string>
+	<string name="Lbl_SomThingWentWrong_DescriptionText">Resposta do servidor</string>
+	<string name="Lbl_SomThingWentWrong_Button">Tentar Novamente</string>
+
+	<string name="Lbl_NoPost_TitleText">Nenhuma Postagem Ainda</string>
+
+	<string name="Lbl_NoUsers_TitleText">Nenhum Usuário para mostrar.</string>
+	<string name="Lbl_NoUsers_DescriptionText">Bem-vindo, você é o primeiro usuário aqui!</string>
+
+	<string name="Lbl_NoFollow_TitleText">Nenhum Usuário Ainda</string>
+	<string name="Lbl_NoFollow_DescriptionText">\"Você não tem amigos para seguir\"</string>
+
+	<!-- V2.5 String translate -->
+	<string name="Lbl_Popular_Posts">Postagens Populares</string>
+	<string name="Lbl_Pokes">Cutucões</string>
+	<string name="Lbl_Poke">Cutucar</string>
+	<string name="Lbl_Poked">Cutucou</string>
+	<string name="Lbl_PokeBack">Cutucar de volta</string>
+	<string name="Lbl_YouHavePoked">Você cutucou</string>
+	<string name="Lbl_YouSentPoked">você já enviou uma cutucada</string>
+	<string name="Lbl_AddToFamily">Adicionar à Família</string>
+	<string name="Lbl_SentGift">Enviar Presente</string>
+	<string name="Lbl_Distance">Distância</string>
+	<string name="Lbl_Filter">Filtro</string>
+	<string name="Lbl_ApplyFilter">Aplicar Filtro</string>
+	<string name="Lbl_ResetFilter">Redefinir Filtro</string>
+	<string name="Lbl_SendTo">Enviar para</string>
+	<string name="Lbl_Replies">Respostas</string>
+	<string name="Lbl_BoostPost">Impulsionar Postagem</string>
+	<string name="Lbl_UnBoostPost">Remover Impulsionamento</string>
+	<string name="Lbl_ReportPost">Denunciar Postagem</string>
+	<string name="Lbl_ReportThisPost">Denunciar esta postagem</string>
+	<string name="Lbl_TextCopied">Texto copiado para a área de transferência</string>
+	<string name="Lbl_LinkCopied">Link copiado para a área de transferência</string>
+	<string name="Lbl_postSuccessfullyDeleted">Postagem excluída com sucesso</string>
+	<string name="Lbl_postSuccessfullySaved">Postagem salva com sucesso</string>
+	<string name="Lbl_postSuccessfullyUnSaved">Postagem não salva com sucesso</string>
+	<string name="Lbl_postSuccessfullyBoosted">Postagem impulsionada com sucesso</string>
+	<string name="Lbl_AreYouSureDeletePost">Tem certeza de que deseja excluir esta postagem</string>
+	<string name="Lbl_YourReportPost">Postagem denunciada</string>
+	<string name="Lbl_DeletePost">Excluir postagem</string>
+	<string name="Lbl_SavePost">Salvar postagem</string>
+	<string name="Lbl_FileExists">Arquivo Existe</string>
+	<string name="Lbl_EditEvents">Editar Eventos</string>
+	<string name="Lbl_EventSuccessfullyEdited">Evento editado com sucesso</string>
+	<string name="Lbl_NoMoreAlbums">Nenhum álbum encontrado</string>
+	<string name="Lbl_NoMoreNotifications">Nenhuma notificação encontrada</string>
+	<string name="Lbl_NoMoreArticles">Nenhum artigo encontrado</string>
+	<string name="Lbl_NoMoreMovies">Nenhum vídeo encontrado</string>
+	<string name="Lbl_NoMorePages">Nenhuma página encontrada</string>
+	<string name="Lbl_NoMoreGroup">Nenhum grupo encontrado</string>
+	<string name="Lbl_NoMoreEvent">Nenhum evento encontrado</string>
+	<string name="Lbl_NoMoreProducts">Nenhum produto encontrado</string>
+	<string name="Lbl_NoMoreActivities">Nenhuma atividade encontrada</string>
+	<string name="Lbl_SharePost">Compartilhar Postagem</string>
+	<string name="Lbl_ShareTo">Compartilhar com</string>
+	<string name="Lbl_ShareToMyTimeline">Compartilhar na minha Linha do Tempo</string>
+	<string name="Lbl_ShareToGroup">Compartilhar em um Grupo</string>
+	<string name="Lbl_ShareToPage">Compartilhar em uma Página</string>
+	<string name="Lbl_MoreOptions">Mais Opções</string>
+	<string name="Lbl_PostSuccessfullyShared">Postagem foi compartilhada com sucesso</string>
+	<!--Time-->
+	<string name="Lbl_justNow">Agora mesmo</string>
+	<string name="Lbl_CutHours">H</string>
+	<string name="Lbl_CutDays">D</string>
+	<string name="Lbl_CutMonth">M</string>
+	<string name="Lbl_CutMinutes">Min</string>
+	<string name="Lbl_CutSeconds">Seg</string>
+	<string name="Lbl_CutYear">A</string>
+	<string name="Lbl_YourStory">Seu Story</string>
+	<string name="Lbl_Add_caption">Adicionar uma legenda...</string>
+	<string name="Lbl_Verified">Verificado</string>
+	<string name="Lbl_UnVerified">Não verificado</string>
+	<string name="Lbl_Age">Idade</string>
+	<string name="Lbl_joinRequest">Solicitações de Entrada</string>
+	<string name="Lbl_View_All_joinRequest">Ver todas as Solicitações de Entrada</string>
+	<string name="Lbl_Empty_joinRequest">Nenhuma solicitação encontrada</string>
+	<string name="Lbl_Do_you_want_approve_join">Deseja aprovar a entrada de</string>
+	<string name="Lbl_Accept">Aceitar</string>
+	<string name="Lbl_RequestSuccessfullyAccepted">Solicitação Aceita com Sucesso</string>
+	<string name="Lbl_RequestSuccessfullyDeleted">Solicitação excluída com sucesso</string>
+	<string name="Lbl_GoodMorning">Bom dia</string>
+	<string name="Lbl_GoodMorning_Text">Que esta manhã seja leve, abençoada, iluminada, produtiva e feliz</string>
+	<string name="Lbl_GoodAfternoon">Boa tarde</string>
+	<string name="Lbl_GoodAfternoon_Text">Que esta tarde seja leve, abençoada, iluminada, produtiva e feliz</string>
+	<string name="Lbl_GoodEvening">Boa noite</string>
+	<string name="Lbl_GoodEvening_Text">As noites são a forma da vida dizer que você está mais perto dos seus sonhos</string>
+	<string name="Lbl_FindMoreAler_TextGroups">Novas formas de encontrar e participar de comunidades</string>
+	<string name="Lbl_FindMoreAler_TextPages">Conecte seu negócio, a si mesmo ou sua causa à comunidade mundial de pessoas</string>
+	<string name="Lbl_AddAnswer">Adicionar Resposta</string>
+	<string name="Lbl_Promoted">Promovido</string>
+	<string name="Lbl_LoadingUsername">Carregando Nome de Usuário</string>
+	<string name="Lbl_Reply">Responder</string>
+	<string name="Lbl_Price">Preço</string>
+	<string name="Lbl_Type">Tipo</string>
+	<string name="Lbl_Join">Ingressar</string>
+	<string name="Lbl_EditProduct">Editar produto</string>
+	<string name="Lbl_ProductSuccessfullyEdited">Produto editado com sucesso</string>
+	<string name="Lbl_CreateAlbum">Criar álbum</string>
+	<string name="Lbl_Describe_Description_album">Crie seu próprio álbum para guardar seu momento especial</string>
+	<string name="Lbl_AlbumName">Nome do álbum</string>
+	<string name="Lbl_NoAnyDescription">Nenhuma descrição a ser exibida</string>
+	<string name="Lbl_ChangedProfileCover">alterou a foto de capa</string>
+	<string name="Lbl_ChangedProfilePicture">alterou a foto de perfil</string>
+	<string name="Lbl_AddedNewProductForSell">adicionou novo produto para vender</string>
+	<string name="Lbl_CreatedNewArticle">criou novo artigo</string>
+	<string name="Lbl_AddedNewPhotosTo">adicionou novas fotos a</string>
+	<string name="Lbl_SharedPost">compartilhou uma postagem</string>
+	<string name="Lbl_IsTravelingTo">está viajando para</string>
+	<string name="Lbl_IsWatching">está assistindo</string>
+	<string name="Lbl_IsPlaying">está jogando</string>
+	<string name="Lbl_IsFeeling">está se sentindo</string>
+	<string name="Lbl_IsListeningTo">está ouvindo</string>
+	<string name="Lbl_NoComments">Nenhum Comentário a ser exibido</string>
+	<string name="Lbl_ActivationSent">E-mail de Ativação Enviado</string>
+	<string name="Lbl_ActivationDetails">
+		\"Enviamos um e-mail para @.&lt;br /&gt;Clique no link do e-mail para ativar sua conta\"
+	</string>
+	<string name="Lbl_FindYourGroups">Encontre seus Grupos</string>
+	<string name="Lbl_FindPopularPages">Encontre páginas populares</string>
+
+	<string name="Btn_Love">Amei</string>
+	<string name="Btn_Haha">Haha</string>
+	<string name="Btn_Wow">Uau</string>
+	<string name="Btn_Sad">Triste</string>
+	<string name="Btn_Angry">Bravo</string>
+	<string name="Btn_Points">Pontos</string>
+	<string name="Btn_Wonder">Wonder</string>
+	<!--===============================================================-->
+
+	<!-- V2.5  String translate -->
+	<!--===============================================================-->
+
+	<!-- Verification Code Number-->
+	<string name="Lbl_Verification">Verificação</string>
+	<string name="Lbl_VerificationText1">Para fazer login, você precisa verificar sua identidade.</string>
+	<string name="Lbl_VerificationText2">Enviamos o código de confirmação para seu endereço de e-mail.</string>
+	<string name="Btn_Verify">Verificar</string>
+	<string name="Lbl_CodeNotCorrect">Digite o número do código correto</string>
+	<string name="Lbl_AddCode">Adicionar código numérico</string>
+
+	<string name="Lbl_AddCommentHere">Adicione um comentário aqui</string>
+	<string name="Lbl_NewFeeds">Novos Feeds</string>
+	<!--===============================================================-->
+
+	<string name="Lbl_FileNotDeviceMemory">Este arquivo não está presente na memória do dispositivo</string>
+	<string name="Lbl_NotHaveThisUser">Não possui este usuário</string>
+	<string name="Lbl_PostDisLike">Não Curtir Postagem</string>
+	<string name="Lbl_PostReaction">Reação à Postagem</string>
+
+	<string name="Lbl_DeleteComment">Excluir Comentário</string>
+	<string name="Lbl_AreYouSureDeleteComment">Tem certeza de que deseja excluir este comentário?</string>
+	<string name="Lbl_CommentSuccessfullyDeleted">O comentário foi excluído com sucesso</string>
+	<string name="Lbl_CopeText">Copiar Texto</string>
+	<string name="Lbl_Sponsored">Patrocinado</string>
+
+	<string name="Lbl_Error_MaxCharacters">Você excedeu o limite de texto, deve ser menor que</string>
+	<string name="Lbl_sharedYourPost">compartilhou sua postagem</string>
+	<string name="Lbl_NoPost_TitleText_hashtag">Não há postagem aqui para esta hashtag</string>
+	<string name="Lbl_NoPost_TitleText_saved">Não há postagem salva</string>
+
+	<!-- V2.6 String translate -->
+	<!--===============================================================-->
+	<string name="Lbl_SelectVideoFrom">Selecionar vídeo de</string>
+	<string name="Lbl_RecordVideoFromCamera">Gravar vídeo da câmera</string>
+	<string name="Lbl_Select">Selecionar</string>
+	<string name="Lbl_RemoveLocation">Remover Localização</string>
+	<string name="Lbl_ChangeLocation">Alterar Localização</string>
+	<string name="Lbl_Text_copied">Texto copiado para a área de transferência</string>
+	<string name="Lbl_Currency">Moeda</string>
+	<string name="Lbl_SelectCurrency">Selecionar Moeda</string>
+	<string name="Lbl_NoMorePhoto">Nenhuma foto encontrada</string>
+
+	<string name="Lbl_MyVideos">Meus Vídeos</string>
+	<string name="Lbl_NoMoreVideo">Nenhum vídeo encontrado</string>
+	<string name="Lbl_Empty_Video">Nenhum vídeo!!</string>
+	<string name="Lbl_Start_Video">Comece a enviar seus próprios vídeos</string>
+
+
+	<string name="Lbl_DeleteJobs">Tem certeza de que deseja excluir esta postagem</string>
+	<string name="press_again_exit">Pressione novamente para sair</string>
+	<string name="Lbl_MyLocation">Minha Localização</string>
+	<string name="Lbl_CommonThings">Coisas em Comum</string>
+	<string name="Lbl_ThingInCommon">em comum</string>
+	<string name="Lbl_Announcement">Anúncio</string>
+	<string name="Lbl_Name">Nome</string>
+	<string name="Lbl_Experience">Experiência</string>
+	<string name="Lbl_Position">Cargo</string>
+	<string name="Lbl_WhereDidYouWork">Onde você trabalhou?</string>
+	<string name="Lbl_Phone">Telefone</string>
+	<string name="Lbl_FromDate">Data de Início</string>
+	<string name="Lbl_ToDate">Data de Término</string>
+	<string name="Lbl_OfferAJob">Oferecer um emprego</string>
+	<string name="Lbl_CreateJob">Criar Vaga</string>
+	<string name="Lbl_Date">Data</string>
+	<string name="Lbl_SalaryDate">Data de Pagamento</string>
+	<string name="Lbl_AddQuestion">Adicionar Pergunta</string>
+	<string name="Lbl_GetArticlesByCategories">Obter artigos por categorias</string>
+	<string name="Lbl_Rate">Avaliar</string>
+	<string name="Lbl_ErrorVotedPoll">Você já votou nesta enquete.</string>
+
+	<string name="Lbl_Games">Jogos</string>
+	<string name="Lbl_MyGames">Meus Jogos</string>
+	<string name="Lbl_NoMoreGames">Nenhum jogo encontrado</string>
+	<string name="Lbl_Empty_Games">Nenhum Jogo para mostrar</string>
+	<string name="Lbl_Play">Jogar</string>
+
+
+	<string name="Lbl_ConfirmRequestGroup">Confirmar solicitação quando alguém entrar neste grupo?</string>
+	<string name="Lbl_CallToAction">Chamada para ação</string>
+	<string name="Lbl_CallToTargetUrl">URL de destino</string>
+	<string name="Lbl_PageInformation">Informações da Página</string>
+	<string name="Lbl_Company">Empresa</string>
+
+
+	<string name="Lbl_JobTitle">Título da Vaga</string>
+	<string name="Lbl_votesPost">Votos</string>
+	<string name="Lbl_jobs">Vagas</string>
+	<string name="Lbl_JobType">Tipo de Vaga</string>
+	<string name="Lbl_NoMoreJobs">Nenhuma vaga encontrada</string>
+	<string name="Lbl_NotHaveAnyJobs">Ops, nenhuma vaga para mostrar.</string>
+	<string name="Lbl_common_things">Coisas em Comum</string>
+	<string name="Lbl_Message">Mensagem</string>
+	<string name="Lbl_Questions">Perguntas</string>
+	<string name="Lbl_TypeQuestion">Digitar Perguntas</string>
+	<string name="Lbl_FreeTextQuestion">Pergunta de Texto Livre</string>
+	<string name="Lbl_YesNoQuestion">Pergunta Sim/Não</string>
+	<string name="Lbl_MultipleChoiceQuestion">Pergunta de Múltipla Escolha</string>
+	<string name="Lbl_QuestionOne">Pergunta Um</string>
+	<string name="Lbl_QuestionTwo">Pergunta Dois</string>
+	<string name="Lbl_QuestionThree">Pergunta Três</string>
+	<string name="Lbl_Question">Pergunta</string>
+	<string name="Lbl_ThereAreNoRequests">Não há solicitações</string>
+	<string name="Lbl_jobSuccessfullyEdited">vaga editada com sucesso</string>
+	<string name="Lbl_jobSuccessfullyAdded">vaga adicionada com sucesso</string>
+	<string name="Lbl_DescriptionOfAnswer">
+		Adicione tags para descrever mais sobre sua faixa adicionando um sinal de <b>\"&apos;,&apos;\"</b> no final de cada
+		<b>
+			<u>Resposta</u>
+		</b>
+		sem espaço entre eles.
+	</string>
+	<string name="Lbl_full_time">Tempo Integral</string>
+	<string name="Lbl_part_time">Meio Período</string>
+	<string name="Lbl_internship">Estágio</string>
+	<string name="Lbl_volunteer">Voluntário</string>
+	<string name="Lbl_contract">Contrato</string>
+	<string name="Lbl_minimum">Mínimo</string>
+	<string name="Lbl_maximum">Máximo</string>
+	<string name="Lbl_per_hour">Por Hora</string>
+	<string name="Lbl_per_day">Por Dia</string>
+	<string name="Lbl_per_week">Por Semana</string>
+	<string name="Lbl_per_month">Por Mês</string>
+	<string name="Lbl_per_year">Por Ano</string>
+	<string name="Lbl_apply_now">Candidatar-se Agora</string>
+	<string name="Lbl_show_applies">Mostrar Candidaturas</string>
+	<string name="Lbl_already_applied">Já se candidatou</string>
+	<string name="Lbl_ratings">Avaliações</string>
+
+	<string name="Lbl_call_action_1">Ler mais</string>
+	<string name="Lbl_call_action_2">Comprar agora</string>
+	<string name="Lbl_call_action_3">Ver agora</string>
+	<string name="Lbl_call_action_4">Visitar agora</string>
+	<string name="Lbl_call_action_5">Reservar agora</string>
+	<string name="Lbl_call_action_6">Saber mais</string>
+	<string name="Lbl_call_action_7">Jogar agora</string>
+	<string name="Lbl_call_action_8">Apostar agora</string>
+	<string name="Lbl_call_action_9">Doar</string>
+	<string name="Lbl_call_action_10">Candidatar-se aqui</string>
+	<string name="Lbl_call_action_11">Cotar aqui</string>
+	<string name="Lbl_call_action_12">Pedir agora</string>
+	<string name="Lbl_call_action_13">Reservar ingressos</string>
+	<string name="Lbl_call_action_14">Inscrever-se agora</string>
+	<string name="Lbl_call_action_15">Encontrar cartão</string>
+	<string name="Lbl_call_action_16">Obter cotação</string>
+	<string name="Lbl_call_action_17">Obter ingressos</string>
+	<string name="Lbl_call_action_18">Localizar revendedor</string>
+	<string name="Lbl_call_action_19">Pedir online</string>
+	<string name="Lbl_call_action_20">Pré-encomendar agora</string>
+	<string name="Lbl_call_action_21">Agendar agora</string>
+	<string name="Lbl_call_action_22">Cadastrar-se agora</string>
+	<string name="Lbl_call_action_23">Inscrever-se</string>
+	<string name="Lbl_call_action_24">Registrar agora</string>
+	<string name="Lbl_call_action_25">Escrever no arquivo strings.xml</string>
+	<string name="Lbl_call_action_26">Escrever no arquivo strings.xml</string>
+	<string name="Lbl_call_action_sorry">Desculpe: URL de Ação não especificada pelos proprietários da página</string>
+
+	<string name="Lbl_go_pro_1">Membro em destaque</string>
+	<string name="Lbl_go_pro_2">Ver visitantes do perfil</string>
+	<string name="Lbl_go_pro_3">Promoção de páginas</string>
+	<string name="Lbl_go_pro_4">Mostrar / Ocultar último visto</string>
+	<string name="Lbl_go_pro_5">Distintivo verificado</string>
+	<string name="Lbl_go_pro_6">Promoção de postagens</string>
+
+	<string name="Lbl_upgrade_now">Atualizar Agora</string>
+	<string name="Lbl_Go_Pro">Seja Pro</string>
+
+	<string name="Lbl_TwoFactor">Autenticação de dois fatores</string>
+	<string name="Lbl_Describe_TwoFactor">\"Ative o login em 2 etapas para aumentar a segurança da sua conta. Depois de ativado, você usará sua senha e um código de segurança de 6 dígitos enviado para seu telefone ou e-mail para fazer login.\"</string>
+	<string name="Lbl_ConfirmationEmail_TwoFactor">Enviamos um e-mail contendo o código de confirmação para ativar a autenticação de dois fatores.</string>
+	<string name="Lbl_ConfirmationEmailSent">Um e-mail de confirmação foi enviado.</string>
+	<string name="Lbl_ConfirmationCode">Código de confirmação</string>
+	<string name="Lbl_ConfirmationCodeSent">código de confirmação enviado</string>
+	<string name="Lbl_TwoFactorOn">dois fatores ativado</string>
+	<string name="Lbl_Enable">Ativar</string>
+	<string name="Lbl_Disable">Desativar</string>
+
+	<string name="Lbl_Relationship">Relacionamento</string>
+	<string name="Lbl_Single">Solteiro</string>
+	<string name="Lbl_InRelationship">Em um relacionamento</string>
+	<string name="Lbl_Married">Casado</string>
+	<string name="Lbl_Engaged">Noivo</string>
+	<string name="Lbl_YouHaveAlReadyRatedThisPage">Você já avaliou esta página!</string>
+	<string name="Lbl_WriteYourReview">Escreva sua avaliação.</string>
+	<string name="Lbl_NoMoreReviews">Nenhuma avaliação encontrada</string>
+	<string name="Lbl_NoReviews">Nenhuma avaliação encontrada</string>
+	<string name="Lbl_Reviews">Avaliações</string>
+	<string name="Lbl_changeImage">Alterar Imagem</string>
+	<string name="Lbl_upgrade">atualizar</string>
+
+	<string name="Lbl_Funding">Financiamento</string>
+	<string name="Lbl_FundingRequests">Solicitações de Financiamento</string>
+	<string name="Lbl_NewFunding">Novo financiamento</string>
+	<string name="Lbl_FundingSuccessfullyEdited">Financiamento editado com sucesso</string>
+	<string name="Lbl_NotHaveAnyFundingRequest">Não há solicitações de financiamento</string>
+	<string name="Lbl_Please_enter_amount">Erro, por favor insira o valor</string>
+	<string name="Lbl_NoMoreFunding">Nenhum financiamento encontrado</string>
+	<string name="Lbl_Donate">Doar</string>
+	<string name="Lbl_RaisedOf">Arrecadado de</string>
+	<string name="Lbl_Title">título</string>
+	<string name="Lbl_Amount">Valor</string>
+	<string name="Lbl_Donated">Doado</string>
+	<string name="Lbl_Please_enter_Currency">Erro, por favor insira a Moeda</string>
+	<string name="Lbl_Please_select_Rating">Erro, por favor selecione a Avaliação</string>
+	<string name="Lbl_Please_enter_review">Erro, por favor insira a avaliação</string>
+
+	<string name="Lbl_AddMe">Adicionar-me</string>
+	<string name="Lbl_SendMessageTo">Enviar Mensagem para </string>
+	<string name="Lbl_WriteMessage">Escrever uma Mensagem</string>
+	<string name="Lbl_BoostPage">Impulsionar Página</string>
+	<string name="Lbl_UnBoostPage">Remover Impulsionamento</string>
+	<string name="Lbl_PageSuccessfullyBoosted">A página foi impulsionada com sucesso</string>
+
+	<!--Payment Card Details-->
+	<string name="Lbl_Expire">Validade</string>
+	<string name="Lbl_CVV">CVV</string>
+	<string name="Lbl_YourName">Seu Nome</string>
+	<string name="Lbl_CreditCardNumber">Número do cartão de crédito</string>
+	<string name="Lbl_NameOfCard">Nome no cartão</string>
+	<string name="Lbl_OrUsing">Ou usando</string>
+	<string name="Lbl_PleaseVerifyDataCard">Verifique se os dados inseridos estão corretos</string>
+	<string name="Lbl_ErrorConnectionSystemStripe">Ocorreu um erro no sistema de pagamento eletrônico. Entre em contato com o departamento de manutenção, obrigado</string>
+	<string name="Lbl_Canceled">Cancelado</string>
+	<string name="Lbl_Invalid">Inválido</string>
+	<!--===============================================================-->
+	<string name="Lbl_Night_Mode">Modo Noturno</string>
+	<string name="Lbl_Default">Padrão</string>
+
+	<string name="Lbl_ManageSessions">Gerenciar Sessões</string>
+	<string name="Lbl_Empty_Sessions">Nenhuma sessão!!</string>
+	<string name="Lbl_Browser">Navegador</string>
+	<string name="Lbl_IpAddress">Endereço IP</string>
+	<string name="Lbl_AreYouSureLogoutFromThisDevice">Tem certeza de que deseja sair deste dispositivo?</string>
+
+	<string name="Lbl_DeletePage">Excluir Página</string>
+	<string name="Lbl_DeleteGroup">Excluir Grupo</string>
+	<string name="Lbl_ActionButtons">Botões de Ação</string>
+	<string name="Lbl_AreYouSureToDelete">Tem certeza de que deseja excluir?</string>
+	<string name="Lbl_GroupSuccessfullyDeleted">Grupo excluído com sucesso</string>
+	<string name="Lbl_PageSuccessfullyDeleted">Página excluída com sucesso</string>
+
+	<string name="Lbl_Members">Membros</string>
+	<string name="Lbl_MakeAdmin">Tornar Admin</string>
+	<string name="Lbl_RemoveAdmin">Remover Admin</string>
+	<string name="Lbl_RemoveMember">Remover Membro</string>
+	<string name="Lbl_BlockMember">Bloquear Membro</string>
+	<string name="Lbl_ViewProfile">Ver Perfil</string>
+	<string name="Lbl_InviteMembers">Convidar Membros</string>
+	<string name="Lbl_AddYourFriendsToGroup">Adicione seus amigos a este grupo</string>
+	<string name="Lbl_InviteFriendsToPage">Convide amigos para curtir esta Página</string>
+	<string name="Lbl_MessageSentSuccessfully">Mensagem enviada com sucesso</string>
+
+	<string name="Lbl_CreatedNewFund">Criou uma solicitação de doação</string>
+	<string name="Lbl_DonatedRequestFund">Doou para uma solicitação</string>
+
+	<string name="Lbl_SuggestedGroups">Grupos Sugeridos</string>
+	<string name="Lbl_SuggestedForYou">Sugerido para você</string>
+	<string name="Lbl_Discover">Descobrir</string>
+	<string name="Lbl_SeeAll">Ver Tudo</string>
+	<string name="Lbl_Categories">Categorias</string>
+	<string name="Lbl_FindGroupByCategories">Encontre um grupo navegando pelas principais categorias</string>
+	<string name="Lbl_RandomGroups">Grupos Aleatórios</string>
+	<string name="Lbl_GetMoviesByCategories">Obter vídeos por categorias</string>
+	<string name="Lbl_Empty_Gif">Nenhum gif!!</string>
+	<string name="Lbl_Please_select_privacy">Erro, por favor selecione a privacidade</string>
+
+	<!-- V2.6.4 String translate -->
+	<!--===============================================================-->
+	<string name="Lbl_ContinueAs">Continuar como</string>
+	<string name="Lbl_Collected">Coletado</string>
+	<string name="Lbl_Empty_Activities">Nenhuma Atividade!!</string>
+
+	<!-- V2.7 String translate -->
+	<!--===============================================================-->
+	<string name="Lbl_Light">Claro</string>
+	<string name="Lbl_Dark">Escuro</string>
+	<string name="Lbl_SetByBattery">Definido pela Economia de Bateria</string>
+	<string name="Lbl_ErrorFileNotSupported">Este arquivo não é suportado no servidor. Selecione outro arquivo</string>
+	<string name="Lbl_EarnUpTo">Ganhe até</string>
+	<string name="Lbl_forEachUserYourReferToUs">para cada usuário que você indicar</string>
+	<string name="Lbl_MyPoints">Meus Pontos</string>
+	<string name="Lbl_Earn">Ganhar</string>
+	<string name="Lbl_ByCommentingAnyPost">comentando em qualquer postagem</string>
+	<string name="Lbl_ByCreatingNewPost">criando uma nova postagem</string>
+	<string name="Lbl_ByCreatingNewBlog">criando um novo blog</string>
+	<string name="Lbl_ByReactingAnyPost">reagindo a qualquer postagem</string>
+	<string name="Lbl_ByWonderingAnyPost">com wonder em qualquer postagem</string>
+	<string name="Lbl_ByDislikingAnyPost">não curtindo qualquer postagem</string>
+	<string name="Lbl_YourEarnedPoints">Seus pontos ganhos irão automaticamente para #Carteira</string>
+	<string name="Lbl_MyBalance">Meu Saldo</string>
+	<string name="Lbl_EmailOrUserName">E-mail ou Nome de Usuário</string>
+	<string name="Lbl_SendMoneyToFriends">Enviar dinheiro para amigos</string>
+	<string name="Lbl_YouCanSendMoney">Você pode enviar dinheiro para seus amigos, conhecidos ou qualquer pessoa</string>
+	<string name="Lbl_AddFunds">Adicionar Fundos</string>
+	<string name="Lbl_SendMoney">Enviar Dinheiro</string>
+	<string name="Lbl_Home">Início</string>
+	<string name="Lbl_Continue">Continuar</string>
+	<string name="Lbl_ReplenishMyBalance">Recarregar meu saldo</string>
+	<string name="Lbl_WalletCredits">Carteira &amp; Créditos</string>
+	<string name="Lbl_CurrentBalance">Saldo Atual</string>
+	<string name="Lbl_Please_enter_name_email">Erro, por favor insira nome ou e-mail</string>
+	<string name="Lbl_ThisPostContainsSensitive">Esta postagem contém conteúdo sensível que algumas pessoas podem considerar ofensivo ou perturbador</string>
+	<string name="Lbl_SeePost">Ver Postagem</string>
+	<string name="Lbl_SelectUser">Selecionar Usuário</string>
+	<string name="Lbl_NoPost_TitleText_Group">Nenhuma postagem para mostrar</string>
+	<string name="Lbl_MyArticle">Meu Artigo</string>
+	<string name="Lbl_ContentAskOPenAppMessenger">Estamos levando você para outro aplicativo. Deseja continuar?</string>
+
+	<!--Follow Request-->
+	<string name="Lbl_FollowRequest">Solicitações de Seguimento</string>
+	<string name="Lbl_View_All_FollowRequest">Ver todas as Solicitações de Seguimento</string>
+
+	<string name="Lbl_AddPicturesToAlbum">Deseja adicionar fotos a um álbum?</string>
+	<string name="Lbl_Earnings">Ganhos</string>
+	<string name="Lbl_ChooseRelationshipStatus">Escolha seu status de relacionamento</string>
+	<string name="Lbl_Theme">Tema</string>
+	<string name="Lbl_CreateAsAlbum">Criar como álbum</string>
+	<string name="Lbl_Story_Added">Story Adicionado</string>
+	<string name="Lbl_UploadingPost">Enviando Postagem</string>
+	<string name="Lbl_UploadingStory">Enviando Story</string>
+
+	<!-- V2.8 String translate -->
+	<!--===============================================================-->
+	<string name="Lbl_Summary_OnlineUsers">Mostrar quando os usuários estão online</string>
+	<string name="Lbl_Display">Exibir</string>
+	<string name="Lbl_ShowOnlineUsers">Mostrar Usuários Online</string>
+	<string name="Lbl_MyInformation">Minhas Informações</string>
+	<string name="Lbl_DownloadMyInformation">Baixar Minhas Informações</string>
+	<string name="Lbl_MyInformation_SubText">Escolha quais informações gostaria de baixar</string>
+	<string name="Lbl_YourFileIsReady">Seu arquivo está pronto para baixar</string>
+	<string name="Lbl_YourFileIsDownloaded">Seu arquivo foi baixado com sucesso</string>
+	<string name="Lbl_DownloadAndView">Baixar &amp; Visualizar</string>
+	<string name="Lbl_Admin">Admin</string>
+	<string name="Lbl_MyFriends">Meus Amigos</string>
+	<string name="Lbl_Anonymous">Anônimo</string>
+
+	<string name="Lbl_BankTransfer">Transferência Bancária</string>
+	<string name="Lbl_YourWasReceiptSuccessfullyUploaded">Seu comprovante foi enviado com sucesso</string>
+	<string name="Lbl_Note">Nota:</string>
+	<string name="Lbl_long_Note">Para confirmar a transferência bancária, você precisará enviar um comprovante ou tirar uma captura de tela da sua transferência em até 1 dia a partir da data do pagamento. Se a transferência bancária for feita mas nenhum comprovante for enviado dentro deste período, seu pedido será cancelado. Verificaremos e confirmaremos seu comprovante em até 3 dias úteis a partir da data do envio.</string>
+	<string name="Lbl_AccountNumber">Número da Conta / IBAN</string>
+	<string name="Lbl_AccountName">Nome da conta</string>
+	<string name="Lbl_RoutingCode">Código de compensação</string>
+	<string name="Lbl_ErrorPleaseSelectImage">Erro, por favor selecione a imagem</string>
+	<string name="Lbl_Country">País</string>
+	<string name="Btn_Paypal">Paypal</string>
+	<string name="Btn_GooglePlay">Google Play</string>
+
+	<string name="Lbl_InvitationLinks">Links de Convite</string>
+	<string name="Lbl_AvailableLinks">Links Disponíveis</string>
+	<string name="Lbl_GeneratedLinks">Links Gerados</string>
+	<string name="Lbl_UsedLinks">Links Usados</string>
+	<string name="Lbl_GenerateLinks">Gerar Links</string>
+	<string name="Lbl_Copy">Copiar</string>
+	<string name="Lbl_InvitedUser">Usuário Convidado</string>
+	<string name="Lbl_Url">Url</string>
+
+	<string name="Lbl_Activities">Atividades</string>
+
+	<string name="Lbl_Offer">Oferta</string>
+	<string name="Lbl_OfferPostAdded">Nova oferta criada</string>
+
+	<string name="Lbl_Memories">Memórias</string>
+	<string name="Lbl_NoMoreMemories">Nenhuma memória encontrada</string>
+	<string name="Lbl_Empty_Memories">\"Ops! Nenhuma memória\"</string>
+	<string name="Lbl_Friendversaries">Aniversários de Amizade</string>
+
+	<string name="Lbl_Offers">Ofertas</string>
+	<string name="Lbl_NoMoreOffers">Nenhuma oferta disponível para mostrar</string>
+	<string name="Lbl_Empty_Offers">Nenhuma oferta</string>
+	<string name="Lbl_DiscountType">Tipo de Desconto</string>
+	<string name="Lbl_DiscountItems">Itens e/ou Serviços com Desconto</string>
+	<string name="Lbl_CreateOffers">Criar Ofertas</string>
+	<string name="Lbl_EditOffers">Editar Ofertas</string>
+	<string name="Lbl_DiscountPercent">Percentual de Desconto</string>
+	<string name="Lbl_DiscountAmount">Valor do Desconto</string>
+	<string name="Lbl_BuyGetDiscount">Compre X Ganhe Y de Desconto</string>
+	<string name="Lbl_SpendGetOff">Gaste X Ganhe Y de Desconto</string>
+	<string name="Lbl_FreeShipping">Frete Grátis</string>
+	<string name="Lbl_Buy">Comprar</string>
+	<string name="Lbl_Get">Ganhar</string>
+	<string name="Lbl_Spend">Gastar</string>
+	<string name="Lbl_AmountOff">Valor de Desconto</string>
+	<string name="Lbl_Time">Tempo</string>
+	<string name="Lbl_Discount">Desconto</string>
+	<string name="Lbl_OfferSuccessfullyEdited">Oferta editada com sucesso</string>
+	<string name="Lbl_OfferSuccessfullyAdded">Oferta adicionada com sucesso</string>
+	<string name="Lbl_DeleteOffers">Tem certeza de que deseja excluir esta postagem</string>
+
+	<string name="Lbl_SearchForPosts">Pesquisar postagens</string>
+
+	<string name="Lbl_NoMemoriesDescriptions">Obrigado pela visita. Não há memórias para ver hoje, mas avisaremos quando tivermos algo para recordar.</string>
+	<string name="Lbl_NoCommentThingsDescriptions">Obrigado pela visita. Não há coisas em comum com usuários para serem exibidas para você.</string>
+	<string name="Lbl_NoJobsDescriptions">Desculpe, não há vagas disponíveis no momento.</string>
+	<string name="Lbl_NoNotifcationsDescriptions">Fique ligado! Notificações sobre sua atividade aparecerão aqui.</string>
+
+	<string name="Lbl_Event">Evento</string>
+	<string name="Lbl_CreatedNewEvent">Criou novo evento</string>
+	<string name="Lbl_Invited">Convidado</string>
+	<string name="Lbl_Past">Passado</string>
+
+	<string name="Lbl_CreditCard">Cartão de Crédito</string>
+	<string name="Btn_Continue">Continuar</string>
+
+	<string name="Lbl_NearbyShops">Lojas Próximas</string>
+	<string name="Lbl_Empty_Shop">Nenhuma loja encontrada</string>
+
+
+	<string name="Lbl_NearbyBusiness">Empresas Próximas</string>
+	<string name="Lbl_Empty_Business">Nenhuma empresa encontrada</string>
+
+	<!--Withdrawals-->
+	<string name="Lbl_Withdrawals">Saques</string>
+	<string name="Lbl_PayPalEmail">E-mail do PayPal</string>
+	<string name="Lbl_CantRequestWithdrawals">Você não pode solicitar este valor que não é compatível com seu saldo atual</string>
+	<string name="Lbl_RequestSentWithdrawals">Sua solicitação de saque foi enviada com sucesso</string>
+	<string name="Lbl_Withdrawals_SubText1">Seu saldo é</string>
+	<string name="Lbl_Withdrawals_SubText2">O valor mínimo para saque é</string>
+	<string name="Lbl_WithdrawMethod">Método de Saque</string>
+	<string name="Lbl_SwiftCode">Código Swift</string>
+	<string name="Lbl_Address">Endereço</string>
+	<string name="Lbl_RequestWithdrawal">Solicitar Saque</string>
+	<string name="Lbl_Bank">Banco</string>
+
+	<string name="Lbl_AddedNewPhoto">Adicionou Nova Foto</string>
+	<string name="Lbl_Publish">Publicar</string>
+
+	<string name="Lbl_CommentsAreDisabledBy">Comentários desativados por</string>
+	<string name="Lbl_EnableComments">Ativar Comentários</string>
+	<string name="Lbl_DisableComments">Desativar comentários</string>
+	<string name="Lbl_PostCommentsDisabled">Comentários da postagem desativados</string>
+	<string name="Lbl_PostCommentsEnabled">Comentários da postagem ativados</string>
+
+	<string name="Lbl_UsersCanPostOnMyPage">Usuários podem postar na minha página</string>
+	<string name="Lbl_WasLive">Esteve ao vivo</string>
+	<string name="Lbl_UnSavePost">Não salvar postagem</string>
+	<string name="Lbl_SorryUserIsAnonymous">Desculpe, este usuário é anônimo</string>
+
+	<!--Verification-->
+	<string name="Lbl_YourPhoto">Sua Foto</string>
+	<string name="Lbl_Passport">Passaporte</string>
+	<string name="Lbl_Please_enter_Messages">Erro, por favor insira Mensagens</string>
+	<string name="Lbl_WelcomeTo">Bem-vindo ao</string>
+	<string name="Lbl_Please_select_Image_passport">Selecione uma foto recente do seu passaporte ou identidade.</string>
+	<string name="Lbl_SubmitRequest">Enviar solicitação</string>
+	<string name="Lbl_Congratulations_verified">Parabéns, você está verificado. Obrigado por verificar seu ID</string>
+	<string name="Lbl_Please_add_info">Verificação do perfil!</string>
+	<string name="Lbl_Successfully_Verification">Sua solicitação de verificação será considerada em breve</string>
+
+	<string name="Lbl_SubCategories">Subcategorias</string>
+	<string name="Lbl_NoMorePost">Nenhuma postagem encontrada</string>
+	<string name="Lbl_DeleteFunding">Tem certeza de que deseja excluir esta solicitação de financiamento?</string>
+	<string name="Lbl_ThereIsNoBalance">Não há Saldo</string>
+
+	<string name="Lbl_PostingAs">Postando como</string>
+	<string name="Lbl_PageUsername">Nome de Usuário da Página</string>
+	<string name="Lbl_GroupUsername">Nome de Usuário do Grupo</string>
+	<string name="Lbl_ThisUserNotActive">Este usuário não está ativado, verifique seu e-mail</string>
+	<string name="Lbl_UserNotFound">Usuário não encontrado</string>
+	<string name="Lbl_ReactToThisComment">Reagir a este comentário</string>
+
+	<string name="Lbl_VoiceRecord">Gravação de Voz</string>
+	<string name="Lbl_ErrorFileSharing">Desculpe, o processo de compartilhamento de arquivo não pode ser concluído. Você precisa fazer login primeiro</string>
+
+	<!-- V3.2 String translate -->
+	<!--===============================================================-->
+	<string name="Lbl_Sort">Ordenar</string>
+	<string name="Lbl_confirmationUnFriend">Tem certeza de que deseja remover como amigo?</string>
+	<string name="Lbl_Confirm">Confirmar</string>
+	<string name="Lbl_WorkingAt">Trabalhando em</string>
+	<string name="Lbl_LivingIn">Morando em</string>
+	<string name="Lbl_StudyingAt">Estudando em</string>
+	<string name="Lbl_RateOurApp">Avalie nosso Aplicativo</string>
+	<string name="Lbl_RateOurAppContent">Se você ama nosso aplicativo, reserve um momento para avaliá-lo.</string>
+	<string name="Lbl_CreatedSuccessfully">Criado com sucesso</string>
+
+	<string name="Lbl_Live">Ao vivo</string>
+	<string name="Lbl_HeSentYouGift">Ele enviou um presente para você</string>
+	<string name="Lbl_DonateCode">0.00</string>
+
+	<string name="Lbl_PayNow">Pagar Agora</string>
+	<string name="Lbl_PayWith">Pagar com</string>
+	<string name="Lbl_Upgraded">Atualizado</string>
+	<string name="Lbl_Added">Adicionado</string>
+	<string name="Lbl_Rated">Avaliado</string>
+	<string name="Lbl_PaymentSuccessfully">pagamento realizado com sucesso</string>
+	<string name="Lbl_RazorPay">RazorPay</string>
+	<string name="Lbl_PayStack">Paystack</string>
+	<string name="Lbl_CashFree">Cashfree</string>
+	<string name="Lbl_PaySera">Paysera</string>
+	<string name="Lbl_MoneySentSuccessfully">Dinheiro enviado com sucesso</string>
+	<string name="Lbl_CantDonate">\"Você não pode doar mais que\"</string>
+	<string name="Lbl_HoldToRecord">segure para gravar, solte para enviar</string>
+	<string name="Lbl_Processing">Processando...</string>
+	<string name="Lbl_CreateArticle">Criar Artigo</string>
+	<string name="Lbl_CommentReaction">Reação ao Comentário</string>
+	<string name="Lbl_BrowseFunding">Explorar Financiamentos</string>
+	<string name="Lbl_MyFunding">Meus Financiamentos</string>
+	<string name="Lbl_PostLinkContentVideo">é uma plataforma de hospedagem e compartilhamento de vídeos.</string>
+	<string name="Lbl_PostLinkContentFacebook">Facebook é um site de rede social que facilita a conexão e o compartilhamento com família e amigos online.</string>
+
+	<!-- V3.5 String translate -->
+	<!--===============================================================-->
+	<string name="Lbl_ThereIsNewUpdate">Há uma nova atualização</string>
+	<string name="Lbl_DiscoverNewVersion">Descubra a nova versão</string>
+	<string name="Lbl_Current">Atual</string>
+	<string name="Lbl_Reactions">Reações</string>
+
+	<string name="Lbl_HeadTextGoPro">Os recursos Pro oferecem controle total sobre seu perfil.</string>
+	<string name="Lbl_HeadSecondTextGoPro">Escolha seu Plano</string>
+	<string name="Lbl_RecentDonations">Doações recentes</string>
+	<string name="Lbl_ReportThisUser">Denunciar Este Usuário</string>
+	<string name="Lbl_NewPost">Nova Postagem</string>
+
+	<!-- V3.6 String translate -->
+	<!--===============================================================-->
+	<!--Advertise-->
+	<string name="Lbl_Create_Ad">Criar Anúncio</string>
+	<string name="Lbl_Describe_Advertise">Adicione seu anúncio</string>
+	<string name="Lbl_Describe_Description_Advertise">Anuncie seu negócio, marca ou organização.</string>
+	<string name="Lbl_MediaFile">Arquivo de Mídia</string>
+	<string name="Lbl_CompanyName">Nome da empresa</string>
+	<string name="Lbl_ChooseImage">Escolher Imagem</string>
+	<string name="Lbl_Details">Detalhes</string>
+	<string name="Lbl_CampaignTitle">Título da campanha</string>
+	<string name="Lbl_CampaignDescription">Descrição da campanha</string>
+	<string name="Lbl_MyPages">Minhas Páginas</string>
+	<string name="Lbl_Targeting">Segmentação</string>
+	<string name="Lbl_Audience">Público</string>
+	<string name="Lbl_Placement">Posicionamento</string>
+	<string name="Lbl_CampaignBudget">Orçamento da Campanha</string>
+	<string name="Lbl_Bidding">Lance</string>
+	<string name="Lbl_Selected">Selecionado</string>
+	<string name="Lbl_PlacementPost">Postagem (Formato de arquivo: imagem)</string>
+	<string name="Lbl_PlacementSidebar">Barra lateral (Formato de arquivo: imagem)</string>
+	<string name="Lbl_BiddingClick">Pagar por Clique ($0.05)</string>
+	<string name="Lbl_BiddingViews">Pagar por Impressão ($0.01)</string>
+	<string name="Lbl_Please_enter_Website">Erro, por favor insira o Site</string>
+	<string name="Lbl_Please_select_page">Erro, por favor selecione a página</string>
+	<string name="Lbl_Please_select_Gender">Erro, por favor selecione o Gênero</string>
+	<string name="Lbl_Please_select_Placement">Erro, por favor selecione o Posicionamento</string>
+	<string name="Lbl_Please_select_Budget">Erro, por favor selecione o Orçamento</string>
+	<string name="Lbl_Please_select_Bidding">Erro, por favor selecione o Lance</string>
+	<string name="Lbl_Please_select_Audience">Erro, por favor selecione o Público</string>
+
+	<string name="Lbl_SelectAll">Selecionar Tudo</string>
+
+	<!-- V3.7 String translate -->
+	<!--===============================================================-->
+	<!--Live Video Agora-->
+	<string name="Lbl_CreateLiveVideo">Criar Vídeo ao Vivo</string>
+	<string name="Lbl_IsLiveNow">está ao vivo agora</string>
+	<string name="Lbl_AddLiveVideoContext">Adicionar contexto do vídeo ao vivo</string>
+	<string name="Lbl_PleaseEnterLiveStreamName">Insira o nome da transmissão ao vivo</string>
+	<string name="Lbl_Go_Live">Ir ao Vivo</string>
+	<string name="Lbl_GetReady">Prepare-se</string>
+	<string name="Lbl_JoiningStream">Entrando na Transmissão</string>
+	<string name="Lbl_LiveStreamHasEnded">Sua transmissão ao vivo terminou</string>
+	<string name="Lbl_LiveStreamShareSuccess">Obrigado, esperamos vê-lo novamente</string>
+	<string name="Lbl_Finish">Finalizar</string>
+	<string name="Lbl_StartedBroadcastingLive">começou a transmitir ao vivo</string>
+	<string name="Lbl_StreamHasEnded">a transmissão terminou.</string>
+	<string name="Lbl_LiveStreamer_alert_title">Pronto para parar a transmissão ao vivo?</string>
+	<string name="Lbl_LiveStreamer_alert_message">\"Toque em &apos;Sim&apos; para encerrar a transmissão ou &apos;Não&apos; para continuar\"</string>
+	<string name="Lbl_LiveViewer_alert_title">Pronto para parar de assistir?</string>
+	<string name="Lbl_LiveViewer_alert_message">\"Toque em &apos;Sim&apos; para sair da transmissão ao vivo ou &apos;Não&apos; para continuar assistindo\"</string>
+
+	<!--Weather-->
+	<string name="Lbl_NoTrending_TitleText">Nenhum em alta disponível</string>
+	<string name="Lbl_Weather">Clima</string>
+
+	<string name="Lbl_TrendingHashTags">Hashtags em Alta</string>
+	<string name="Lbl_AllShortcuts">Todos os Atalhos</string>
+	<string name="Lbl_LastBlogs">Últimos Blogs</string>
+
+	<!-- V3.8 String translate -->
+	<!--===============================================================-->
+	<string name="Lbl_SeenBy">Visto por</string>
+
+	<!-- V3.9 String translate -->
+	<!--===============================================================-->
+	<string name="Lbl_YourLiveStreamHasEnded">Sua transmissão ao vivo terminou</string>
+	<string name="Lbl_LiveStreamer_End_title">Obrigado, esperamos vê-lo novamente</string>
+	<string name="Lbl_LiveViewer_End_title">Inicie sua própria transmissão ao vivo agora</string>
+	<string name="Lbl_LifeTime">vida útil</string>
+	<string name="Lbl_BoostUpTo">Impulsionar até</string>
+	<string name="Lbl_Posts">Postagens</string>
+	<string name="Lbl_ExchangeCurrency">Trocar Moeda</string>
+	<string name="Lbl_UpdatedAt">Atualizado em</string>
+
+	<string name="Lbl_CoronaVirus">Corona Vírus</string>
+	<string name="Lbl_CoronaVirusInfo">Central de Informações sobre Coronavírus (COVID-19)</string>
+	<string name="Lbl_NewCases">Novos Casos</string>
+	<string name="Lbl_NewDeaths">Novas Mortes</string>
+	<string name="Lbl_ActiveCases">Casos Ativos</string>
+	<string name="Lbl_Deaths">Mortes</string>
+	<string name="Lbl_TotalCases">Total de Casos</string>
+	<string name="Lbl_Recovered">Recuperados</string>
+	<string name="Lbl_LastUpdated">Última Atualização</string>
+
+	<string name="Lbl_CoronaVirus_HeadText">Ajude a prevenir a propagação do coronavírus.</string>
+	<string name="Lbl_CoronaVirus_SubText">Veja as informações mais recentes da Organização Mundial da Saúde para ajudar a prevenir a propagação da covid-19.</string>
+
+	<string name="Lbl_NoPageManaged">\"Você não gerencia nenhuma página\"</string>
+	<string name="Lbl_NoGroupManaged">\"Você não tem nenhum grupo\"</string>
+
+	<string name="login_description">Digite seu e-mail ou faça login com contas sociais</string>
+	<string name="no_account">
+		\"Não tem uma conta?\"  <font color='#A52729'>Cadastre-se</font>
+	</string>
+	<string name="field_required">Este campo é obrigatório</string>
+	<string name="register_description">Digite seu e-mail ou cadastre-se com contas sociais</string>
+	<string name="register_using_google">Cadastre-se usando o Google</string>
+	<string name="register_using_facebook">Cadastre-se usando o Facebook</string>
+	<string name="register_using_email">Cadastre-se usando E-mail</string>
+	<string name="already_account">
+		Já tem uma conta? <font color='#A52729'>Login</font>
+	</string>
+	<string name="create_account">Criar uma conta</string>
+	<string name="request_password_link">Solicitar Link de Senha</string>
+	<string name="link_sent_successfully">Link Enviado com Sucesso</string>
+
+	<string name="Lbl_FeaturedPosts">Postagens em Destaque</string>
+	<string name="Lbl_PagesLiked">Páginas Curtidas</string>
+
+
+	<!-- V4.1 String translate -->
+	<!--===============================================================-->
+	<string name="Lbl_Or">Ou</string>
+	<string name="Lbl_ByCreatingAnAccountYou">Ao criar uma conta você</string>
+	<string name="Lbl_Forgot_password">Esqueceu a senha</string>
+	<string name="Lbl_Forgot_password_Des">
+		Digite seu endereço de e-mail. Você <br />receberá um link para criar uma nova senha.
+	</string>
+	<string name="Lbl_AddStory">Adicionar Story</string>
+	<string name="Lbl_EditAvatar">Editar Foto de Perfil</string>
+	<string name="Lbl_EditCover">Editar Capa</string>
+	<string name="Lbl_Wallet">Carteira</string>
+	<string name="Lbl_ICurrentlyWork">Atualmente trabalho aqui</string>
+	<string name="Lbl_FilterByCategory">Filtrar por Categoria</string>
+	<string name="Lbl_Comments">Comentários</string>
+	<string name="Lbl_Shares">Compartilhamentos</string>
+	<string name="Lbl_Unlimited">Ilimitado</string>
+	<string name="Lbl_ProfileDetails">Detalhes do Perfil</string>
+	<string name="Lbl_TypeSomethingsHere">Digite algo aqui</string>
+	<string name="Lbl_Posted">Publicado</string>
+
+	<string name="Lbl_Product_Condition">Condição do Produto</string>
+	<string name="Lbl_Product_Image">Imagem do Produto</string>
+	<string name="Lbl_Enter_Product_Name">Digite o Nome do Produto</string>
+	<string name="Lbl_Enter_Product_Price">Digite o Preço do Produto</string>
+	<string name="Lbl_Select_Product_Currency">Selecione a Moeda do Produto</string>
+	<string name="Lbl_Enter_Product_Description">Digite a Descrição do Produto</string>
+	<string name="Lbl_Select_New_Used">Selecionar Novo / Usado</string>
+	<string name="Lbl_Select_Location">Selecionar Localização</string>
+
+	<string name="Lbl_CommentAnyPost">Comentar em qualquer postagem</string>
+	<string name="Lbl_CreatingNewPost">Criar uma nova postagem</string>
+	<string name="Lbl_ReactingPost">Reagir a uma postagem</string>
+	<string name="Lbl_CreatingNewBlog">Criar um novo blog</string>
+
+	<string name="Lbl_WantEarnMorePoint">Quer ganhar mais pontos?</string>
+	<string name="Lbl_EarnsPointComment">Ganhe pontos comentando em qualquer postagem</string>
+	<string name="Lbl_EarnsPointPost">Ganhe pontos criando uma nova postagem</string>
+	<string name="Lbl_EarnsPointReaction">Ganhe pontos reagindo a qualquer postagem</string>
+	<string name="Lbl_EarnsPointBlog">Ganhe pontos criando um novo blog</string>
+
+	<string name="Lbl_Plus10Points">+10 Pontos</string>
+	<string name="Lbl_Plus20Points">+20 Pontos</string>
+	<string name="Lbl_Plus5Points">+5 Pontos</string>
+	<string name="Lbl_Plus15Points">+15 Pontos</string>
+	<string name="Lbl_CreatePost">Criar uma postagem</string>
+	<string name="Lbl_ReactionPost">Reação na postagem</string>
+	<string name="Lbl_CreateBlog">Criar um blog</string>
+
+	<string name="Lbl_SelectCategory">Selecione uma categoria</string>
+	<string name="Lbl_SelectPrivacy">Selecione a privacidade</string>
+	<string name="Lbl_DescribGroup">Descreva seu grupo</string>
+	<string name="Lbl_SetGroupUserName">Defina o nome de usuário do seu grupo</string>
+	<string name="Lbl_SetGroupTitle">Defina o título do seu grupo</string>
+
+	<string name="Lbl_DescribePage">Descreva sua página</string>
+	<string name="Lbl_SetPageUserName">Defina o nome de usuário da sua página</string>
+	<string name="Lbl_SetPageTitle">Defina o título da sua página</string>
+	<string name="Lbl_PopularProducts">Produtos Populares</string>
+
+	<string name="Lbl_PopularJobs">Vagas Populares</string>
+	<string name="Lbl_ViewAll">Ver Tudo</string>
+	<string name="Lbl_RecentJobs">Vagas Recentes</string>
+
+	<string name="Lbl_PhoneNumberIsWrong">número de telefone está incorreto</string>
+	<string name="Lbl_SeeYourProfile">Ver seu perfil</string>
+	<string name="Lbl_NewMessages">Novas Mensagens</string>
+	<string name="Lbl_ExploreJobs">Explorar Vagas</string>
+	<string name="Lbl_SearchForJobsHere">Pesquisar vagas aqui</string>
+	<string name="Lbl_Option">Opção</string>
+	<string name="Lbl_FilterFriends">Filtrar Amigos</string>
+
+	<string name="Lbl_Done">Concluído</string>
+	<string name="Lbl_Next">Próximo</string>
+	<string name="Lbl_ReportThisPage">Denunciar esta página</string>
+	<string name="Lbl_ReportThisGroup">Denunciar este grupo</string>
+	<string name="Lbl_CancelReport">Cancelar Denúncia</string>
+	<string name="Lbl_HasBeenReported">Foi denunciado</string>
+	<string name="Lbl_Boosted">Impulsionado</string>
+	<string name="Lbl_BoostedPosts">Postagens Impulsionadas</string>
+	<string name="Lbl_BoostedPages">Páginas Impulsionadas</string>
+	<string name="Lbl_PopularGames">Jogos Populares</string>
+	<string name="Lbl_FriendsBirthday">Aniversário de Amigos</string>
+	<string name="Lbl_YearsOld">anos de idade</string>
+	<string name="Lbl_HidePost">Ocultar postagem</string>
+	<string name="Lbl_PostSuccessfullyHided">Postagem ocultada com sucesso</string>
+	<string name="Lbl_ResetPassword">Redefinir Senha</string>
+
+	<string name="Lbl_SomeoneLikedMyPosts">Alguém curtiu minhas postagens</string>
+	<string name="Lbl_SomeoneCommentedMyPosts">Alguém comentou em minhas postagens</string>
+	<string name="Lbl_SomeoneSharedMyPosts">Alguém compartilhou minhas postagens</string>
+	<string name="Lbl_SomeoneFollowedMe">Alguém me seguiu</string>
+	<string name="Lbl_SomeoneLikedMyPages">Alguém curtiu minhas páginas</string>
+	<string name="Lbl_SomeoneVisitedMyProfile">Alguém visitou meu perfil</string>
+	<string name="Lbl_SomeoneMentionedMe">Alguém me mencionou</string>
+	<string name="Lbl_SomeoneJoinedMyGroups">Alguém entrou nos meus grupos</string>
+	<string name="Lbl_SomeoneAcceptedMyFriendRequest">Alguém aceitou minha solicitação de amizade/seguimento</string>
+	<string name="Lbl_SomeonePostedOnMyTimeline">Alguém postou na minha linha do tempo</string>
+	<string name="Lbl_YouHaveRemembranceOnThisDay">Você tem uma lembrança neste dia</string>
+
+	<string name="Lbl_AccountActivated_Title">Parabéns, sua conta foi ativada.</string>
+	<string name="Lbl_AccountActivated_Description">Sua conta foi ativada com um código de verificação e e-mail.</string>
+	<string name="Lbl_Error_IsUserYearsOld">Desculpe, o cadastro não pode ser realizado devido ao não cumprimento dos requisitos de idade mínima de 18 anos</string>
+
+	<string name="Lbl_SuggestedPages">Páginas Sugeridas</string>
+	<string name="Lbl_RandomPages">Páginas Aleatórias</string>
+	<string name="Lbl_FindPageByCategories">Encontre uma página navegando pelas principais categorias</string>
+
+	<string name="Lbl_NoOneViewTheStory">Ninguém visualizou o story</string>
+	<string name="Lbl_ViewedBy">Visualizado por</string>
+	<string name="Lbl_Remove">Remover</string>
+	<string name="Lbl_AddMoreOptions">Adicionar Mais Opções</string>
+	<string name="Lbl_Reset">Redefinir</string>
+	<string name="Lbl_FilterJobs">Filtrar Vagas</string>
+	<string name="Lbl_JobsType">Tipo de Vaga</string>
+	<string name="Lbl_JobQualification">Qualificação da Vaga</string>
+	<string name="Lbl_Apply">Candidatar-se</string>
+	<string name="Lbl_Clear">Limpar</string>
+	<string name="Lbl_ShowResult">Mostrar Resultado</string>
+	<string name="Lbl_Step">Etapa</string>
+	<string name="Lbl_UploadPhoto">Enviar Foto</string>
+	<string name="Lbl_FundingImage">Imagem do Financiamento</string>
+	<string name="Lbl_FundingTitle">Título do Financiamento</string>
+	<string name="Lbl_PeopleGoing">Pessoas que Vão</string>
+	<string name="Lbl_PeopleInterested">Pessoas Interessadas</string>
+	<string name="Lbl_EventDescription">Descrição do Evento</string>
+	<string name="Lbl_Goal">meta</string>
+	<string name="Lbl_RecommendForYou">Recomendado para você</string>
+	<string name="Lbl_OfferDescription">Descrição da Oferta</string>
+	<string name="Lbl_GroupSeen">Visto pelo Grupo</string>
+	<string name="Lbl_ViewPage">Ver Página</string>
+	<string name="Lbl_SubTitle">Subtítulo</string>
+	<string name="Lbl_Summary">Resumo</string>
+	<string name="Lbl_GroupDetails">Detalhes do Grupo</string>
+	<string name="Lbl_Rain">Chuva</string>
+	<string name="Lbl_Wind">Vento</string>
+	<string name="Lbl_Humidity">Umidade</string>
+	<string name="Lbl_mph">mph</string>
+	<string name="Lbl_NoRepliesToBeDisplayed">Nenhuma Resposta a ser exibida</string>
+	<string name="Lbl_To">Para</string>
+	<string name="Lbl_PaymentFailed">Falha no pagamento</string>
+	<string name="Lbl_SuccessfullyAppliedJob">Você se candidatou a esta vaga com sucesso</string>
+	<string name="Lbl_YourDetailsWasUpdated">Seus dados foram atualizados</string>
+	<string name="Lbl_ChooseAnImageFrom">Escolha uma imagem de</string>
+	<string name="Lbl_SendMessage">Enviar mensagem...</string>
+	<string name="Lbl_Write_your_message">Escreva sua mensagem</string>
+	<string name="Lbl_Empty_Games_Desc">Você não tem nenhum jogo</string>
+
+	<string name="Lbl_UpdateAbout">Atualizar Sobre</string>
+	<string name="Lbl_NoBlockedUsersDesc">Você não bloqueou nenhum usuário</string>
+
+	<string name="Lbl_ApplyVerification">Solicitar verificação</string>
+	<string name="Lbl_VerificationDescription">
+		Um selo verificado é uma marca que aparece ao lado do nome de uma conta para indicar que a conta é autêntica e foi verificada de acordo com as regras e regulamentos deste aplicativo.<br /><br />Você pode enviar sua solicitação de verificação usando
+	</string>
+	<string name="Lbl_YourMessage">Sua Mensagem</string>
+	<string name="Lbl_YourPassport">Seu Passaporte</string>
+	<string name="Lbl_SelectTheme">Selecionar Tema</string>
+	<string name="Lbl_AddSocialLinksName">Adicionar link social aqui</string>
+	<string name="Lbl_RecentlyPlayed">Jogados Recentemente</string>
+
+	<string name="Lbl_InvitedPage">Página Convidada</string>
+	<string name="Lbl_Error_AllowedFileUpload">Desculpe, você não pode escolher nenhum arquivo... Você precisa atualizar seu perfil.</string>
+	<string name="Lbl_GameRecommendations">Recomendações de Jogos</string>
+	<string name="Lbl_SearchResults">Resultados da Pesquisa</string>
+
+	<string name="Lbl_NotificationsHaveBeenStopped">As notificações foram interrompidas</string>
+	<string name="Lbl_NotificationsAreTurnedOn">As notificações estão ativadas</string>
+	<string name="Lbl_Album">Álbum</string>
+	<string name="Lbl_TakeImageFromCamera">Tirar uma foto da câmera</string>
+	<string name="Lbl_SelectImageFrom">Selecionar imagem de</string>
+
+	<string name="Lbl_ReplenishDesc">Você pode recarregar seu saldo usando qualquer um dos métodos de pagamento preferidos.</string>
+	<string name="Lbl_FilterResult">Filtrar Resultados</string>
+
+	<string name="Lbl_AddPhotos">Adicionar Fotos</string>
+	<string name="Lbl_EnterEventName">Digite o Nome do Evento</string>
+	<string name="Lbl_EnterStartDate">Digite a Data de Início</string>
+	<string name="Lbl_EnterStartTime">Digite o Horário de Início</string>
+	<string name="Lbl_EnterEndDate">Digite a Data de Término</string>
+	<string name="Lbl_EnterEndTime">Digite o Horário de Término</string>
+	<string name="Lbl_StartTime">Horário de Início</string>
+	<string name="Lbl_EndTime">Horário de Término</string>
+	<string name="Lbl_EventPhoto">Foto do Evento</string>
+	<string name="Lbl_EnterDescriptionHere">Digite a Descrição Aqui</string>
+	<string name="Lbl_EditFunding">Editar Financiamento</string>
+	<string name="Lbl_Announcement_SubText">Temos algo para informar</string>
+	<string name="Lbl_ProMember">Membro Pro</string>
+	<string name="Lbl_Member">Membro</string>
+
+	<!-- V4.4 String translate -->
+	<!--===============================================================-->
+	<string name="Lbl_Error_AdultImages">Esta foto contém conteúdo sensível que algumas pessoas podem considerar ofensivo ou perturbador</string>
+	<string name="Lbl_IgnoreAndSend">Ignorar e enviar</string>
+
+	<string name="Lbl_NoSocialLink">Nenhum Link Social</string>
+	<string name="Lbl_AddLink">Adicionar Link</string>
+	<string name="Lbl_EnterTitleHere">Digite o Título Aqui</string>
+	<string name="Lbl_EnterAmountHere">Digite o Valor Aqui</string>
+	<string name="Lbl_EnterDescription">Digite a Descrição</string>
+
+
+	<!-- V4.5 String translate -->
+	<!--===============================================================-->
+	<string name="Lbl_FilterPost">Filtrar Postagem</string>
+	<string name="Lbl_DiscoverPosts">Descobrir Postagens</string>
+	<string name="Lbl_PostType">Tipo de Postagem</string>
+	<string name="Lbl_Map">Mapa</string>
+	<string name="Lbl_GrantPermission">Conceder Permissão</string>
+	<string name="Lbl_AllowGrantPermission">Permita o acesso para gerenciar todos os arquivos</string>
+
+	<!-- V4.5 String translate -->
+	<!--===============================================================-->
+	<string name="Lbl_Iam">\"Eu sou...\"</string>
+	<string name="Lbl_WhatAboutYou">E você?</string>
+	<string name="Lbl_Star">STAR</string>
+	<string name="Lbl_Ultima">ULTIMA</string>
+	<string name="Lbl_Vip">VIP</string>
+
+	<!-- V4.6 String translate -->
+	<!--===============================================================-->
+	<string name="Lbl_PlaybackSpeed">Velocidade de reprodução</string>
+	<string name="Lbl_VideoRotation">rotação do vídeo</string>
+	<string name="Lbl_AsInput">Como entrada</string>
+	<string name="Lbl_ChooseSource">Escolher fonte</string>
+	<string name="Lbl_ReplaceAudio">Substituir áudio</string>
+	<string name="Lbl_ErrorCreatingVideo">Erro ao Criar Vídeo</string>
+	<string name="Lbl_MaxDurationIsReachedPlease">A duração máxima foi atingida, por favor</string>
+	<string name="Lbl_TheSubmittedVideoCut">O vídeo enviado será cortado a partir dos primeiros </string>
+	<string name="Lbl_Normal">Normal</string>
+	<string name="Lbl_Faster">Mais rápido</string>
+	<string name="Lbl_Slower">Mais lento</string>
+
+	<!-- V4.7 String translate -->
+	<!--===============================================================-->
+	<string name="Lbl_ReportLive_Title">Selecione um problema</string>
+	<string name="Lbl_ReportLive_desc">\"Se alguém estiver em perigo iminente, obtenha ajuda antes de denunciar. Não espere.\"</string>
+	<string name="Lbl_Nudity">Nudez</string>
+	<string name="Lbl_Violence">Violência</string>
+	<string name="Lbl_Harassment">Assédio</string>
+	<string name="Lbl_Suicide">Suicídio ou automutilação</string>
+	<string name="Lbl_FalseInformation">Informação falsa</string>
+	<string name="Lbl_Spam">Spam</string>
+	<string name="Lbl_UnauthorizedSales">Vendas não autorizadas</string>
+	<string name="Lbl_HateSpeech">Discurso de ódio</string>
+	<string name="Lbl_Terrorism">Terrorismo</string>
+	<string name="Lbl_IntellectualProperty">Propriedade intelectual</string>
+	<string name="Lbl_SomethingElse">Algo mais</string>
+	<string name="Lbl_Other">Outro</string>
+	<string name="Lbl_Duration">Duração</string>
+
+	<!-- V5.0 String translate -->
+	<!--===============================================================-->
+	<string name="Lbl_RecommendedTag">Tag Recomendada</string>
+	<string name="Lbl_StickersManagement">Gerenciamento de figurinhas</string>
+	<string name="Lbl_SearchTrendingStickers">Pesquisar Figurinhas em Alta</string>
+	<string name="Lbl_MyStickers">Minhas Figurinhas</string>
+	<string name="Lbl_AllStickers">Todas as Figurinhas</string>
+	<string name="Lbl_VideoUploadWithProcessed">\"Seu vídeo está sendo processado. Avise quando estiver pronto para visualizar.\"</string>
+	<string name="Lbl_SendStickerFile">Figurinha</string>
+
+	<!-- V5.1 String translate -->
+	<!--===============================================================-->
+	<string name="Lbl_ChatNotAllowed">Desculpe, conversar com este usuário não é permitido no momento</string>
+	<string name="Lbl_News">Notícias</string>
+	<string name="Lbl_Read">Ler</string>
+	<string name="Lbl_InvitationToPage">Convite para uma página</string>
+	<string name="Lbl_MyCode">Meu Código</string>
+	<string name="Lbl_ScanCode">Escanear Código</string>
+	<string name="Lbl_ViewStory">Ver story</string>
+	<string name="Lbl_ViewAvatar">Ver foto de perfil</string>
+	<string name="Lbl_SelectAvatar">Selecionar foto de perfil</string>
+	<string name="Lbl_Open">Abrir</string>
+	<string name="Lbl_LiveVideos">Vídeos ao Vivo</string>
+	<string name="Lbl_Advertising">Publicidade</string>
+	<string name="Lbl_PlacementJobs">Vagas (Formato de arquivo: imagem)</string>
+	<string name="Lbl_PlacementForum">Fórum (Formato de arquivo: imagem)</string>
+	<string name="Lbl_PlacementMovies">Vídeos (Formato de arquivo: imagem)</string>
+	<string name="Lbl_PlacementOffer">Oferta (Formato de arquivo: imagem)</string>
+	<string name="Lbl_PlacementFunding">Financiamentos (Formato de arquivo: imagem)</string>
+	<string name="Lbl_And">e</string>
+	<string name="Lbl_OtherPeople">outras pessoas</string>
+	<string name="Lbl_YouAreNowFollowing">você está seguindo agora</string>
+
+	<!-- V5.4 String translate -->
+	<!--===============================================================-->
+	<string name="Lbl_YourEmail">Seu e-mail</string>
+	<string name="Lbl_RememberMe">Lembrar-me</string>
+	<string name="Lbl_WithSocialAccounts">Entrar com contas sociais</string>
+	<string name="Lbl_View">Visualizar</string>
+	<string name="Lbl_ShopNow">Comprar Agora</string>
+	<string name="Lbl_OtherSettings">Outras Configurações</string>
+	<string name="Lbl_GoProAccount">Conta Pro</string>
+
+	<!-- V5.5 String translate -->
+	<!--===============================================================-->
+
+	<!--Wallet-->
+	<string name="Lbl_CurrentWallet">Carteira atual</string>
+	<string name="Lbl_ReplenishMyWallet">Recarregar minha carteira</string>
+	<string name="Lbl_ReplenishWallet_Desc">Você pode recarregar sua carteira usando qualquer um dos métodos de pagamento preferidos.</string>
+	<string name="Lbl_PurchaseRequired">Compra Necessária</string>
+	<string name="Lbl_Error_NoWallet">Desculpe, você não tem dinheiro suficiente. Por favor, recarregue sua carteira.</string>
+	<string name="Lbl_AddWallet">Adicionar carteira</string>
+	<string name="Lbl_PurchasedSuccessfully">Compra realizada com sucesso</string>
+
+	<!--Payment-->
+	<string name="Lbl_SelectYourPaymentMethod">Selecione seu Método de Pagamento</string>
+	<string name="Lbl_AuthorizeNet">AuthorizeNet</string>
+	<string name="Lbl_SecurionPay">SecurionPay</string>
+	<string name="Lbl_IyziPay">IyziPay</string>
+	<string name="Lbl_AamarPay">AamarPay</string>
+	<string name="Lbl_GooglePay">Google Pay</string>
+	<string name="Lbl_YooMoney">YooMoney</string>
+	<string name="Lbl_FlutterWave">FlutterWave</string>
+	<string name="Lbl_ErrorConnectionPayment">\"Não está disponível no momento, tente novamente mais tarde\"</string>
+	<string name="Lbl_SuccessfullyUpgraded">Atualizado com Sucesso</string>
+	<string name="Lbl_Purchase">Compra</string>
+	<string name="Lbl_PleaseAddPhoneNumberCorrectly">Adicione o número de telefone corretamente</string>
+
+	<!--Address-->
+	<string name="Lbl_MyAddresses">Meus Endereços</string>
+	<string name="Lbl_NoMoreAddress">Nenhum endereço encontrado</string>
+	<string name="Lbl_AddNewAddress">Adicionar Novo Endereço</string>
+	<string name="Lbl_EditAddress">Editar Endereço</string>
+	<string name="Lbl_CreateAddress">Criar Endereço</string>
+	<string name="Lbl_DeleteAddress">Excluir Endereço</string>
+	<string name="Lbl_AreYouSureDeleteAddress">Tem Certeza de Excluir o Endereço</string>
+	<string name="Lbl_AddressSuccessfullyUpdated">Endereço Atualizado com Sucesso</string>
+	<string name="Lbl_AddressSuccessfullyDeleted">Endereço Excluído com Sucesso</string>
+	<string name="Lbl_City">Cidade</string>
+	<string name="Lbl_Zip">CEP</string>
+	<string name="Lbl_Empty_Address">Nenhum endereço</string>
+	<string name="Lbl_PleaseSelectAddress">Selecione o endereço</string>
+
+	<!--MarketPlace-->
+	<string name="Lbl_ContactSeller">Contatar Vendedor</string>
+	<string name="Lbl_SellerInformation">Informações do Vendedor</string>
+	<string name="Lbl_ProductDetails">Detalhes do Produto</string>
+	<string name="Lbl_TotalItemUnits">Total de Unidades</string>
+	<string name="Lbl_AddToCart">Adicionar ao Carrinho</string>
+	<string name="Lbl_RemoveFromCart">Remover do Carrinho</string>
+	<string name="Lbl_ShippingDetails">Detalhes do Envio</string>
+	<string name="Lbl_Total">Total</string>
+	<string name="Lbl_Qty">QTD</string>
+	<string name="Lbl_OrderPlacedSuccessfully">Seu pedido foi realizado com sucesso</string>
+	<string name="Lbl_Carts">Carrinhos</string>
+	<string name="Lbl_Empty_Carts">Nenhum Carrinho!!</string>
+	<string name="Lbl_NoMoreCarts">Nenhum carrinho encontrado</string>
+
+	<string name="Lbl_ErrorForward">Não é possível avançar 10 segundos</string>
+	<string name="Lbl_ErrorBackward">Não é possível retroceder 10 segundos</string>
+	<string name="Lbl_ScanQRCode_text">Deixe alguém escanear seu QR Code para adicionar você como amigo</string>
+
+	<string name="Lbl_TextBlockedUser_BoxOpenProfile">\"Você não pode abrir o perfil deste usuário porque você bloqueou esta conta\"</string>
+
+	<!-- V5.6 String translate -->
+	<!--===============================================================-->
+	<string name="Lbl_ErrorCall_Message">Ocorreu um erro de conexão, tente novamente mais tarde.</string>
+	<string name="Lbl_ErrorCall_Code">Código de erro de chamada:</string>
+	<string name="Lbl_ErrorCheckoutProducts">Alguns produtos estão fora de estoque</string>
+
+	<!-- V5.7 String translate -->
+	<!--===============================================================-->
+	<string name="Lbl_PointsAdded">Pontos adicionados</string>
+
+	<string name="Lbl_Please_enter_TotalItemUnits">Erro, por favor insira o Total de Unidades</string>
+	<string name="Lbl_SelectSubCategories">Selecione uma subcategoria</string>
+	<string name="Lbl_Product_TotalItemUnits">Total de Unidades do Produto</string>
+	<string name="Lbl_Purchased">Comprado</string>
+	<string name="Lbl_DownloadInvoice">Baixar Fatura</string>
+
+	<!-- V5.8 String translate -->
+	<!--===============================================================-->
+	<string name="Lbl_PlacementStory">Story (Formato de arquivo: imagem)</string>
+
+	<!-- V5.9 String translate -->
+	<!--===============================================================-->
+	<string name="Lbl_Ask_OpenThisProfile">Deseja abrir este perfil</string>
+	<string name="Lbl_ThereNoUserForThisCode">Não há usuário para este código</string>
+	<string name="Lbl_ResetAvatar">Redefinir foto de perfil</string>
+	<string name="Lbl_Articles">Artigos</string>
+
+	<!-- V6.0 String translate -->
+	<!--===============================================================-->
+	<string name="Lbl_MostWatched">Mais Assistidos</string>
+	<string name="Lbl_MostLiked">Mais Curtidos</string>
+	<string name="Lbl_Request">Solicitar</string>
+	<string name="Lbl_Pending">Pendente</string>
+	<string name="Lbl_RequestSentSuccessfully">Sua solicitação foi enviada com sucesso</string>
+	<string name="Lbl_RemovedSentSuccessfully">Sua solicitação foi removida com sucesso</string>
+
+	<!-- V6.1 String translate -->
+	<!--===============================================================-->
+	<string name="Lbl_ErrorLive_Code">Código de erro ao vivo:</string>
+	<string name="Lbl_ErrorSpaceUsername">você não pode usar espaços no nome de usuário</string>
+	<string name="Lbl_ContactUs">Fale Conosco</string>
+
+</resources>
