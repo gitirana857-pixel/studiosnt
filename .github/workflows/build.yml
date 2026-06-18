@@ -156,7 +156,7 @@ jobs:
         echo "$KEYSTORE_B64" | base64 -d > /tmp/release.keystore
         echo "RELEASE_KEYSTORE_PATH=/tmp/release.keystore" >> $GITHUB_ENV
 
-    - name: Build & Publish AAB
+    - name: Build & Publish AAB (signed)
       env:
         RELEASE_KEYSTORE_PATH: /tmp/release.keystore
         RELEASE_KEYSTORE_PASS: ${{ secrets.RELEASE_KEYSTORE_PASS }}
@@ -182,7 +182,7 @@ jobs:
           2>&1 | tee build-aab.log
         exit_code=${PIPESTATUS[0]}
         if [ $exit_code -ne 0 ]; then
-          echo "=== Retrying with NU1202 suppression ==="
+          echo "=== Retrying with NU1202 suppression ===..."
           dotnet publish WoWonder.csproj \
             -c Release \
             -f net8.0-android \
@@ -202,6 +202,32 @@ jobs:
           exit ${PIPESTATUS[0]}
         fi
         exit $exit_code
+
+    - name: Also build signed APK (Release)
+      env:
+        RELEASE_KEYSTORE_PATH: /tmp/release.keystore
+        RELEASE_KEYSTORE_PASS: ${{ secrets.RELEASE_KEYSTORE_PASS }}
+        RELEASE_KEY_ALIAS: ${{ secrets.RELEASE_KEY_ALIAS }}
+      run: |
+        export DOTNET_ROOT=/opt/dotnet8
+        export PATH=/opt/dotnet8:$PATH
+        cd WoWonder
+        dotnet publish WoWonder.csproj \
+          -c Release \
+          -f net8.0-android \
+          -r android-arm64 \
+          --self-contained \
+          -p:AndroidPackageFormat=apk \
+          -p:DebugType=none \
+          -p:DebugSymbols=false \
+          -p:AndroidKeyStore=true \
+          -p:AndroidSigningKeyStore=/tmp/release.keystore \
+          -p:AndroidSigningStorePass="$RELEASE_KEYSTORE_PASS" \
+          -p:AndroidSigningKeyPass="$RELEASE_KEYSTORE_PASS" \
+          -p:AndroidSigningKeyAlias="$RELEASE_KEY_ALIAS" \
+          -p:AndroidSigningKeyAlg=RSA \
+          -p:NoWarn=NU1202 \
+          -p:CheckEolTargetFramework=false 2>&1 | tee build-apk-release.log
 
     - name: Find AAB
       run: |
@@ -238,3 +264,35 @@ jobs:
           --notes "Release build $(git rev-parse --short HEAD) — assinado e pronto para Play Store" \
           --target "${{ github.sha }}" 2>&1
         echo "AAB_TAG=$TAG" >> $GITHUB_ENV
+
+    - name: Upload signed APK to artifacts
+      if: success()
+      uses: actions/upload-artifact@v4
+      with:
+        name: timeline-apk-release
+        path: |
+          WoWonder/bin/Release/**/*.apk
+          WoWonder/**/com.wowondertimeline*.apk
+          WoWonder/**/studios_nt_pt.apk
+        retention-days: 30
+        if-no-files-found: warn
+
+    - name: Upload signed APK to Release
+      if: success()
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: |
+        APK_FILE=$(find WoWonder -name "*.apk" -type f -path "*/Release/*" 2>/dev/null | head -1)
+        if [ -z "$APK_FILE" ]; then
+          echo "No signed APK found in Release path!"
+          find WoWonder/bin -name "*.apk" -type f 2>/dev/null
+          exit 0
+        fi
+        echo "Found signed APK: $APK_FILE"
+        TAG="apk-release-v$(date +%s)"
+        gh release create "$TAG" \
+          "$APK_FILE" \
+          --title "Timeline APK Release $(date +%Y-%m-%d) #${{ github.run_number }}" \
+          --notes "Release build $(git rev-parse --short HEAD) — assinado e pronto para instalar" \
+          --target "${{ github.sha }}" 2>&1
+        echo "APK_RELEASE_TAG=$TAG" >> $GITHUB_ENV
