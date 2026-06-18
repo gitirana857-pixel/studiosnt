@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using WoWonder.Activities.NativePost.Post;
+using WoWonder.Helpers.Controller;
 using WoWonder.Helpers.Utils;
 using WoWonder.Library.Anjo.Share;
 using WoWonder.Library.Anjo.Share.Abstractions;
@@ -398,13 +399,19 @@ namespace WoWonder.Activities.NativePost.Share
         }
 
         //ShareToGroup
-        private void ShareGroupLayoutOnClick(object sender, EventArgs e)
+        private async void ShareGroupLayoutOnClick(object sender, EventArgs e)
         {
             try
             {
                 if (Methods.CheckConnectivity())
                 {
                     List<GroupDataObject> listGroupClass = ListUtils.MyGroupList.ToList();
+
+                    if (listGroupClass.Count <= 0)
+                    {
+                        await ApiRequest.GetMyGroups();
+                        listGroupClass = ListUtils.MyGroupList.ToList();
+                    }
 
                     if (listGroupClass.Count > 0)
                     {
