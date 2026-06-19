@@ -47,20 +47,16 @@ jobs:
     - name: Generate debug keystore
       run: |
         mkdir -p ~/.android
-        if [ ! -f ~/.android/debug.keystore ]; then
-          keytool -genkey -v \
-            -keystore ~/.android/debug.keystore \
-            -alias androiddebugkey \
-            -storepass android \
-            -keypass android \
-            -keyalg RSA \
-            -keysize 2048 \
-            -validity 10000 \
-            -dname "CN=Android Debug,O=Android,C=US" 2>/dev/null
-          echo "✅ Debug keystore created"
-        else
-          echo "✅ Debug keystore already exists"
-        fi
+        keytool -genkey -v \
+          -keystore ~/.android/debug.keystore \
+          -alias androiddebugkey \
+          -storepass android \
+          -keypass android \
+          -keyalg RSA \
+          -keysize 2048 \
+          -validity 10000 \
+          -dname "CN=Android Debug,O=Android,C=US"
+        echo "✅ Debug keystore created at ~/.android/debug.keystore"
 
     - name: Build & Publish APK
       run: |
@@ -73,19 +69,27 @@ jobs:
           -r android-arm64 \
           --self-contained \
           -p:AndroidPackageFormat=apk \
-          -p:AndroidKeyStore=false \
+          -p:AndroidKeyStore=true \
+          -p:AndroidSigningKeyStore=$(echo ~/.android/debug.keystore) \
+          -p:AndroidSigningStorePass=android \
+          -p:AndroidSigningKeyPass=android \
+          -p:AndroidSigningKeyAlias=androiddebugkey \
           -p:DebugType=none \
           -p:DebugSymbols=false 2>&1 | tee build.log
         exit_code=${PIPESTATUS[0]}
         if [ $exit_code -ne 0 ]; then
-          echo "=== Retrying with NU1202 suppression ==="
+          echo "=== Retrying with NU1202 suppression ===..."
           dotnet publish WoWonder.csproj \
             -c Debug \
             -f net8.0-android \
             -r android-arm64 \
             --self-contained \
             -p:AndroidPackageFormat=apk \
-            -p:AndroidKeyStore=false \
+            -p:AndroidKeyStore=true \
+            -p:AndroidSigningKeyStore=$(echo ~/.android/debug.keystore) \
+            -p:AndroidSigningStorePass=android \
+            -p:AndroidSigningKeyPass=android \
+            -p:AndroidSigningKeyAlias=androiddebugkey \
             -p:DebugType=none \
             -p:DebugSymbols=false \
             -p:NoWarn=NU1202 \
