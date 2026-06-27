@@ -12,6 +12,7 @@ using Bumptech.Glide.Util;
 using Com.Aghajari.Emojiview.View;
 using DE.Hdodenhof.CircleImageViewLib;
 using Google.Android.Material.Dialog;
+using Java.Lang;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;

@@ -15,6 +15,8 @@ using Com.Google.Android.Gms.Ads.Admanager;
 using DE.Hdodenhof.CircleImageViewLib;
 using AndroidX.ViewPager.Widget;
 using Google.Android.Material.BottomNavigation;
+using Google.Android.Material.FloatingActionButton;
+using ImageViews.Rounded;
 using Newtonsoft.Json;
 using System;
 using System.Collections.ObjectModel;
