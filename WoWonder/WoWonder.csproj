@@ -26,10 +26,16 @@
 		<PublishTrimmed>False</PublishTrimmed>
 		<RunAOTCompilation>False</RunAOTCompilation>
 		<AndroidUseAapt2>True</AndroidUseAapt2>
-		<!--<AndroidLinkTool>r8</AndroidLinkTool>-->
+		<!-- Disable R8/ProGuard/D8 completely for Debug to avoid command line length limit -->
+		<AndroidEnableR8>false</AndroidEnableR8>
+		<AndroidEnableD8>false</AndroidEnableD8>
+		<AndroidLinkTool>none</AndroidLinkTool>
+		<AndroidLinkMode>None</AndroidLinkMode>
 		<AndroidStripILAfterAOT>False</AndroidStripILAfterAOT>
 		<AndroidEnableProfiledAot>False</AndroidEnableProfiledAot>
 		<EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
+		<AndroidDexTool>d8</AndroidDexTool>
+		<AndroidUseD8>true</AndroidUseD8>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
 		<JavaMaximumHeapSize>4G</JavaMaximumHeapSize>
