@@ -12,7 +12,6 @@ using Bumptech.Glide.Util;
 using Com.Aghajari.Emojiview.View;
 using DE.Hdodenhof.CircleImageViewLib;
 using Google.Android.Material.Dialog;
-using Java.Lang;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -1592,7 +1591,7 @@ namespace WoWonder.Activities.Live.Page
             }
         }
 
-        private class MyRunnable : Object, IRunnable
+        private class MyRunnable : Java.Lang.Object, Java.Lang.IRunnable
         {
             private readonly LiveStreamingActivity Activity;
             public MyRunnable(LiveStreamingActivity activity)
