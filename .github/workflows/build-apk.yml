@@ -1,0 +1,144 @@
+name: Build Studios NT APK
+
+on:
+  workflow_dispatch:
+    inputs:
+      build_type:
+        description: 'Build type'
+        required: true
+        default: 'debug'
+        type: choice
+        options:
+          - debug
+          - release
+      upload_artifact:
+        description: 'Upload APK as artifact'
+        required: true
+        default: true
+        type: boolean
+
+env:
+  DOTNET_VERSION: '8.0.x'
+  JAVA_VERSION: '17'
+
+jobs:
+  build:
+    name: Build APK (${{ github.event.inputs.build_type || 'debug' }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: ${{ env.JAVA_VERSION }}
+
+      - name: Install Android SDK
+        uses: android-actions/setup-android@v3
+        with:
+          api-level: 34
+          ndk-version: r27b
+          build-tools-version: '34.0.0'
+          cmdline-tools-version: 'latest'
+
+      - name: Accept Android SDK licenses
+        run: |
+          yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses
+
+      - name: Restore NuGet packages
+        run: |
+          cd WoWonder
+          dotnet restore WoWonder.csproj
+
+      - name: Build Debug APK
+        if: github.event.inputs.build_type == 'debug' || github.event.inputs.build_type == ''
+        run: |
+          cd WoWonder
+          dotnet publish WoWonder.csproj -c Debug -f net8.0-android -r android-arm64 --self-contained false -p:AndroidPackageFormat=apk -o ./bin/Debug/apk
+        env:
+          RELEASE_KEYSTORE_PATH: ""
+          RELEASE_KEY_ALIAS: ""
+          RELEASE_KEYSTORE_PASS: ""
+
+      - name: Build Release APK (unsigned)
+        if: github.event.inputs.build_type == 'release'
+        run: |
+          cd WoWonder
+          dotnet publish WoWonder.csproj -c Release -f net8.0-android -r android-arm64 --self-contained false -p:AndroidPackageFormat=apk -o ./bin/Release/apk
+        env:
+          RELEASE_KEYSTORE_PATH: ""
+          RELEASE_KEY_ALIAS: ""
+          RELEASE_KEYSTORE_PASS: ""
+
+      - name: Find APK files
+        run: |
+          echo "=== Debug APKs ==="
+          find WoWonder/bin/Debug -name "*.apk" -type f 2>/dev/null || echo "No debug APKs found"
+          echo "=== Release APKs ==="
+          find WoWonder/bin/Release -name "*.apk" -type f 2>/dev/null || echo "No release APKs found"
+
+      - name: Copy APKs to artifacts folder
+        run: |
+          mkdir -p artifacts
+          # Debug
+          find WoWonder/bin/Debug -name "*.apk" -type f -exec cp {} artifacts/ \; 2>/dev/null || true
+          # Release
+          find WoWonder/bin/Release -name "*.apk" -type f -exec cp {} artifacts/ \; 2>/dev/null || true
+          ls -la artifacts/
+
+      - name: Upload APK artifact
+        if: github.event.inputs.upload_artifact == true
+        uses: actions/upload-artifact@v4
+        with:
+          name: studiosnt-apk-${{ github.event.inputs.build_type || 'debug' }}
+          path: artifacts/*.apk
+          retention-days: 30
+
+      - name: Create Release (Release builds only)
+        if: github.event.inputs.build_type == 'release' && github.event.repository.owner.login == github.repository_owner
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ github.run_number }}-release
+          name: Studios NT Release v${{ github.run_number }}
+          body: |
+            Automated release build from GitHub Actions
+            
+            **Build Details:**
+            - Commit: ${{ github.sha }}
+            - Branch: ${{ github.ref_name }}
+            - Build Type: Release
+            - Target: Android ARM64
+            
+            **Installation:**
+            1. Download the APK below
+            2. Enable "Install from unknown sources" on your Android device
+            3. Install the APK
+          files: artifacts/*.apk
+          draft: false
+          prerelease: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Output APK info
+        run: |
+          echo "## Build Complete!" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| File | Size |" >> $GITHUB_STEP_SUMMARY
+          echo "|------|------|" >> $GITHUB_STEP_SUMMARY
+          for f in artifacts/*.apk; do
+            if [ -f "$f" ]; then
+              size=$(du -h "$f" | cut -f1)
+              echo "| $(basename "$f") | $size |" >> $GITHUB_STEP_SUMMARY
+            fi
+          done

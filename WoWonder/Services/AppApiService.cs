@@ -198,7 +198,7 @@ namespace WoWonder.Services
                         var t = typeof(InitializeWoWonder);
                         var setUrl = t.GetMethod("set_WebsiteUrl", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.NonPublic);
                         if (setUrl != null)
-                            setUrl.Invoke(null, new object[] { "https://www.studiosnt.sntwork.com" });
+                            setUrl.Invoke(null, new object[] { "https://studiosnt.sntwork.com" });
                         var setKey = t.GetMethod("set_ServerKey", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.NonPublic);
                         if (setKey != null)
                             setKey.Invoke(null, new object[] { "HjrIe2ihvP7KXW0xpLOC3Rg8yZlY9dMo" });

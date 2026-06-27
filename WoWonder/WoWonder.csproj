@@ -5,9 +5,9 @@
 		<OutputType>Exe</OutputType>
 		<Nullable>disable</Nullable>
 		<ImplicitUsings>disable</ImplicitUsings>
-		<ApplicationId>com.studiosnt.timeline</ApplicationId>
-		<ApplicationVersion>2</ApplicationVersion>
-		<ApplicationDisplayVersion>1.1</ApplicationDisplayVersion>
+		<ApplicationId>com.wowondertimeline.app</ApplicationId>
+		<ApplicationVersion>1</ApplicationVersion>
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
 		<Copyright>Copyright © 2024</Copyright>
 		<AndroidSigningKeyStore>$(RELEASE_KEYSTORE_PATH)</AndroidSigningKeyStore>
 		<Title>WoWonder</Title>

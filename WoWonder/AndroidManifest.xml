@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:amazon="http://schemas.amazon.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
-		  package="com.wowondertimeline.app" android:versionCode="1" android:versionName="1.0" android:installLocation="auto">
+		  package="com.wowondertimeline.app" android:versionCode="1" android:versionName="1.0" android:installLocation="auto" android:compileSdkVersion="34" android:compileSdkVersionCodename="14" platformBuildVersionCode="34" platformBuildVersionName="14">
 	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="34" />
 	<uses-feature android:name="android.hardware.camera" android:required="true" />
 	<uses-feature android:name="android.hardware.camera.autofocus" />
 	<uses-feature android:name="android.hardware.camera.any" />
 	<uses-feature android:name="android.hardware.location.gps" />
+	<uses-feature android:name="android.hardware.location.network" />
 	<uses-feature android:glEsVersion="0x00020000" android:required="true" />
 	<uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -14,7 +15,7 @@
 	<uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
 	<uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
 	<uses-permission android:name="android.permission.INTERNET" />
-	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />	<!--android:maxSdkVersion="32"-->
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="28" tools:ignore="ScopedStorage" />
 	<uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
 	<uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
@@ -23,6 +24,7 @@
 	<uses-permission android:name="android.permission.CAMERA" />
 	<uses-permission android:name="android.permission.READ_CONTACTS" />
 	<uses-permission android:name="android.permission.READ_PHONE_NUMBERS" />
+	<uses-permission android:name="android.permission.READ_PHONE_STATE" />
 	<uses-permission android:name="android.permission.VIBRATE" />
 	<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 	<uses-permission android:name="android.permission.INTERNAL_SYSTEM_WINDOW" />
@@ -46,9 +48,31 @@
 	<uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE" />
 	<uses-permission android:name="com.google.android.gms.permission.AD_ID" />
 	<uses-permission android:name="android.permission.RUN_USER_INITIATED_JOBS" />
-	<!--<uses-permission android:name="com.android.vending.BILLING" />-->
 	<uses-permission android:name="android.permission.START_ACTIVITIES_FROM_BACKGROUND" />
 	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+	<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+	<uses-permission android:name="android.permission.ACCESS_ADSERVICES_AD_ID" />
+	<uses-permission android:name="android.permission.ACCESS_ADSERVICES_ATTRIBUTION" />
+	<uses-permission android:name="android.permission.ACCESS_ADSERVICES_TOPICS" />
+	<uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
+	<uses-permission android:name="com.applovin.array.apphub.permission.BIND_APPHUB_SERVICE" />
+	<uses-permission android:name="android.permission.NFC" android:required="false" />
+	<uses-permission android:name="com.sec.android.provider.badge.permission.READ" />
+	<uses-permission android:name="com.sec.android.provider.badge.permission.WRITE" />
+	<uses-permission android:name="com.htc.launcher.permission.READ_SETTINGS" />
+	<uses-permission android:name="com.htc.launcher.permission.UPDATE_SHORTCUT" />
+	<uses-permission android:name="com.sonyericsson.home.permission.BROADCAST_BADGE" />
+	<uses-permission android:name="com.sonymobile.home.permission.PROVIDER_INSERT_BADGE" />
+	<uses-permission android:name="com.anddoes.launcher.permission.UPDATE_COUNT" />
+	<uses-permission android:name="com.majeur.launcher.permission.UPDATE_BADGE" />
+	<uses-permission android:name="com.huawei.android.launcher.permission.CHANGE_BADGE" />
+	<uses-permission android:name="com.huawei.android.launcher.permission.READ_SETTINGS" />
+	<uses-permission android:name="com.huawei.android.launcher.permission.WRITE_SETTINGS" />
+	<uses-permission android:name="android.permission.READ_APP_BADGE" />
+	<uses-permission android:name="com.oppo.launcher.permission.READ_SETTINGS" />
+	<uses-permission android:name="com.oppo.launcher.permission.WRITE_SETTINGS" />
+	<uses-permission android:name="me.everything.badger.permission.BADGE_COUNT_READ" />
+	<uses-permission android:name="me.everything.badger.permission.BADGE_COUNT_WRITE" />
 	<!--one signal-->
 	<permission android:name="${packageName}.permission.RECEIVE_ADM_MESSAGE" android:protectionLevel="signature" />
 	<uses-permission android:name="${packageName}.permission.RECEIVE_ADM_MESSAGE" />
@@ -56,7 +80,13 @@
 	<uses-permission android:name="com.amazon.device.messaging.permission.RECEIVE" />
 	<!-- Allow the application to access Google web-based services. -->
 	<permission android:name="${packageName}.permission.MAPS_RECEIVE" android:protectionLevel="signature" />
-	<application android:name=".MainApplication" android:usesCleartextTraffic="true" android:allowBackup="false" android:icon="@mipmap/icon" android:label="STUDIOS NT" android:supportsRtl="true" android:theme="@style/MyTheme" android:networkSecurityConfig="@xml/network_security_config" android:appComponentFactory="androidx" android:largeHeap="true" android:hardwareAccelerated="true" android:requestLegacyExternalStorage="true" android:enableOnBackInvokedCallback="true" tools:ignore="GoogleAppIndexingWarning" tools:replace="android:icon, android:label, android:theme, android:name, android:allowBackup, android:supportsRtl, android:appComponentFactory">
+	<permission android:name="${packageName}.permission.C2D_MESSAGE" android:protectionLevel="signature" />
+	<uses-permission android:name="${packageName}.permission.C2D_MESSAGE" />
+	<permission android:name="${packageName}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" android:protectionLevel="signature" />
+	<uses-permission android:name="${packageName}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+	<uses-feature android:name="android.hardware.nfc" android:required="false" />
+	<uses-permission android:name="com.android.vending.BILLING" />
+	<application android:name=".MainApplication" android:usesCleartextTraffic="true" android:allowBackup="false" android:icon="@mipmap/icon" android:label="STUDIOS NT" android:supportsRtl="true" android:theme="@style/MyTheme" android:networkSecurityConfig="@xml/network_security_config" android:appComponentFactory="androidx" android:largeHeap="true" android:hardwareAccelerated="true" android:requestLegacyExternalStorage="true" android:enableOnBackInvokedCallback="true" android:extractNativeLibs="true" tools:ignore="GoogleAppIndexingWarning" tools:replace="android:icon, android:label, android:theme, android:name, android:allowBackup, android:supportsRtl, android:appComponentFactory">
 		<!--Google Maps /Places  API Key-->
 		<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="@string/google_key" />
 		<meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
@@ -179,6 +209,49 @@
 		</intent>
 		<intent>
 			<action android:name="com.android.vending.billing.InAppBillingService.BIND" />
+		</intent>
+		<intent>
+			<action android:name="android.intent.action.INSERT" />
+			<data android:mimeType="vnd.android.cursor.dir/event" />
+		</intent>
+		<intent>
+			<action android:name="android.intent.action.VIEW" />
+			<data android:scheme="sms" />
+		</intent>
+		<intent>
+			<action android:name="android.intent.action.DIAL" />
+			<data android:path="tel:" />
+		</intent>
+		<package android:name="com.google.android.apps.maps" />
+		<package android:name="com.venmo" />
+		<package android:name="com.paypal.android.p2pmobile" />
+		<intent>
+			<action android:name="android.intent.action.VIEW" />
+			<data android:scheme="http" />
+		</intent>
+		<package android:name="com.android.chrome" />
+		<intent>
+			<action android:name="android.intent.action.VIEW" />
+			<data android:mimeType="*/*" android:scheme="*" />
+		</intent>
+		<intent>
+			<action android:name="android.intent.action.VIEW" />
+			<category android:name="android.intent.category.BROWSABLE" />
+			<data android:host="pay" android:mimeType="*/*" android:scheme="upi" />
+		</intent>
+		<intent>
+			<action android:name="android.intent.action.MAIN" />
+		</intent>
+		<intent>
+			<action android:name="android.intent.action.SEND" />
+			<data android:mimeType="*/*" />
+		</intent>
+		<intent>
+			<action android:name="rzp.device_token.share" />
+		</intent>
+		<intent>
+			<action android:name="android.intent.action.VIEW" />
+			<data android:host="pay" android:scheme="upi" />
 		</intent>
 		<package android:name="com.google.android.gms.policy_cast_dynamite" />
 		<package android:name="com.facebook.katana" />
