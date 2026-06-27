@@ -25,7 +25,7 @@ jobs:
   build:
     name: Build APK (${{ github.event.inputs.build_type || 'debug' }})
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 90
     
     steps:
       - name: Checkout repository
@@ -67,21 +67,23 @@ jobs:
         if: github.event.inputs.build_type == 'debug' || github.event.inputs.build_type == ''
         run: |
           cd WoWonder
-          dotnet publish WoWonder.csproj -c Debug -f net8.0-android -r android-arm64 --self-contained false -p:AndroidPackageFormat=apk -o ./bin/Debug/apk
+          dotnet publish WoWonder.csproj -c Debug -f net8.0-android -r android-arm64 --self-contained false -p:AndroidPackageFormat=apk -p:JavaMaximumHeapSize=2G -p:AndroidEnableMultiDex=true -o ./bin/Debug/apk
         env:
           RELEASE_KEYSTORE_PATH: ""
           RELEASE_KEY_ALIAS: ""
           RELEASE_KEYSTORE_PASS: ""
+          _JAVA_OPTIONS: "-Xmx2g"
 
       - name: Build Release APK (unsigned)
         if: github.event.inputs.build_type == 'release'
         run: |
           cd WoWonder
-          dotnet publish WoWonder.csproj -c Release -f net8.0-android -r android-arm64 --self-contained false -p:AndroidPackageFormat=apk -o ./bin/Release/apk
+          dotnet publish WoWonder.csproj -c Release -f net8.0-android -r android-arm64 --self-contained false -p:AndroidPackageFormat=apk -p:JavaMaximumHeapSize=2G -p:AndroidEnableMultiDex=true -o ./bin/Release/apk
         env:
           RELEASE_KEYSTORE_PATH: ""
           RELEASE_KEY_ALIAS: ""
           RELEASE_KEYSTORE_PASS: ""
+          _JAVA_OPTIONS: "-Xmx2g"
 
       - name: Find APK files
         run: |
