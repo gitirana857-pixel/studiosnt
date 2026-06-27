@@ -25,7 +25,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
-using IO.Agora.Rtc2;
 using WoWonder.Activities.AddPost;
 using WoWonder.Activities.Base;
 using WoWonder.Activities.Live.Page;
@@ -1301,7 +1300,7 @@ namespace WoWonder.Activities.Tabbes
                                         //Live
                                         //Owner >> ClientRoleBroadcaster , Users >> ClientRoleAudience
                                         Intent intent = new Intent(this, typeof(LiveStreamingActivity));
-                                        intent.PutExtra(LiveConstants.KeyClientRole, Constants.ClientRoleAudience);
+                                        intent.PutExtra(LiveConstants.KeyClientRole, LiveConstants.ClientRoleAudience);
                                         intent.PutExtra("PostId", item.DataLivePost.PostId);
                                         intent.PutExtra("StreamName", item.DataLivePost.StreamName);
                                         intent.PutExtra("PostLiveStream", JsonConvert.SerializeObject(item.DataLivePost));

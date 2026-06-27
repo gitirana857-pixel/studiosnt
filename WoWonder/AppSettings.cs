@@ -237,6 +237,11 @@ namespace WoWonder
         public static readonly bool ShowLive = true;
         public static readonly string AppIdAgoraLive = "7f1cb06a3b4d4e84965ea6d3b3e16a8a";
 
+        // LiveKit Configuration
+        public static readonly string LiveKitUrl = "wss://live.studiosnt.sntwork.com";
+        public static readonly string LiveKitApiKey = "7Z05bU1rvmZ1RieZ";
+        public static readonly string LiveKitApiSecret = "1RtVvAEbm1pfrXKbuT8ekwEGv3XZZ7wjNM6fPUHzhHydQLYLpVBWNdA0v3C43u9A";
+
         //Events settings
         //*********************************************************  
         public static bool ShowEvents = true;

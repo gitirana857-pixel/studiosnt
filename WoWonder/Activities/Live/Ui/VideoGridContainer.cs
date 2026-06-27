@@ -5,17 +5,15 @@ using Android.Runtime;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
-using Java.Lang;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using WoWonder.Activities.Live.Stats;
 using WoWonder.Helpers.Utils;
 using Exception = System.Exception;
 
 namespace WoWonder.Activities.Live.Ui
 {
-    public class VideoGridContainer : RelativeLayout, IRunnable
+    public class VideoGridContainer : RelativeLayout
     {
         private static readonly int MaxUser = 4;
         private static readonly int StatsRefreshInterval = 2000;
@@ -24,7 +22,6 @@ namespace WoWonder.Activities.Live.Ui
 
         private Dictionary<int, ViewGroup> MUserViewList;
         private readonly List<int> MUidList = new List<int>(MaxUser);
-        private StatsManager MStatsManager;
         private Handler MHandler;
         private int MStatMarginBottom;
 
@@ -66,11 +63,6 @@ namespace WoWonder.Activities.Live.Ui
             {
                 Methods.DisplayReportResultTrack(e);
             }
-        }
-
-        public void SetStatsManager(StatsManager manager)
-        {
-            MStatsManager = manager;
         }
 
         public void AddUserVideotextureView(int uid, SurfaceView surfaceView, bool isLocal)
@@ -133,16 +125,6 @@ namespace WoWonder.Activities.Live.Ui
                 {
                     MUserViewList.Add(uid, CreateVideoView(surfaceView));
 
-                    if (MStatsManager != null)
-                    {
-                        MStatsManager.AddUserStats(uid, isLocal);
-                        if (MStatsManager.IsEnabled())
-                        {
-                            MHandler.RemoveCallbacks(this);
-                            MHandler.PostDelayed(this, StatsRefreshInterval);
-                        }
-                    }
-
                     RequestGridLayout();
                 }
             }
@@ -201,13 +183,12 @@ namespace WoWonder.Activities.Live.Ui
                         }
                 }
 
-                MStatsManager.RemoveUserStats(uid);
                 RequestGridLayout();
 
                 switch (ChildCount)
                 {
                     case 0:
-                        MHandler.RemoveCallbacks(this);
+                        MHandler.RemoveCallbacksAndMessages(null);
                         break;
                 }
             }
@@ -328,34 +309,7 @@ namespace WoWonder.Activities.Live.Ui
                 RemoveAllViews();
                 MUserViewList.Clear();
                 MUidList.Clear();
-                MHandler.RemoveCallbacks(this);
-            }
-            catch (Exception e)
-            {
-                Methods.DisplayReportResultTrack(e);
-            }
-        }
-        public void Run()
-        {
-            try
-            {
-                if (MStatsManager != null && MStatsManager.IsEnabled())
-                {
-                    int count = ChildCount;
-                    for (int i = 0; i < count; i++)
-                    {
-                        RelativeLayout layout = (RelativeLayout)GetChildAt(i);
-                        TextView text = layout?.FindViewById<TextView>(layout.GetHashCode());
-                        if (text != null)
-                        {
-                            StatsData data = MStatsManager.GetStatsData(MUidList[i]);
-                            string info = data?.ToString();
-                            if (info != null) text.SetText(info, TextView.BufferType.Normal);
-                        }
-                    }
-
-                    MHandler.PostDelayed(this, StatsRefreshInterval);
-                }
+                MHandler.RemoveCallbacksAndMessages(null);
             }
             catch (Exception e)
             {

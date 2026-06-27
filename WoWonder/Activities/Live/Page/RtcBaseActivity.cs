@@ -3,15 +3,8 @@ using Android.Content;
 using Android.OS;
 using Android.Views;
 using AndroidX.AppCompat.App;
-using Anjo.Android.AgoraIO.AgoraDynamicKey.Media;
-using IO.Agora.Rtc2;
-using IO.Agora.Rtc2.Video;
-using Java.Lang;
 using WoWonder.Activities.Live.Rtc;
-using WoWonder.Activities.Live.Stats;
-using WoWonder.Activities.Live.Utils;
 using WoWonder.Helpers.Utils;
-using Boolean = Java.Lang.Boolean;
 using Exception = System.Exception;
 
 namespace WoWonder.Activities.Live.Page
@@ -19,25 +12,24 @@ namespace WoWonder.Activities.Live.Page
     [Activity]
     public class RtcBaseActivity : AppCompatActivity
     {
-        public RtcEngine MRtcEngine;
-        private readonly EngineConfig MGlobalConfig = new EngineConfig();
-        private readonly AgoraEventHandler MHandler = new AgoraEventHandler();
-        private readonly StatsManager MStatsManager = new StatsManager();
+        protected LiveKitRoomManager LiveKitManager => LiveKitRoomManager.Instance;
+        private bool _isConnected;
+
+        protected EngineConfig MConfig;
+
+        protected EngineConfig Config()
+        {
+            return MConfig ?? (MConfig = new EngineConfig());
+        }
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             try
             {
                 base.OnCreate(savedInstanceState);
-
-                InitRtcEngine();
-                InitConfig();
-
+                MConfig = new EngineConfig();
                 Window?.SetSoftInputMode(SoftInput.AdjustResize);
-
                 Methods.App.FullScreenApp(this, true);
-
-                //JoinChannel(); 
             }
             catch (Exception e)
             {
@@ -45,20 +37,17 @@ namespace WoWonder.Activities.Live.Page
             }
         }
 
-        private void InitConfig()
+        protected async System.Threading.Tasks.Task JoinLiveKitRoom(string roomName, string identity, bool asPublisher)
         {
             try
             {
-                ISharedPreferences pref = PrefManager.GetPreferences(ApplicationContext);
-                MGlobalConfig.SetVideoDimenIndex(pref.GetInt(LiveConstants.PrefResolutionIdx, LiveConstants.DefaultProfileIdx));
-
-                bool showStats = pref.GetBoolean(LiveConstants.PrefEnableStats, false);
-                MGlobalConfig.SetIfShowVideoStats(showStats);
-                MStatsManager.EnableStats(showStats);
-
-                MGlobalConfig.SetMirrorLocalIndex(pref.GetInt(LiveConstants.PrefMirrorLocal, 0));
-                MGlobalConfig.SetMirrorRemoteIndex(pref.GetInt(LiveConstants.PrefMirrorRemote, 0));
-                MGlobalConfig.SetMirrorEncodeIndex(pref.GetInt(LiveConstants.PrefMirrorEncode, 0));
+                var success = await LiveKitManager.JoinRoomAsync(
+                    AppSettings.LiveKitUrl,
+                    LiveKitManager.CurrentToken ?? "",
+                    roomName,
+                    identity
+                );
+                _isConnected = success;
             }
             catch (Exception e)
             {
@@ -66,49 +55,12 @@ namespace WoWonder.Activities.Live.Page
             }
         }
 
-        private void InitRtcEngine()
+        protected void LeaveLiveKitRoom()
         {
             try
             {
-                // Create an RtcEngineConfig instance and configure it
-                RtcEngineConfig config = new RtcEngineConfig();
-                config.MContext = this;
-                config.MAppId = AppSettings.AppIdAgoraLive;
-                config.MChannelProfile = Constants.ChannelProfileLiveBroadcasting;
-                config.MEventHandler = MHandler;
-                config.MAudioScenario = Constants.AudioScenarioDefault;
-
-                // Create and initialize an RtcEngine instance
-                MRtcEngine = RtcEngine.Create(config);
-
-                // In the live broadcast scenario, set the channel profile to BROADCASTING (live broadcast scenario)
-                // Sets the channel profile of the Agora RtcEngine.
-                // The Agora RtcEngine differentiates channel profiles and applies different optimization algorithms accordingly. For example, it prioritizes smoothness and low latency for a video call, and prioritizes video quality for a video broadcast.
-                MRtcEngine.SetChannelProfile(Constants.ChannelProfileLiveBroadcasting);
-
-                MRtcEngine.SetLogFile(FileUtil.InitializeLogFile(this));
-
-                // Enable the video module
-                MRtcEngine.EnableVideo();
-                // Enable local preview
-                MRtcEngine.StartPreview();
-
-                MRtcEngine.SetParameters("{"
-                                         + "\"rtc.report_app_scenario\":"
-                                         + "{"
-                                         + "\"appScenario\":" + 100 + ","
-                                         + "\"serviceType\":" + 11 + ","
-                                         + "\"appVersion\":\"" + RtcEngine.SdkVersion + "\""
-                                         + "}"
-                                         + "}");
-
-                VideoEncoderConfiguration configuration = new VideoEncoderConfiguration(LiveConstants.VideoDimensions[Config().GetVideoDimenIndex()], VideoEncoderConfiguration.FRAME_RATE.FrameRateFps15, VideoEncoderConfiguration.StandardBitrate, VideoEncoderConfiguration.ORIENTATION_MODE.OrientationModeFixedPortrait)
-                {
-                    MirrorMode = LiveConstants.VideoMirrorModes[Config().GetMirrorEncodeIndex()]
-                };
-                MRtcEngine.SetVideoEncoderConfiguration(configuration);
-                MRtcEngine.SetDualStreamMode(Constants.SimulcastStreamMode.EnableSimulcastStream);
-                MRtcEngine.StartMediaRenderingTracing();
+                _ = LiveKitManager.DisconnectAsync();
+                _isConnected = false;
             }
             catch (Exception e)
             {
@@ -116,129 +68,31 @@ namespace WoWonder.Activities.Live.Page
             }
         }
 
-        protected void JoinChannel()
+        protected void SetAudioEnabled(bool enabled)
         {
-            try
-            {
-                string token = null!;
-                if (!string.IsNullOrEmpty(ListUtils.SettingsSiteList?.AgoraAppCertificate))
-                {
-                    string channelName = Config().GetChannelName();
-                    uint uid = 0;
-                    uint expirationTimeInSeconds = 3600;
-                    uint timestamp = (uint)(Methods.Time.CurrentTimeMillis() / 1000 + expirationTimeInSeconds);
-
-                    token = RtcTokenBuilder.BuildTokenWithUid(AppSettings.AppIdAgoraLive, ListUtils.SettingsSiteList?.AgoraAppCertificate, channelName, uid, RtcTokenBuilder.Role.RolePublisher, timestamp);
-                }
-
-                ChannelMediaOptions option = new ChannelMediaOptions((Integer)Constants.ClientRoleAudience);
-                //option.ChannelProfile = IO.Agora.Rtc2.Constants.ChannelProfileLiveBroadcasting;
-
-                // Publish the audio captured by the microphone
-                option.PublishMicrophoneTrack = Boolean.True;
-                // Publish the video captured by the camera
-                option.PublishCameraTrack = Boolean.True;
-                // Automatically subscribe to all audio streams
-                option.AutoSubscribeAudio = Boolean.True;
-                // Automatically subscribe to all video streams
-                option.AutoSubscribeVideo = Boolean.True;
-
-                MRtcEngine.JoinChannel(token, Config().GetChannelName(), 0, option);
-            }
-            catch (Exception e)
-            {
-                Methods.DisplayReportResultTrack(e);
-            }
+            LiveKitManager.SetAudioEnabled(enabled);
         }
 
-        //protected TextureView PrepareRtcVideo(int uid, bool local)
-        //{
-        //    try
-        //    {
-        //        // Render local/remote video on a SurfaceView
-
-        //        var surface = DT.Xamarin.Agora.RtcEngine.CreateTextureView(ApplicationContext);
-        //        if (local)
-        //        {
-        //            MRtcEngine?.SetupLocalVideo(new VideoCanvas(surface, VideoCanvas.RenderModeHidden, 0, Constants.VideoMirrorModes[Config().GetMirrorLocalIndex()]));
-        //        }
-        //        else
-        //        {
-        //            MRtcEngine?.SetupRemoteVideo(new VideoCanvas(surface, VideoCanvas.RenderModeHidden, uid, Constants.VideoMirrorModes[Config().GetMirrorRemoteIndex()]));
-        //        }
-        //        return surface;
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        Methods.DisplayReportResultTrack(e);
-        //        return null!;
-        //    }
-        //}
-
-        protected SurfaceView PrepareRtcVideo(int uid, bool local)
+        protected void SetVideoEnabled(bool enabled)
         {
-            try
-            {
-                SurfaceView surface = new SurfaceView(ApplicationContext);
-                surface.SetZOrderMediaOverlay(true);
-                switch (local)
-                {
-                    case true:
-                        MRtcEngine?.SetupLocalVideo(new VideoCanvas(surface, VideoCanvas.RenderModeFit, 0));
-                        break;
-                    default:
-                        MRtcEngine?.SetupRemoteVideo(new VideoCanvas(surface, VideoCanvas.RenderModeFit, uid));
-                        break;
-                }
-                MRtcEngine?.SetDefaultAudioRoutetoSpeakerphone(true);
-
-                return surface;
-            }
-            catch (Exception e)
-            {
-                Methods.DisplayReportResultTrack(e);
-                return null!;
-            }
+            LiveKitManager.SetVideoEnabled(enabled);
         }
 
-        protected void RemoveRtcVideo(int uid, bool local)
+        protected void SwitchCamera()
         {
-            try
-            {
-                switch (local)
-                {
-                    case true:
-                        MRtcEngine?.SetupLocalVideo(null);
-                        break;
-                    default:
-                        MRtcEngine?.SetupRemoteVideo(new VideoCanvas(null, VideoCanvas.RenderModeHidden, uid));
-                        break;
-                }
-            }
-            catch (Exception e)
-            {
-                Methods.DisplayReportResultTrack(e);
-            }
+            LiveKitManager.SwitchCamera();
         }
 
-        public void StopRtc()
+        protected void ToggleBeautyEffect(bool enabled)
         {
-            try
-            {
-                MRtcEngine?.StopPreview();
-                MRtcEngine?.LeaveChannel();
-            }
-            catch (Exception e)
-            {
-                Methods.DisplayReportResultTrack(e);
-            }
+            LiveKitManager.ToggleBeautyEffect(enabled);
         }
 
         protected override void OnDestroy()
         {
             try
             {
-                StopRtc();
+                LeaveLiveKitRoom();
                 base.OnDestroy();
             }
             catch (Exception e)
@@ -246,32 +100,5 @@ namespace WoWonder.Activities.Live.Page
                 Methods.DisplayReportResultTrack(e);
             }
         }
-
-        public void RegisterEventHandler(IEventHandler handler)
-        {
-            MHandler.AddHandler(handler);
-        }
-
-        public void RemoveEventHandler(IEventHandler handler)
-        {
-            MHandler.RemoveHandler(handler);
-        }
-
-        protected EngineConfig Config()
-        {
-            try
-            {
-                return MGlobalConfig;
-            }
-            catch (Exception e)
-            {
-                Methods.DisplayReportResultTrack(e);
-                return null!;
-            }
-        }
-
-        protected StatsManager StatsManager() { return MStatsManager; }
-
-
     }
 }

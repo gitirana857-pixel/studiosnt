@@ -4,7 +4,6 @@ using Android.Runtime;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
-using IO.Agora.Rtc2;
 using JetBrains.Annotations;
 using System;
 using System.Text;

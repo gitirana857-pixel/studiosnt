@@ -13,9 +13,8 @@ using AndroidX.RecyclerView.Widget;
 using AT.Markushi.UI;
 using Com.Google.Android.Gms.Ads.Admanager;
 using DE.Hdodenhof.CircleImageViewLib;
-using Google.Android.Material.FloatingActionButton;
-using ImageViews.Rounded;
-using IO.Agora.Rtc2;
+using AndroidX.ViewPager.Widget;
+using Google.Android.Material.BottomNavigation;
 using Newtonsoft.Json;
 using System;
 using System.Collections.ObjectModel;
@@ -1372,7 +1371,7 @@ namespace WoWonder.Activities.NativePost.Post
                         {
                             //Owner >> ClientRoleBroadcaster , Users >> ClientRoleAudience
                             Intent intent = new Intent(PostAdapter.ActivityContext, typeof(LiveStreamingActivity));
-                            intent.PutExtra(LiveConstants.KeyClientRole, Constants.ClientRoleAudience);
+                            intent.PutExtra(LiveConstants.KeyClientRole, LiveConstants.ClientRoleAudience);
                             intent.PutExtra("PostId", item.PostId);
                             intent.PutExtra("StreamName", item.StreamName);
                             intent.PutExtra("PostLiveStream", JsonConvert.SerializeObject(item));

@@ -12,24 +12,18 @@ using Bumptech.Glide.Util;
 using Com.Aghajari.Emojiview.View;
 using DE.Hdodenhof.CircleImageViewLib;
 using Google.Android.Material.Dialog;
-using IO.Agora.Rtc2;
-using IO.Agora.Rtc2.Video;
-using Java.Lang;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Timers;
 using WoWonder.Activities.Base;
 using WoWonder.Activities.Comment.Adapters;
 using WoWonder.Activities.Live.Adapters;
 using WoWonder.Activities.Live.Rtc;
-using WoWonder.Activities.Live.Stats;
 using WoWonder.Activities.Live.Ui;
 using WoWonder.Activities.NativePost.Post;
 using WoWonder.Activities.NativePost.Share;
@@ -46,15 +40,13 @@ using WoWonderClient.Classes.Comments;
 using WoWonderClient.Classes.Global;
 using WoWonderClient.Classes.Posts;
 using WoWonderClient.Requests;
-using Encoding = System.Text.Encoding;
 using Exception = System.Exception;
-using Object = Java.Lang.Object;
 using Uri = Android.Net.Uri;
 
 namespace WoWonder.Activities.Live.Page
 {
     [Activity(Icon = "@mipmap/icon", Theme = "@style/MyTheme", ConfigurationChanges = ConfigChanges.Locale | ConfigChanges.UiMode | ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize)]
-    public class LiveStreamingActivity : RtcBaseActivity, IEventHandler, IDialogListCallBack/*, PixelCopy.IOnPixelCopyFinishedListener*/
+    public class LiveStreamingActivity : RtcBaseActivity, IDialogListCallBack
     {
         #region Variables Basic
 
@@ -85,7 +77,8 @@ namespace WoWonder.Activities.Live.Page
         //////////////////////////////// 
         private VideoGridContainer MVideoLayout;
         private SurfaceView SurfaceView;
-        private VideoEncoderConfiguration.VideoDimensions MVideoDimension;
+        private int MVideoWidth = 640;
+        private int MVideoHeight = 360;
 
         ////////////////////////////////
         private ImageView BgAvatar, CloseEnded;
@@ -123,9 +116,9 @@ namespace WoWonder.Activities.Live.Page
                 SetContentView(Resource.Layout.LiveStreamingLayout);
 
                 PostId = Intent?.GetStringExtra("PostId") ?? "";
-                var audience = Constants.ClientRoleAudience;
+                var audience = LiveConstants.ClientRoleAudience;
                 Role = Intent?.GetIntExtra(LiveConstants.KeyClientRole, audience) ?? audience;
-                IsOwner = Role == Constants.ClientRoleBroadcaster;  //Owner >> ClientRoleBroadcaster , Users >> ClientRoleAudience
+                IsOwner = Role == LiveConstants.ClientRoleBroadcaster;  //Owner >> ClientRoleBroadcaster , Users >> ClientRoleAudience
 
                 switch (IsOwner)
                 {
@@ -137,7 +130,7 @@ namespace WoWonder.Activities.Live.Page
                 InitComponent();
                 SetRecyclerViewAdapters();
                 InitBackPressed();
-                InitAgora();
+                InitLiveKit();
             }
             catch (Exception e)
             {
@@ -324,16 +317,14 @@ namespace WoWonder.Activities.Live.Page
                             DeleteLiveStream();
                         else
                         {
-                            await AgoraStop(AppSettings.AppIdAgoraLive, ListUtils.SettingsSiteList?.AgoraCustomerId, ListUtils.SettingsSiteList?.AgoraCustomerCertificate, ResourceId, SId, Config().GetChannelName(), UidLive);
+                            // Keep live stream for replay
                         }
                     }
                     else
                         DeleteLiveStream();
                 }
 
-                StatsManager()?.ClearAllData();
-                RemoveEventHandler(this);
-                StopRtc();
+                LeaveLiveKitRoom();
                 //add end page
                 LiveStreamEnded();
             }
@@ -444,7 +435,7 @@ namespace WoWonder.Activities.Live.Page
                 }
                 //Owner >> ClientRoleBroadcaster , Users >> ClientRoleAudience
                 Intent intent = new Intent(this, typeof(LiveStreamingActivity));
-                intent.PutExtra(LiveConstants.KeyClientRole, Constants.ClientRoleBroadcaster);
+                intent.PutExtra(LiveConstants.KeyClientRole, LiveConstants.ClientRoleBroadcaster);
                 intent.PutExtra("StreamName", streamName);
                 StartActivity(intent);
 
@@ -474,7 +465,7 @@ namespace WoWonder.Activities.Live.Page
                 MLiveStreamEndedLyt = FindViewById<FrameLayout>(Resource.Id.streamer_final_screen_root);
 
                 MVideoLayout = FindViewById<VideoGridContainer>(Resource.Id.liveStreaming_videoContainer);
-                MVideoLayout.SetStatsManager(StatsManager());
+                //MVideoLayout.SetStatsManager(StatsManager()); -- Stats removed with Agora
 
                 MAvatarBg = FindViewById<ImageView>(Resource.Id.streamLoadingProgress_backgroundAvatar);
                 MAvatar = FindViewById<CircleImageView>(Resource.Id.streamLoadingProgress_foregroundAvatar);
@@ -734,7 +725,8 @@ namespace WoWonder.Activities.Live.Page
                 {
                     case View view:
                         {
-                            MRtcEngine?.MuteLocalAudioStream(view.Activated);
+                            // LiveKit: mute/unmute local audio
+                            LiveKitManager.SetAudioEnabled(!view.Activated);
                             view.Activated = !view.Activated;
 
                             switch (view.Activated)
@@ -803,7 +795,7 @@ namespace WoWonder.Activities.Live.Page
                     case View view:
                         {
                             view.Activated = !view.Activated;
-                            MRtcEngine?.SetBeautyEffectOptions(view.Activated, LiveConstants.DefaultBeautyOptions);
+                            LiveKitManager.ToggleBeautyEffect(view.Activated);
 
                             switch (view.Activated)
                             {
@@ -828,7 +820,7 @@ namespace WoWonder.Activities.Live.Page
         {
             try
             {
-                MRtcEngine?.SwitchCamera();
+                LiveKitManager.SwitchCamera();
             }
             catch (Exception exception)
             {
@@ -1033,24 +1025,24 @@ namespace WoWonder.Activities.Live.Page
 
         #endregion
 
-        #region Agora
+        #region LiveKit
 
-        private void InitAgora()
+        private void InitLiveKit()
         {
             try
             {
                 switch (IsOwner)
                 {
                     case true:
-                        MRtcEngine?.SetClientRole(Constants.ClientRoleBroadcaster);
+                        // Broadcaster role - will publish tracks
                         break;
                     default:
-                        MRtcEngine?.SetClientRole(Constants.ClientRoleAudience);
+                        // Audience role - will subscribe
                         break;
                 }
-                RegisterEventHandler(this);
 
-                MVideoDimension = LiveConstants.VideoDimensions[Config().GetVideoDimenIndex()];
+                MVideoWidth = 640;
+                MVideoHeight = 360;
                 InitValueLive();
             }
             catch (Exception e)
@@ -1088,7 +1080,7 @@ namespace WoWonder.Activities.Live.Page
                             MVideoControlLyt.Visibility = ViewStates.Gone;
                             MLiveStreamEndedLyt.Visibility = ViewStates.Gone;
 
-                            JoinChannel();
+                            JoinLiveKitRoom(Config().GetChannelName(), UserDetails.Username, false);
                             break;
                         }
                 }
@@ -1126,16 +1118,18 @@ namespace WoWonder.Activities.Live.Page
         {
             try
             {
-                MRtcEngine?.SetClientRole(Constants.ClientRoleBroadcaster);
-                SurfaceView = PrepareRtcVideo(0, true);
-                MVideoLayout.AddUserVideotextureView(0, SurfaceView, true);
+                // LiveKit: publish local tracks
+                LiveKitManager.SetVideoEnabled(true);
+                RunOnUiThread(() =>
+                {
+                    MVideoLayout.Visibility = ViewStates.Visible;
 
-                MLoadingViewer.Visibility = ViewStates.Gone;
-                MGetReadyLyt.Visibility = ViewStates.Gone;
-                MLiveStreamEndedLyt.Visibility = ViewStates.Gone;
+                    MLoadingViewer.Visibility = ViewStates.Gone;
+                    MGetReadyLyt.Visibility = ViewStates.Gone;
+                    MLiveStreamEndedLyt.Visibility = ViewStates.Gone;
 
-                MVideoControlLyt.Visibility = ViewStates.Visible;
-                MVideoLayout.Visibility = ViewStates.Visible;
+                    MVideoControlLyt.Visibility = ViewStates.Visible;
+                });
             }
             catch (Exception e)
             {
@@ -1147,48 +1141,17 @@ namespace WoWonder.Activities.Live.Page
         {
             try
             {
-                MRtcEngine?.SetClientRole(Constants.ClientRoleAudience);
-                RemoveRtcVideo(0, true);
-                MVideoLayout.RemoveUserVideo(0, true);
-
-                MLoadingViewer.Visibility = ViewStates.Gone;
-                MGetReadyLyt.Visibility = ViewStates.Gone;
-                MLiveStreamEndedLyt.Visibility = ViewStates.Gone;
-
-                MVideoControlLyt.Visibility = ViewStates.Visible;
-                MVideoLayout.Visibility = ViewStates.Visible;
-            }
-            catch (Exception e)
-            {
-                Methods.DisplayReportResultTrack(e);
-            }
-        }
-
-        public void OnFirstLocalVideoFrame(Constants.VideoSourceType source, int width, int height, int elapsed)
-        {
-            try
-            {
-                switch (IsStreamingTimeInitialed)
-                {
-                    case false:
-                        SetTimer(SystemClock.ElapsedRealtime());
-                        IsStreamingTimeInitialed = true;
-                        break;
-                }
-            }
-            catch (Exception e)
-            {
-                Methods.DisplayReportResultTrack(e);
-            }
-        }
-
-        public void OnFirstRemoteVideoFrame(int uid, int width, int height, int elapsed)
-        {
-            try
-            {
+                // LiveKit: unpublish local tracks
+                LiveKitManager.SetVideoEnabled(false);
                 RunOnUiThread(() =>
                 {
-                    RenderRemoteUser(uid);
+                    MVideoLayout.Visibility = ViewStates.Gone;
+
+                    MLoadingViewer.Visibility = ViewStates.Gone;
+                    MGetReadyLyt.Visibility = ViewStates.Gone;
+                    MLiveStreamEndedLyt.Visibility = ViewStates.Gone;
+
+                    MVideoControlLyt.Visibility = ViewStates.Visible;
                 });
             }
             catch (Exception e)
@@ -1197,17 +1160,10 @@ namespace WoWonder.Activities.Live.Page
             }
         }
 
-        public void OnLeaveChannel(IRtcEngineEventHandler.RtcStats stats)
-        {
-
-        }
-
-        public void OnJoinChannelSuccess(string channel, int uid, int elapsed)
+        public void OnLiveKitConnected()
         {
             try
             {
-                UidLive = uid.ToString().Replace("-", "");
-
                 RunOnUiThread(async () =>
                 {
                     try
@@ -1221,22 +1177,19 @@ namespace WoWonder.Activities.Live.Page
                                 StartBroadcast();
                                 break;
                             default:
-                                StopBroadcast();
                                 InitStreamerInfo();
                                 break;
                         }
 
                         if (IsOwner)
                         {
-                            await AgoraAcquire(AppSettings.AppIdAgoraLive, ListUtils.SettingsSiteList?.AgoraCustomerId, ListUtils.SettingsSiteList?.AgoraCustomerCertificate, channel, UidLive);
+                            // TODO: Start LiveKit Egress recording if needed
                         }
                         else
                         {
                             await Task.Delay(TimeSpan.FromSeconds(3));
                         }
                         LoadMessages();
-
-                        //CreateLiveThumbnail(); 
                     }
                     catch (Exception e)
                     {
@@ -1250,13 +1203,13 @@ namespace WoWonder.Activities.Live.Page
             }
         }
 
-        public void OnUserOffline(int uid, int reason)
+        public void OnLiveKitDisconnected()
         {
             try
             {
                 RunOnUiThread(() =>
                 {
-                    RemoveRemoteUser(uid);
+                    MVideoLayout?.RemoveAllVideo();
                 });
             }
             catch (Exception e)
@@ -1265,145 +1218,23 @@ namespace WoWonder.Activities.Live.Page
             }
         }
 
-        public void OnUserJoined(int uid, int elapsed)
+        public void OnParticipantJoined(string identity)
         {
-
+            // Participant joined notification
+            RunOnUiThread(() =>
+            {
+                MViewersText.Text = identity;
+            });
         }
 
-        public void OnLastmileQuality(int quality)
+        public void OnParticipantLeft(string identity)
         {
-
+            // Participant left notification
         }
 
-        public void OnLastmileProbeResult(IRtcEngineEventHandler.LastmileProbeResult result)
-        {
+        #endregion
 
-        }
-
-        public void OnLocalVideoStats(Constants.VideoSourceType source, IRtcEngineEventHandler.LocalVideoStats stats)
-        {
-            try
-            {
-                if (!StatsManager().IsEnabled()) return;
-
-                LocalStatsData data = (LocalStatsData)StatsManager().GetStatsData(0);
-                switch (data)
-                {
-                    case null:
-                        return;
-                }
-
-                data.SetWidth(MVideoDimension.Width);
-                data.SetHeight(MVideoDimension.Height);
-                data.SetFramerate(stats.SentFrameRate);
-            }
-            catch (Exception e)
-            {
-                Methods.DisplayReportResultTrack(e);
-            }
-        }
-
-        public void OnRtcStats(IRtcEngineEventHandler.RtcStats stats)
-        {
-            try
-            {
-                if (!StatsManager().IsEnabled()) return;
-
-                LocalStatsData data = (LocalStatsData)StatsManager().GetStatsData(0);
-                switch (data)
-                {
-                    case null:
-                        return;
-                }
-
-                data.SetLastMileDelay(stats.LastmileDelay);
-                data.SetVideoSendBitrate(stats.TxVideoKBitRate);
-                data.SetVideoRecvBitrate(stats.RxVideoKBitRate);
-                data.SetAudioSendBitrate(stats.TxAudioKBitRate);
-                data.SetAudioRecvBitrate(stats.RxAudioKBitRate);
-                data.SetCpuApp(stats.CpuAppUsage);
-                data.SetCpuTotal(stats.CpuAppUsage);
-                data.SetSendLoss(stats.TxPacketLossRate);
-                data.SetRecvLoss(stats.RxPacketLossRate);
-            }
-            catch (Exception e)
-            {
-                Methods.DisplayReportResultTrack(e);
-            }
-        }
-
-        public void OnNetworkQuality(int uid, int txQuality, int rxQuality)
-        {
-            try
-            {
-                if (!StatsManager().IsEnabled()) return;
-
-                StatsData data = StatsManager().GetStatsData(uid);
-                switch (data)
-                {
-                    case null:
-                        return;
-                    default:
-                        data.SetSendQuality(StatsManager().QualityToString(txQuality));
-                        data.SetRecvQuality(StatsManager().QualityToString(rxQuality));
-                        break;
-                }
-            }
-            catch (Exception e)
-            {
-                Methods.DisplayReportResultTrack(e);
-            }
-        }
-
-        public void OnRemoteVideoStats(IRtcEngineEventHandler.RemoteVideoStats stats)
-        {
-            try
-            {
-                if (!StatsManager().IsEnabled()) return;
-
-                RemoteStatsData data = (RemoteStatsData)StatsManager().GetStatsData(stats.Uid);
-                switch (data)
-                {
-                    case null:
-                        return;
-                }
-
-                data.SetWidth(stats.Width);
-                data.SetHeight(stats.Height);
-                data.SetFramerate(stats.RendererOutputFrameRate);
-#pragma warning disable 618
-                data.SetVideoDelay(stats.Delay);
-#pragma warning restore 618
-            }
-            catch (Exception e)
-            {
-                Methods.DisplayReportResultTrack(e);
-            }
-        }
-
-        public void OnRemoteAudioStats(IRtcEngineEventHandler.RemoteAudioStats stats)
-        {
-            try
-            {
-                if (!StatsManager().IsEnabled()) return;
-
-                RemoteStatsData data = (RemoteStatsData)StatsManager().GetStatsData(stats.Uid);
-                switch (data)
-                {
-                    case null:
-                        return;
-                }
-
-                data.SetAudioNetDelay(stats.NetworkTransportDelay);
-                data.SetAudioNetJitter(stats.JitterBufferDelay);
-                data.SetAudioLoss(stats.AudioLossRate);
-                data.SetAudioQuality(StatsManager().QualityToString(stats.Quality));
-            }
-            catch (Exception e)
-            {
-                Methods.DisplayReportResultTrack(e);
-            }
-        }
+        #region LiveKit Messages & Comments
 
         public void OnError(int err)
         {
@@ -1453,8 +1284,8 @@ namespace WoWonder.Activities.Live.Page
         {
             try
             {
-                SurfaceView = PrepareRtcVideo(uid, false);
-                MVideoLayout.AddUserVideotextureView(uid, SurfaceView, false);
+                // LiveKit: render remote participant track
+                // SurfaceView will be set up when the LiveKit SDK is integrated
             }
             catch (Exception e)
             {
@@ -1466,7 +1297,6 @@ namespace WoWonder.Activities.Live.Page
         {
             try
             {
-                RemoveRtcVideo(uid, false);
                 MVideoLayout.RemoveUserVideo(uid, false);
             }
             catch (Exception e)
@@ -1489,182 +1319,45 @@ namespace WoWonder.Activities.Live.Page
 
         private async Task CreateLive()
         {
-            var (apiStatus, respond) = await RequestsAsync.Posts.CreateLiveAsync(Config().GetChannelName());
-            if (apiStatus == 200)
-            {
-                if (respond is AddPostObject result)
-                {
-                    PostObject = result.PostData;
-                    PostId = result.PostData.PostId;
-
-                    JoinChannel();
-                }
-            }
-            else
-                Methods.DisplayReportResult(this, respond);
-        }
-
-        private static string Base64Encode(string plainText)
-        {
-            var plainTextBytes = Encoding.UTF8.GetBytes(plainText);
-            return Convert.ToBase64String(plainTextBytes);
-        }
-
-        #region Agora Record
-
-        private async Task AgoraAcquire(string appid, string customerId, string customerCertificate, string channel, string uid)
-        {
             try
             {
-                var url = "https://api.agora.io/v1/apps/" + appid + "/cloud_recording/acquire";
+                var streamName = Config().GetChannelName();
+                var url = AppSettings.DomainUrl + "/xhr.php?f=live&s=create";
 
-                using var httpClient = new HttpClient();
-                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Authorization", "Basic " + Base64Encode(customerId + ":" + customerCertificate));
-                //httpClient.DefaultRequestHeaders.TryAddWithoutValidation("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36 Edge/18.18363");
-                httpClient.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json; charset=utf-8");
-                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                httpClient.Timeout = TimeSpan.FromMinutes(3.0);
-                try { httpClient.BaseAddress = new System.Uri(url); } catch (Exception) { }
-
-                using var request = new HttpRequestMessage
+                var formData = new Dictionary<string, string>
                 {
-                    Method = HttpMethod.Post,
-                    RequestUri = new System.Uri(url),
-                    Content = new StringContent("{\n  \"cname\": \"" + channel + "\",\n  \"uid\": \"" + uid + "\",\n  \"clientRequest\":{\n  }\n}", Encoding.UTF8, "application/json"),
+                    {"stream_name", streamName},
+                    {"user_id", UserDetails.UserId}
                 };
 
-                request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-                request.Headers.Add("Connection", new[] { "Keep-Alive" });
-
-                var response = await httpClient.SendAsync(request);
-
-                string json = await response.Content.ReadAsStringAsync();
-                var data = JsonConvert.DeserializeObject<AgoraRecordObject>(json);
-                if (data?.ResourceId != null)
-                {
-                    ResourceId = data.ResourceId;
-                    await AgoraStart(appid, customerId, customerCertificate, ResourceId, channel, uid);
-                }
-            }
-            catch (NotSupportedException e) // When content type is not valid => The content type is not supported
-            {
-                Methods.DisplayReportResultTrack(e);
-            }
-            catch (JsonException e) // Invalid JSON
-            {
-                Methods.DisplayReportResultTrack(e);
-            }
-            catch (Exception e)
-            {
-                Methods.DisplayReportResultTrack(e);
-            }
-        }
-
-        private async Task AgoraStart(string appid, string customerId, string customerCertificate, string resourceId, string channel, string uid)
-        {
-            try
-            {
-                var url = "https://api.agora.io/v1/apps/" + appid + "/cloud_recording/resourceid/" + resourceId + "/mode/mix/start";
-
                 using var httpClient = new HttpClient();
-                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Authorization", "Basic " + Base64Encode(customerId + ":" + customerCertificate));
-                //httpClient.DefaultRequestHeaders.TryAddWithoutValidation("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36 Edge/18.18363");
-                httpClient.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json; charset=utf-8");
-                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                httpClient.Timeout = TimeSpan.FromMinutes(3.0);
-                try { httpClient.BaseAddress = new System.Uri(url); }
-                catch (Exception)
-                { // ignored
+                httpClient.Timeout = TimeSpan.FromSeconds(30);
+                httpClient.DefaultRequestHeaders.Add("x-requested-with", "XMLHttpRequest");
+
+                var response = await httpClient.PostAsync(url, new FormUrlEncodedContent(formData));
+                var json = await response.Content.ReadAsStringAsync();
+                var result = JsonConvert.DeserializeObject<Dictionary<string, object>>(json);
+
+                if (result != null && result.ContainsKey("livekit_token"))
+                {
+                    var token = result["livekit_token"]?.ToString();
+                    var identity = result.ContainsKey("livekit_identity") ? result["livekit_identity"]?.ToString() : UserDetails.UserId;
+                    var roomName = result.ContainsKey("livekit_room") ? result["livekit_room"]?.ToString() : streamName;
+
+                    LiveKitRoomManager.Instance.CurrentToken = token;
+
+                    RunOnUiThread(() =>
+                    {
+                        // Join the LiveKit room
+                        _ = JoinLiveKitRoom(roomName, identity, true);
+                        StartBroadcast();
+                        OnLiveKitConnected();
+                    });
                 }
-
-                var storageVendor = "1";
-                var region = GetRegion(ListUtils.SettingsSiteList?.Region2);
-                var bucket = ListUtils.SettingsSiteList?.BucketName2;
-                var accessKey = ListUtils.SettingsSiteList?.AmazoneS3Key2;
-                var secretKey = ListUtils.SettingsSiteList?.AmazoneS3SKey2;
-
-                var jsonBody = "{\n\t\"cname\":\"" + channel + "\",\n\t\"uid\":\"" + uid + "\"," +
-                               "\n\t\"clientRequest\":{\n\t\t\"recordingConfig\":{\n\t\t\t\"channelType\":1,\n\t\t\t\"streamTypes\":2,\n\t\t\t\"audioProfile\":1,\n\t\t\t\"videoStreamType\":1,\n\t\t\t\"maxIdleTime\":120,\n\t\t\t\"transcodingConfig\":{\n\t\t\t\t\"width\":480,\n\t\t\t\t\"height\":480,\n\t\t\t\t\"fps\":24,\n\t\t\t\t\"bitrate\":800,\n\t\t\t\t\"maxResolutionUid\":\"1\"," +
-                               "\n\t\t\t\t\"mixedVideoLayout\":1\n\t\t\t\t}\n\t\t\t},\n\t\t\"storageConfig\":" +
-                               "{\n\t\t\t\"vendor\":" + storageVendor + ",\n\t\t\t\"region\":" + region + "," +
-                               "\n\t\t\t\"bucket\":\"" + bucket + "\",\n\t\t\t\"accessKey\":\"" + accessKey + "\"," +
-                               "\n\t\t\t\"secretKey\":\"" + secretKey + "\"\n\t\t}\t\n\t}\n} \n";
-
-                using var request = new HttpRequestMessage
+                else
                 {
-                    Method = HttpMethod.Post,
-                    RequestUri = new System.Uri(url),
-                    Content = new StringContent(jsonBody, Encoding.UTF8, "application/json"),
-                };
-
-                request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-                request.Headers.Add("Connection", new[] { "Keep-Alive" });
-
-                var response = await httpClient.SendAsync(request);
-
-                string json = await response.Content.ReadAsStringAsync();
-                var data = JsonConvert.DeserializeObject<AgoraRecordObject>(json);
-                if (data?.Sid != null)
-                {
-                    SId = data.Sid;
-                    await LoadDataComment(resourceId, SId);
+                    Methods.DisplayReportResult(this, json);
                 }
-            }
-            catch (NotSupportedException e) // When content type is not valid => The content type is not supported
-            {
-                Methods.DisplayReportResultTrack(e);
-            }
-            catch (JsonException e) // Invalid JSON
-            {
-                Methods.DisplayReportResultTrack(e);
-            }
-            catch (Exception e)
-            {
-                Methods.DisplayReportResultTrack(e);
-            }
-        }
-
-        private async Task AgoraStop(string appid, string customerId, string customerCertificate, string resourceId, string sid, string channel, string uid)
-        {
-            try
-            {
-                var url = "https://api.agora.io/v1/apps/" + appid + "/cloud_recording/resourceid/" + resourceId + "/sid/" + sid + "/mode/mix/stop";
-
-                using var httpClient = new HttpClient();
-                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Authorization", "Basic " + Base64Encode(customerId + ":" + customerCertificate));
-                // httpClient.DefaultRequestHeaders.TryAddWithoutValidation("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36 Edge/18.18363");
-                httpClient.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json; charset=utf-8");
-                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                httpClient.Timeout = TimeSpan.FromMinutes(3.0);
-                try { httpClient.BaseAddress = new System.Uri(url); } catch (Exception) { }
-
-                using var request = new HttpRequestMessage
-                {
-                    Method = HttpMethod.Post,
-                    RequestUri = new System.Uri(url),
-                    Content = new StringContent("{\n  \"cname\": \"" + channel + "\",\n  \"uid\": \"" + uid + "\",\n  \"clientRequest\":{\n  }\n}", Encoding.UTF8, "application/json"),
-                };
-
-                request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-                request.Headers.Add("Connection", new[] { "Keep-Alive" });
-
-                var response = await httpClient.SendAsync(request);
-
-                string json = await response.Content.ReadAsStringAsync();
-                var data = JsonConvert.DeserializeObject<AgoraRecordObject>(json);
-                if (data?.ServerResponse?.FileList != null)
-                {
-                    FileListLive = data.ServerResponse?.FileList;
-                    await LoadDataComment("", "", FileListLive);
-                }
-            }
-            catch (NotSupportedException e) // When content type is not valid => The content type is not supported
-            {
-                Methods.DisplayReportResultTrack(e);
-            }
-            catch (JsonException e) // Invalid JSON
-            {
-                Methods.DisplayReportResultTrack(e);
             }
             catch (Exception e)
             {

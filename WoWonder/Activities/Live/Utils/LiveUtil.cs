@@ -5,9 +5,10 @@ using Android.Content.PM;
 using Android.OS;
 using Android.Widget;
 using AndroidX.Core.Content;
-using IO.Agora.Rtc2;
+using AndroidX.RecyclerView.Widget;
+using Newtonsoft.Json;
 using System;
-using WoWonder.Activities.Live.Page;
+using WoWonder.Activities.Base;
 using WoWonder.Activities.SettingsPreferences;
 using WoWonder.Helpers.Controller;
 using WoWonder.Helpers.Model;
@@ -120,7 +121,7 @@ namespace WoWonder.Activities.Live.Utils
                 }
                 //Owner >> ClientRoleBroadcaster , Users >> ClientRoleAudience
                 Intent intent = new Intent(Activity, typeof(LiveStreamingActivity));
-                intent.PutExtra(LiveConstants.KeyClientRole, Constants.ClientRoleBroadcaster);
+                intent.PutExtra(LiveConstants.KeyClientRole, LiveConstants.ClientRoleBroadcaster);
                 intent.PutExtra("StreamName", streamName);
                 Activity.StartActivity(intent);
 

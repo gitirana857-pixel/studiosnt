@@ -224,8 +224,9 @@
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="AndHUD" Version="2.0.2" />
-		<PackageReference Include="Anjo.Android.AgoraFull" Version="4.2.6" />
-		<PackageReference Include="Anjo.Android.AgoraIO.AgoraDynamicKey" Version="4.0.0" />
+		<!-- Agora removed - replaced by LiveKit -->
+		<!--<PackageReference Include="Anjo.Android.AgoraFull" Version="4.2.6" />-->
+		<!--<PackageReference Include="Anjo.Android.AgoraIO.AgoraDynamicKey" Version="4.0.0" />-->
 		<PackageReference Include="Anjo.Android.Airbnb.Mavericks" Version="3.0.9" />
 		<PackageReference Include="Anjo.Android.AppLovin" Version="13.0.1" />
 		<PackageReference Include="Anjo.Android.AppLovin.Mediation.FacebookAdapter" Version="6.16.0.2" />

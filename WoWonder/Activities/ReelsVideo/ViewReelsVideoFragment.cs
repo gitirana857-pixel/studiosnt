@@ -114,6 +114,24 @@ namespace WoWonder.Activities.ReelsVideo
                 //var position = Arguments?.GetInt("position", 0); 
                 DataVideos = JsonConvert.DeserializeObject<PostDataObject>(Arguments?.GetString("DataItem") ?? "");
 
+                // Patch IsFollowing from local SQLite database (API may return stale data)
+                if (DataVideos?.Publisher != null && DataVideos.Publisher.UserId != UserDetails.UserId)
+                {
+                    try
+                    {
+                        var dbDatabase = new SqLiteDatabase();
+                        var localUser = dbDatabase.Get_DataOneUserById(DataVideos.Publisher.UserId);
+                        if (localUser != null && localUser.IsFollowing is "1" or "2" or "yes" or "Yes")
+                        {
+                            DataVideos.Publisher.IsFollowing = localUser.IsFollowing;
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        Methods.DisplayReportResultTrack(e);
+                    }
+                }
+
                 Instance = this;
                 InitComponent(view);
                 InitPlayer();
@@ -867,9 +885,19 @@ namespace WoWonder.Activities.ReelsVideo
                     FollowButton.Visibility = ViewStates.Gone;
                 else
                 {
-                    if (dataObject.Publisher.CanFollow == "0" && dataObject.Publisher.IsFollowing == "0" && dataObject.Publisher.UserId != UserDetails.UserId)
+                    // Check local SQLite database for follow status (API may return stale data)
+                    var dbDatabase = new SqLiteDatabase();
+                    var localUser = dbDatabase.Get_DataOneUserById(dataObject.Publisher.UserId);
+                    if (localUser != null && localUser.IsFollowing is "1" or "2" or "yes" or "Yes")
                     {
                         FollowButton.Visibility = ViewStates.Gone;
+                    }
+                    else
+                    {
+                        if (dataObject.Publisher.CanFollow == "0" && dataObject.Publisher.IsFollowing == "0" && dataObject.Publisher.UserId != UserDetails.UserId)
+                        {
+                            FollowButton.Visibility = ViewStates.Gone;
+                        }
                     }
 
                     if (dataObject.Publisher.FollowPrivacy == "0") // Everyone

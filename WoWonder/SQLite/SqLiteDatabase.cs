@@ -1210,6 +1210,193 @@ namespace WoWonder.SQLite
             }
         }
 
+        public UserDataObject Get_DataOneUserById(string userId)
+        {
+            try
+            {
+                using var connection = OpenConnection();
+                var item = connection?.Table<DataTables.MyContactsTb>().FirstOrDefault(a => a.UserId == userId);
+                if (item != null)
+                {
+                    UserDataObject infoObject = new UserDataObject
+                    {
+                        UserId = item.UserId,
+                        Username = item.Username,
+                        Email = item.Email,
+                        FirstName = item.FirstName,
+                        LastName = item.LastName,
+                        Avatar = item.Avatar,
+                        Cover = item.Cover,
+                        BackgroundImage = item.BackgroundImage,
+                        RelationshipId = item.RelationshipId,
+                        Address = item.Address,
+                        Working = item.Working,
+                        Gender = item.Gender,
+                        Facebook = item.Facebook,
+                        Google = item.Google,
+                        Twitter = item.Twitter,
+                        Linkedin = item.Linkedin,
+                        Website = item.Website,
+                        Instagram = item.Instagram,
+                        WebDeviceId = item.WebDeviceId,
+                        Language = item.Language,
+                        IpAddress = item.IpAddress,
+                        PhoneNumber = item.PhoneNumber,
+                        Timezone = item.Timezone,
+                        Lat = item.Lat,
+                        Lng = item.Lng,
+                        About = item.About,
+                        Birthday = item.Birthday,
+                        Registered = item.Registered,
+                        Lastseen = item.Lastseen,
+                        LastLocationUpdate = item.LastLocationUpdate,
+                        Balance = item.Balance,
+                        Verified = item.Verified,
+                        Status = item.Status,
+                        Active = item.Active,
+                        Admin = item.Admin,
+                        IsPro = item.IsPro,
+                        ProType = item.ProType,
+                        School = item.School,
+                        Name = item.Name,
+                        AndroidMDeviceId = item.AndroidMDeviceId,
+                        ECommented = item.ECommented,
+                        AndroidNDeviceId = item.AndroidMDeviceId,
+                        AvatarFull = item.AvatarFull,
+                        BirthPrivacy = item.BirthPrivacy,
+                        CanFollow = item.CanFollow,
+                        ConfirmFollowers = item.ConfirmFollowers,
+                        CountryId = item.CountryId,
+                        EAccepted = item.EAccepted,
+                        EFollowed = item.EFollowed,
+                        EJoinedGroup = item.EJoinedGroup,
+                        ELastNotif = item.ELastNotif,
+                        ELiked = item.ELiked,
+                        ELikedPage = item.ELikedPage,
+                        EMentioned = item.EMentioned,
+                        EProfileWallPost = item.EProfileWallPost,
+                        ESentmeMsg = item.ESentmeMsg,
+                        EShared = item.EShared,
+                        EVisited = item.EVisited,
+                        EWondered = item.EWondered,
+                        EmailNotification = item.EmailNotification,
+                        FollowPrivacy = item.FollowPrivacy,
+                        FriendPrivacy = item.FriendPrivacy,
+                        GenderText = item.GenderText,
+                        InfoFile = item.InfoFile,
+                        IosMDeviceId = item.IosMDeviceId,
+                        IosNDeviceId = item.IosNDeviceId,
+                        IsBlocked = item.IsBlocked,
+                        IsFollowing = item.IsFollowing,
+                        IsFollowingMe = item.IsFollowingMe,
+                        LastAvatarMod = item.LastAvatarMod,
+                        LastCoverMod = item.LastCoverMod,
+                        LastDataUpdate = item.LastDataUpdate,
+                        LastFollowId = item.LastFollowId,
+                        LastLoginData = item.LastLoginData,
+                        LastseenStatus = item.LastseenStatus,
+                        LastseenTimeText = item.LastseenTimeText,
+                        LastseenUnixTime = item.LastseenUnixTime,
+                        MessagePrivacy = item.MessagePrivacy,
+                        NewEmail = item.NewEmail,
+                        NewPhone = item.NewPhone,
+                        NotificationsSound = item.NotificationsSound,
+                        OrderPostsBy = item.OrderPostsBy,
+                        PaypalEmail = item.PaypalEmail,
+                        PostPrivacy = item.PostPrivacy,
+                        Referrer = item.Referrer,
+                        ShareMyData = item.ShareMyData,
+                        ShareMyLocation = item.ShareMyLocation,
+                        ShowActivitiesPrivacy = item.ShowActivitiesPrivacy,
+                        TwoFactor = item.TwoFactor,
+                        TwoFactorVerified = item.TwoFactorVerified,
+                        Url = item.Url,
+                        VisitPrivacy = item.VisitPrivacy,
+                        Vk = item.Vk,
+                        Wallet = item.Wallet,
+                        WorkingLink = item.WorkingLink,
+                        Youtube = item.Youtube,
+                        City = item.City,
+                        State = item.State,
+                        Zip = item.Zip,
+                        Points = item.Points,
+                        DailyPoints = item.DailyPoints,
+                        PointDayExpire = item.PointDayExpire,
+                        CashfreeSignature = item.CashfreeSignature,
+                        IsAdmin = item.IsAdmin,
+                        MemberId = item.MemberId,
+                        ChatColor = item.ChatColor,
+                        PaystackRef = item.PaystackRef,
+                        RefUserId = item.RefUserId,
+                        SchoolCompleted = item.SchoolCompleted,
+                        Type = item.Type,
+                        UserPlatform = item.UserPlatform,
+                        WeatherUnit = item.WeatherUnit,
+                        AvatarPostId = item.AvatarPostId,
+                        CodeSent = item.CodeSent,
+                        CoverPostId = item.CoverPostId,
+                        Discord = item.Discord,
+                        IsArchive = item.IsArchive,
+                        IsMute = item.IsMute,
+                        IsPin = item.IsPin,
+                        IsReported = item.IsReported,
+                        IsStoryMuted = item.IsStoryMuted,
+                        Mailru = item.Mailru,
+                        NotificationSettings = item.NotificationSettings,
+                        IsNotifyStopped = item.IsNotifyStopped,
+                        Qq = item.Qq,
+                        StripeSessionId = item.StripeSessionId,
+                        Time = item.Time,
+                        TimeCodeSent = item.TimeCodeSent,
+                        Banned = item.Banned,
+                        BannedReason = item.BannedReason,
+                        CoinbaseCode = item.CoinbaseCode,
+                        CoinbaseHash = item.CoinbaseHash,
+                        CurrentlyWorking = item.CurrentlyWorking,
+                        IsOpenToWork = item.IsOpenToWork,
+                        IsProvidingService = item.IsProvidingService,
+                        Languages = item.Languages,
+                        OpenToWorkData = item.OpenToWorkData,
+                        Permission = item.Permission,
+                        ProvidingService = item.ProvidingService,
+                        Skills = item.Skills,
+                        Wechat = item.Wechat,
+                        Details = new DetailsUnion(),
+                        Selected = false,
+                        ApiNotificationSettings = new NotificationSettingsUnion(),
+                    };
+
+                    infoObject.Details = string.IsNullOrEmpty(item.Details) switch
+                    {
+                        false => new DetailsUnion { DetailsClass = JsonConvert.DeserializeObject<Details>(item.Details) },
+                        _ => infoObject.Details
+                    };
+
+                    infoObject.ApiNotificationSettings = string.IsNullOrEmpty(item.ApiNotificationSettings) switch
+                    {
+                        false => new NotificationSettingsUnion { NotificationSettingsClass = JsonConvert.DeserializeObject<NotificationSettings>(item.ApiNotificationSettings) },
+                        _ => infoObject.ApiNotificationSettings
+                    };
+
+                    return infoObject;
+                }
+                else
+                {
+                    var infoObject = ListUtils.MyFollowingList.FirstOrDefault(a => a.UserId == userId);
+                    if (infoObject != null) return infoObject;
+                }
+
+                return null!;
+            }
+            catch (Exception e)
+            {
+                if (e.Message.Contains("database is locked"))
+                    return Get_DataOneUserById(userId);
+                Methods.DisplayReportResultTrack(e);
+                return null!;
+            }
+        }
+
         #endregion
 
         #region My Profile
