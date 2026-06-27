@@ -1551,8 +1551,6 @@ namespace WoWonder.Activities.Live.Page
             }
         }
 
-        #endregion
-
         #region Timer Time LIve
 
         private void SetTimer(long elapsed)
