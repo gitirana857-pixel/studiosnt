@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using System.Timers;
 using WoWonder.Activities.Base;
@@ -660,7 +661,7 @@ namespace WoWonder.Activities.Live.Page
                 MStreamChannel = null!;
                 MVideoLayout = null!;
                 SurfaceView = null!;
-                MVideoDimension = null!;
+
                 CustomHandler = null!;
                 UpdateTimerThread = null!;
             }
@@ -1209,7 +1210,7 @@ namespace WoWonder.Activities.Live.Page
             {
                 RunOnUiThread(() =>
                 {
-                    MVideoLayout?.RemoveAllVideo();
+                    MVideoLayout?.ClearAllVideo();
                 });
             }
             catch (Exception e)
@@ -1322,7 +1323,7 @@ namespace WoWonder.Activities.Live.Page
             try
             {
                 var streamName = Config().GetChannelName();
-                var url = AppSettings.DomainUrl + "/xhr.php?f=live&s=create";
+                var url = InitializeWoWonder.WebsiteUrl + "/xhr.php?f=live&s=create";
 
                 var formData = new Dictionary<string, string>
                 {

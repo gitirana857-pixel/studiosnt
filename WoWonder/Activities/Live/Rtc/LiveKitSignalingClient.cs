@@ -635,7 +635,7 @@ namespace WoWonder.Activities.Live.Rtc
                 if (candidate == null) return;
 
                 var candidateStr = candidate["candidate"]?.ToString();
-                var mlineIndex = candidate["sdpMLineIndex"]?.Value<int>() ?? 0;
+                var mlineIndex = (int?)(candidate["sdpMLineIndex"]?.ToObject(typeof(int))) ?? 0;
                 var sdpMid = candidate["sdpMid"]?.ToString();
 
                 if (!string.IsNullOrEmpty(candidateStr))
@@ -757,7 +757,7 @@ namespace WoWonder.Activities.Live.Rtc
             {
                 if (payload == null) return;
                 var trackSid = payload["track_sid"]?.ToString();
-                var muted = payload["muted"]?.Value<bool>() ?? false;
+                var muted = (bool?)(payload["muted"]?.ToObject(typeof(bool))) ?? false;
 
                 if (!string.IsNullOrEmpty(trackSid))
                 {

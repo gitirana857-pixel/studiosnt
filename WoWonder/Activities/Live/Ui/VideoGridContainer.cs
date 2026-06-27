@@ -302,7 +302,7 @@ namespace WoWonder.Activities.Live.Ui
                 Methods.DisplayReportResultTrack(e);
             }
         }
-        private void ClearAllVideo()
+        public void ClearAllVideo()
         {
             try
             {

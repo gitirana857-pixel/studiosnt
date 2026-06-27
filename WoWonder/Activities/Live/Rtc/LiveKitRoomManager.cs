@@ -243,15 +243,16 @@ namespace WoWonder.Activities.Live.Rtc
                 if (apiStatus == 200)
                 {
                     // O PHP retorna os dados dentro de "data"
-                    if (respond.TryGetValue("data", out var dataRaw) && dataRaw is Dictionary<string, object> data)
+                    var dataRaw = respond is Dictionary<string, object> r && r.TryGetValue("data", out var raw) ? raw as Dictionary<string, object> : null;
+                    if (dataRaw != null)
                     {
                         var result = new Dictionary<string, object>
                         {
-                            ["post_id"] = data.GetValueOrDefault("post_id", ""),
-                            ["livekit_token"] = data.GetValueOrDefault("livekit_token", ""),
-                            ["livekit_url"] = data.GetValueOrDefault("livekit_url", ""),
-                            ["livekit_identity"] = data.GetValueOrDefault("livekit_identity", ""),
-                            ["livekit_room"] = data.GetValueOrDefault("livekit_room", "")
+                            ["post_id"] = dataRaw.GetValueOrDefault("post_id", ""),
+                            ["livekit_token"] = dataRaw.GetValueOrDefault("livekit_token", ""),
+                            ["livekit_url"] = dataRaw.GetValueOrDefault("livekit_url", ""),
+                            ["livekit_identity"] = dataRaw.GetValueOrDefault("livekit_identity", ""),
+                            ["livekit_room"] = dataRaw.GetValueOrDefault("livekit_room", "")
                         };
                         return result;
                     }
